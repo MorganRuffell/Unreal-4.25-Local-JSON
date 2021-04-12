@@ -13,7 +13,12 @@ public class ActionRPG : ModuleRules
 			new string[] {
 				"Core",
 				"CoreUObject",
-				"Engine"
+				"Engine",
+				"AIModule",
+				"GameplayTasks",
+				"NavigationSystem",
+				"GameplayAbilities",
+				"GameplayTags"
 			}
 		);
 
@@ -26,7 +31,9 @@ public class ActionRPG : ModuleRules
 				"MoviePlayer",
 				"GameplayAbilities",
 				"GameplayTags",
-				"GameplayTasks"
+				"GameplayTasks",
+				"JSON",
+				"JsonUtilities"
 			}
 		);
 

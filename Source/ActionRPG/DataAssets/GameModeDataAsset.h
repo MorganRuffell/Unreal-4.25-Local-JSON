@@ -1,0 +1,47 @@
+// Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Runtime/UMG/Public/UMG.h"
+#include "Blueprint/UserWidget.h"
+#include "GameFramework/HUD.h"
+#include "DataAssets/JSONDataAssetBase.h"
+#include "GameModeDataAsset.generated.h"
+
+/**
+ * 
+ */
+UCLASS(BlueprintType)
+class ACTIONRPG_API UGameModeDataAsset : public UJSONDataAssetBase
+{
+	GENERATED_BODY()
+	
+public:
+
+	//UGameModeDataAsset(FObjectInitializer& ObjectIntializer);
+
+	UGameModeDataAsset();
+	~UGameModeDataAsset();
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
+	float EnemySpawnDelay;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
+	bool AutoBattleMode;	
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
+	float WaveSpawnDelay;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
+	float GlobalTimeDilation;
+
+public:
+
+	//If you override a virtual function, always use a the override keyword
+	virtual TSharedPtr<FJsonObject> ToJson() override;
+
+	virtual bool FromJson(FJsonObject& jsonObject) override;
+
+
+};

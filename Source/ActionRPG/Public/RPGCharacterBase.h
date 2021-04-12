@@ -9,7 +9,9 @@
 #include "AbilitySystemInterface.h"
 #include "Abilities/RPGAbilitySystemComponent.h"
 #include "Abilities/RPGAttributeSet.h"
+#include "AbilitySystemInterface.h"
 #include "RPGCharacterBase.generated.h"
+
 
 class URPGGameInstanceBase;
 class URPGGameplayAbility;

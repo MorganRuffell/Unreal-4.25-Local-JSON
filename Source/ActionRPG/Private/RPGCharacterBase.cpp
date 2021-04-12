@@ -8,6 +8,8 @@
 
 #include "AbilitySystemGlobals.h"
 #include "Abilities/RPGGameplayAbility.h"
+#include "AbilitySystemComponent.h"
+
 
 // LA -
 // Prevents code optimisation which is useful for stepping through as it means

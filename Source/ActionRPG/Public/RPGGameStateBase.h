@@ -4,9 +4,10 @@
 
 #include "ActionRPG.h"
 #include "GameFramework/GameStateBase.h"
+#include "SaveGame/ActionRPGSaveGame.h"
 #include "RPGGameStateBase.generated.h"
 
-/** Base class for GameMode, should be blueprinted */
+/** Base class for GameState, should be blueprinted */
 UCLASS()
 class ACTIONRPG_API ARPGGameStateBase : public AGameStateBase
 {
@@ -14,6 +15,8 @@ class ACTIONRPG_API ARPGGameStateBase : public AGameStateBase
 
 public:
 	/** Constructor */
-	ARPGGameStateBase() {}
+	ARPGGameStateBase();
+
+
 };
 

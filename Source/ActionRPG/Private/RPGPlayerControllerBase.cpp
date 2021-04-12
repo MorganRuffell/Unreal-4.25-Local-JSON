@@ -312,6 +312,78 @@ void ARPGPlayerControllerBase::NotifyInventoryLoaded()
 	OnInventoryLoaded.Broadcast();
 }
 
+void ARPGPlayerControllerBase::Log(ELogLevel LogLevel, FString Message)
+{
+	Log(LogLevel, Message, ELogOutput::ALL);
+}
+
+void ARPGPlayerControllerBase::Log(ELogLevel LogLevel, FString Message, ELogOutput LogOutput)
+{
+	//Only print when the screen is selected, and the GEngine object is avaliable.
+	if ((LogOutput == ELogOutput::ALL || LogOutput == ELogOutput::SCREEN) && GEngine)
+	{
+		//Default Color is cyan
+		FColor LogColor = FColor::Cyan;
+
+		//Flip the color based on the type of log, warning would be red. Info would be white...
+		switch (LogLevel)
+		{
+		case ELogLevel::TRACE:
+			LogColor = FColor::Green;
+			break;
+
+		case ELogLevel::DEBUG:
+			LogColor = FColor::Cyan;
+			break;
+
+		case ELogLevel::INFO:
+			LogColor = FColor::White;
+			break;
+
+		case ELogLevel::WARNING:
+			LogColor = FColor::Orange;
+			break;
+
+		case ELogLevel::ERROR:
+			LogColor = FColor::Red;
+			break;
+		default:
+			break;
+		}
+		GEngine->AddOnScreenDebugMessage(-1, 4.5f, LogColor, Message);
+	}
+
+	if (LogOutput == ELogOutput::ALL || LogOutput == ELogOutput::OUTPUT_LOG)
+	{
+		//flip the message based on error level
+		switch (LogLevel)
+		{
+		case ELogLevel::TRACE:
+			UE_LOG(LogTemp, VeryVerbose, TEXT("%s"), *Message)
+				break;
+
+		case ELogLevel::DEBUG:
+			UE_LOG(LogTemp, VeryVerbose, TEXT("%s"), *Message)
+				break;
+
+		case ELogLevel::INFO:
+			UE_LOG(LogTemp, VeryVerbose, TEXT("%s"), *Message)
+				break;
+
+		case ELogLevel::WARNING:
+			UE_LOG(LogTemp, VeryVerbose, TEXT("%s"), *Message)
+				break;
+
+		case ELogLevel::ERROR:
+			UE_LOG(LogTemp, VeryVerbose, TEXT("%s"), *Message)
+				break;
+		default:
+			UE_LOG(LogTemp, VeryVerbose, TEXT("%s"), *Message)
+				break;
+		}
+	}
+
+
 void ARPGPlayerControllerBase::BeginPlay()
 {
 	InitInventory();
