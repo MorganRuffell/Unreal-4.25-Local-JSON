@@ -383,7 +383,7 @@ void ARPGPlayerControllerBase::Log(ELogLevel LogLevel, FString Message, ELogOutp
 		}
 	}
 
-
+}
 void ARPGPlayerControllerBase::BeginPlay()
 {
 	InitInventory();

@@ -202,6 +202,21 @@ protected:
 	// Friended to allow access to handle functions above
 	friend URPGAttributeSet;
 
+public:
+
+	UFUNCTION(BlueprintCallable)
+	void SaveGame();
+
+	void SaveData();
+
+	UFUNCTION(BlueprintCallable)
+	void LoadGame();
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save Game Index")
+	int SaveGameIndex = 0;
+
+
 private:
 	URPGGameInstanceBase* GameInstance;
 };

@@ -6,12 +6,33 @@
 #include "Components/Widget.h"
 #include "Components/Visual.h"
 #include "Blueprint/UserWidget.h"
+#include "ActionRPG/Public/RPGCharacterBase.h"
 #include "DataAssets/JSONDataAssetBase.h"
 #include "PlayerDataAsset.generated.h"
+
+class ARPGCharacterBase;
 
 /**
  * 
  */
+USTRUCT(BlueprintType)
+struct FPlayerDataAttributes
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data Attributes")
+	float PlayerMaxHealth;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data Attributes")
+	float PlayerMaxMana;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data Attributes")
+	float PlayerMovementSpeed;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data Attributes")
+	float PlayerBaseLevel;
+};
+
 USTRUCT(BlueprintType)
 struct FPlayerControllerAttributes
 {
@@ -41,6 +62,9 @@ public:
 
 	UPlayerDataAsset();
 	~UPlayerDataAsset();
+	
+
+	ARPGCharacterBase ChracterData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDelay")
 	int32 AttackDelayCount;
@@ -57,6 +81,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Controller Attributes")
 	FPlayerControllerAttributes PlayerControllerAttr;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data Attributes")
+	FPlayerDataAttributes PlayerData;
+
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation Montages" )
@@ -64,6 +91,10 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation Montages")
 	UAnimMontage* ReactToHitMontage;
+
+public:
+
+	void FetchCharacterDataFromStruct();
 
 
 public:

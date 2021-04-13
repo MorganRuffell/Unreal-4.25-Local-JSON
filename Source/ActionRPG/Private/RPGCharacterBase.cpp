@@ -6,6 +6,9 @@
 #include "Items/RPGWeaponItem.h"
 #include "RPGGameInstanceBase.h"
 
+#include "ActionRPG/SaveGame/ActionRPGSaveGame.h"
+#include "Kismet/GameplayStatics.h"
+
 #include "AbilitySystemGlobals.h"
 #include "Abilities/RPGGameplayAbility.h"
 #include "AbilitySystemComponent.h"
@@ -440,6 +443,51 @@ URPGGameInstanceBase* ARPGCharacterBase::GetGameInstance()
 		GameInstance = World ? World->GetGameInstance<URPGGameInstanceBase>() : nullptr;
 	}
 	return GameInstance;
+}
+
+void ARPGCharacterBase::SaveGame()
+{
+	UActionRPGSaveGame* SaveGameInstance = Cast<UActionRPGSaveGame>(UGameplayStatics::CreateSaveGameObject(UActionRPGSaveGame::StaticClass()));
+
+	//Data that we are passing to the save game instance.
+	SaveGameInstance->CharacterData.PlayerLocation = this->GetActorLocation();
+
+	SaveData();
+}
+
+void ARPGCharacterBase::SaveData()
+{
+	if (UActionRPGSaveGame* SaveGameInstance = Cast<UActionRPGSaveGame>(UGameplayStatics::CreateSaveGameObject(UActionRPGSaveGame::StaticClass())))
+	{
+		SaveGameInstance->CharacterData.PlayerLocation = this->GetActorLocation();
+
+		UGameplayStatics::AsyncSaveGameToSlot(SaveGameInstance, "Slot One", SaveGameIndex);
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Saved"));
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Cast unsucccessful data cannot be saved."));
+	}
+}
+
+void ARPGCharacterBase::LoadGame()
+{
+	UActionRPGSaveGame* SaveGameInstance = Cast<UActionRPGSaveGame>(UGameplayStatics::CreateSaveGameObject(UActionRPGSaveGame::StaticClass()));
+	
+	FAsyncLoadGameFromSlotDelegate LoadingCallback;
+	UGameplayStatics::AsyncLoadGameFromSlot("Slot One", SaveGameIndex, LoadingCallback);
+
+	if (SaveGameInstance->CharacterData.PlayerLocation.IsZero() != true)
+	{
+		this->SetActorLocation(SaveGameInstance->CharacterData.PlayerLocation);
+
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Loaded"));
+	}
+	else
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("There is no data to load."));
+	}
+	
 }
 
 #pragma optimize("", on)

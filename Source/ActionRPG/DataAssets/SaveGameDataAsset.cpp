@@ -5,7 +5,15 @@
 
 USaveGameDataAsset::USaveGameDataAsset()
 {
+	SetupSlots();
+	
+}
 
+void USaveGameDataAsset::SetupSlots()
+{
+	GameData.SaveSlotOne = SaveSlotsStruct.SlotOne;
+	GameData.SaveSlotTwo = SaveSlotsStruct.SlotTwo;
+	GameData.SaveSlotThree = SaveSlotsStruct.SlotThree;
 }
 
 USaveGameDataAsset::~USaveGameDataAsset()
@@ -17,12 +25,33 @@ TSharedPtr<FJsonObject> USaveGameDataAsset::ToJson()
 {
 	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
 
-	//Could pass the FVector through here.
+	jsonObject->SetNumberField("SaveGameIndex", GameData.SaveGameIndex);
+	jsonObject->SetStringField("SaveGameSlot1", GameData.SaveSlotOne);
+	jsonObject->SetStringField("SaveGameSlot2", GameData.SaveSlotTwo);
+	jsonObject->SetStringField("SaveGameSlot3", GameData.SaveSlotThree);
 
+	
 	return jsonObject;
 }
 
 bool USaveGameDataAsset::FromJson(FJsonObject& jsonObject)
 {
-	return (true);
+	if (jsonObject.TryGetNumberField("SaveGameIndex",MaximumAmountofSaveGames) == true)
+	{
+		GameData.SaveGameIndex = jsonObject.GetNumberField("SaveGameIndex");
+		GameData.SaveSlotOne = jsonObject.GetStringField("SaveGameSlot1");
+		GameData.SaveSlotTwo = jsonObject.GetStringField("SaveGameSlot2");
+		GameData.SaveSlotThree = jsonObject.GetStringField("SaveGameSlot3");
+
+		return(true);
+	}
+	else
+	{
+		return(false);
+	}
 }
+
+
+
+
+
