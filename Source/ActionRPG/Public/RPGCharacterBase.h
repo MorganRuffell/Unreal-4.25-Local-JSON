@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "Engine/Engine.h"
 #include "ActionRPG.h"
 #include "GameFramework/Character.h"
 #include "UObject/ScriptInterface.h"
@@ -23,8 +24,6 @@ class ACTIONRPG_API ARPGCharacterBase : public ACharacter, public IAbilitySystem
 	GENERATED_BODY()
 
 public:
-	
-	
 
 	// Constructor and overrides
 	ARPGCharacterBase();
@@ -32,6 +31,11 @@ public:
 	virtual void UnPossessed() override;
 	virtual void OnRep_Controller() override;
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+
+	//Input component
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;	
+
 
 	// Implement IAbilitySystemInterface
 	UAbilitySystemComponent* GetAbilitySystemComponent() const override;

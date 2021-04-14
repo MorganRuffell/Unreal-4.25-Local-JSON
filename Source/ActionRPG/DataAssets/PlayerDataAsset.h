@@ -8,6 +8,7 @@
 #include "Blueprint/UserWidget.h"
 #include "ActionRPG/Public/RPGCharacterBase.h"
 #include "DataAssets/JSONDataAssetBase.h"
+#include "Templates/SharedPointer.h"
 #include "PlayerDataAsset.generated.h"
 
 class ARPGCharacterBase;

@@ -35,6 +35,19 @@ ARPGCharacterBase::ARPGCharacterBase()
 	bAbilitiesInitialized = false;
 }
 
+void ARPGCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	if (PlayerInputComponent)
+	{
+		PlayerInputComponent->BindAction("Save", IE_Pressed, this, &ARPGCharacterBase::SaveGame);
+		PlayerInputComponent->BindAction("Load", IE_Pressed, this, &ARPGCharacterBase::LoadGame);
+	}
+	else
+	{
+		
+	}
+}
+
 UAbilitySystemComponent* ARPGCharacterBase::GetAbilitySystemComponent() const
 {
 	return AbilitySystemComponent;
@@ -277,6 +290,8 @@ void ARPGCharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	DOREPLIFETIME(ARPGCharacterBase, CharacterLevel);
 }
 
+
+
 float ARPGCharacterBase::GetHealth() const
 {
 	return AttributeSet->GetHealth();
@@ -469,7 +484,7 @@ void ARPGCharacterBase::SaveData()
 	}
 	else
 	{
-		//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Cast unsucccessful data cannot be saved."));
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Cast unsucccessful data cannot be saved."));
 	}
 }
 
@@ -485,11 +500,11 @@ void ARPGCharacterBase::LoadGame()
 		this->SetActorLocation(SaveGameInstance->CharacterData.PlayerLocation);
 		this->SetActorRotation(SaveGameInstance->CharacterData.PlayerRotation);
 
-		//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Loaded"));
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Loaded"));
 	}
 	else
 	{
-		//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("There is no data to load."));
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("There is no data to load."));
 	}
 	
 }
