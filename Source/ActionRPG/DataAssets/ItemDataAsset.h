@@ -5,9 +5,14 @@
 #include "CoreMinimal.h"
 #include "JsonObjectConverter.h"
 #include "DataAssets/JSONDataAssetBase.h"
+#include "Engine/StaticMesh.h"
+#include "Math/Color.h"
 #include "Sound/SoundBase.h"
 #include "Sound/SoundAttenuation.h"
 #include "Sound/SoundConcurrency.h"
+
+#include "Dom/JsonObject.h"
+
 #include "ItemDataAsset.generated.h"
 
 /**
@@ -38,6 +43,23 @@ struct FPickupSoundValues
 
 };
 
+USTRUCT(BlueprintType)
+struct FRotationSpeeds 
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RotationSpeeds")
+	float Slow = 0.01f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RotationSpeeds")
+	float Medium = 0.1f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RotationSpeeds")
+	float Fast = 1.0f;
+
+};
+
+
 UENUM(BlueprintType)
 enum class EPotionType : uint8
 {
@@ -57,7 +79,7 @@ public:
 	~UItemDataAsset();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	float _RotationSpeed;
+	FRotationSpeeds RotationSpeeds;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction Attributes")
 	float _InteractionRadius;
@@ -73,6 +95,14 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sounds & Sound Settings")
 	FPickupSoundValues _SoundAttributes;
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PotionStaticMeshes")
+	TSet<UStaticMesh*> PotionStaticMeshes;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PotionLinearColours")
+	TSet<FLinearColor> PotionColors;
 
 public:
 

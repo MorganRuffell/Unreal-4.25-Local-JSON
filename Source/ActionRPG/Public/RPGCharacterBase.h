@@ -12,7 +12,6 @@
 #include "AbilitySystemInterface.h"
 #include "RPGCharacterBase.generated.h"
 
-
 class URPGGameInstanceBase;
 class URPGGameplayAbility;
 class UGameplayEffect;
@@ -24,6 +23,9 @@ class ACTIONRPG_API ARPGCharacterBase : public ACharacter, public IAbilitySystem
 	GENERATED_BODY()
 
 public:
+	
+	
+
 	// Constructor and overrides
 	ARPGCharacterBase();
 	virtual void PossessedBy(AController* NewController) override;

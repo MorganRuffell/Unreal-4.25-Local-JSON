@@ -13,20 +13,19 @@ UItemDataAsset::~UItemDataAsset()
 
 }
 
-
-
 TSharedPtr<FJsonObject> UItemDataAsset::ToJson()
 {
 	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
 
-	jsonObject->SetNumberField("RotationSpeed", _RotationSpeed);
+
 	jsonObject->SetNumberField("InteractionRadius", _InteractionRadius);
 	jsonObject->SetNumberField("VolumeMultiplier", _SoundAttributes.VolumeMultiplier);
 	jsonObject->SetNumberField("PitchMultiplier", _SoundAttributes.PitchMultiplier);
 	jsonObject->SetNumberField("SoundStartTime", _SoundAttributes.SoundStartTime);
 
-	//FJsonObjectConverter::UStructToJsonObject()?
-	//Objects require different syntax?
+	jsonObject->SetNumberField("RotationSpeedSlow", RotationSpeeds.Slow);
+	jsonObject->SetNumberField("RotationSpeedMedium", RotationSpeeds.Medium);
+	jsonObject->SetNumberField("RotationSpeedFast", RotationSpeeds.Fast);
 
 	return jsonObject;
 }
@@ -34,11 +33,17 @@ TSharedPtr<FJsonObject> UItemDataAsset::ToJson()
 
 bool UItemDataAsset::FromJson(FJsonObject& JsonObject)
 {
-	_RotationSpeed = JsonObject.GetNumberField("RotationSpeed");
+
 	_InteractionRadius = JsonObject.GetNumberField("InteractionRadius");
+
 	_SoundAttributes.VolumeMultiplier = JsonObject.GetNumberField("VolumeMultiplier");
 	_SoundAttributes.PitchMultiplier = JsonObject.GetNumberField("PitchMultiplier");
 	_SoundAttributes.SoundStartTime = JsonObject.GetNumberField("SoundStartTime");
+
+	RotationSpeeds.Slow = JsonObject.GetNumberField("RotationSpeedSlow");
+	RotationSpeeds.Medium = JsonObject.GetNumberField("RotationSpeedMedium");
+	RotationSpeeds.Fast = JsonObject.GetNumberField("RotationSpeedFast");
+
 
 	return (true);
 }

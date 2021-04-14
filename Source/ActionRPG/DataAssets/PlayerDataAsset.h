@@ -30,7 +30,7 @@ struct FPlayerDataAttributes
 	float PlayerMovementSpeed;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data Attributes")
-	float PlayerBaseLevel;
+	int PlayerBaseLevel;
 };
 
 USTRUCT(BlueprintType)
@@ -64,8 +64,6 @@ public:
 	~UPlayerDataAsset();
 	
 
-	ARPGCharacterBase ChracterData;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDelay")
 	int32 AttackDelayCount;
 
@@ -91,10 +89,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation Montages")
 	UAnimMontage* ReactToHitMontage;
-
-public:
-
-	void FetchCharacterDataFromStruct();
 
 
 public:

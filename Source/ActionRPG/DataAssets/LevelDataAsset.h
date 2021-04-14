@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "DataAssets/JSONDataAssetBase.h"
 #include "Sound/SoundBase.h"
+#include "Engine/World.h"
 #include "LevelDataAsset.generated.h"
 
 /**
@@ -19,6 +20,11 @@ public:
 
 	ULevelDataAsset();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LevelToLoad")
+	TSet<FString> LevelToLoad;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "LevelToLoad")
+	int LevelToLoadIndex;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sounds")
 	USoundBase* AmbientMusic;

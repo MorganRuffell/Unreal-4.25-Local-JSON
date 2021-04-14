@@ -9,6 +9,7 @@
 #include "ActionRPG/SaveGame/ActionRPGSaveGame.h"
 #include "Kismet/GameplayStatics.h"
 
+
 #include "AbilitySystemGlobals.h"
 #include "Abilities/RPGGameplayAbility.h"
 #include "AbilitySystemComponent.h"
@@ -460,13 +461,15 @@ void ARPGCharacterBase::SaveData()
 	if (UActionRPGSaveGame* SaveGameInstance = Cast<UActionRPGSaveGame>(UGameplayStatics::CreateSaveGameObject(UActionRPGSaveGame::StaticClass())))
 	{
 		SaveGameInstance->CharacterData.PlayerLocation = this->GetActorLocation();
+		SaveGameInstance->CharacterData.PlayerRotation = this->GetActorRotation();
+
+		//All of the logic here is done in BP.
 
 		UGameplayStatics::AsyncSaveGameToSlot(SaveGameInstance, "Slot One", SaveGameIndex);
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Saved"));
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Cast unsucccessful data cannot be saved."));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Cast unsucccessful data cannot be saved."));
 	}
 }
 
@@ -480,12 +483,13 @@ void ARPGCharacterBase::LoadGame()
 	if (SaveGameInstance->CharacterData.PlayerLocation.IsZero() != true)
 	{
 		this->SetActorLocation(SaveGameInstance->CharacterData.PlayerLocation);
+		this->SetActorRotation(SaveGameInstance->CharacterData.PlayerRotation);
 
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Loaded"));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Loaded"));
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("There is no data to load."));
+		//GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("There is no data to load."));
 	}
 	
 }

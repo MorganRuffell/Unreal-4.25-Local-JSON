@@ -74,14 +74,13 @@ public:
 	~UActionRPGSaveGame();
 
 
-
-	UPROPERTY(VisibleAnywhere, Category = Basic)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Basic)
 	FString PlayerName;
 	
-	UPROPERTY(VisibleAnywhere, Category = Basic)
-	uint32 UserIndex;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Basic)
+	int UserIndex;
 	
-	UPROPERTY(VisibleAnywhere, Category = Basic)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Basic)
 	FCharacterStats CharacterData;
 
 };
