@@ -17,6 +17,24 @@ class ARPGCharacterBase;
  * 
  */
 USTRUCT(BlueprintType)
+struct FPlayerDamageColor
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Color")
+	float Red;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Color")
+	float Green;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Color")
+	float Blue;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Damage Color")
+	float Alpha;
+};
+
+USTRUCT(BlueprintType)
 struct FPlayerDataAttributes
 {
 	GENERATED_BODY()
@@ -74,14 +92,26 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attack")
 	bool bCanUseAnyAttack;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "RemoteActivation")
+	bool CanRemoteActivate;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RPG Slots")
 	ERPGSlots _RPGSlot;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RPG Slots")
+	FRPGItemSlot ItemSlot;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Controller Attributes")
 	FPlayerControllerAttributes PlayerControllerAttr;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data Attributes")
 	FPlayerDataAttributes PlayerData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data Attributes")
+	FPlayerDamageColor PlayerDamageColor_RGB;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player Data Attributes")
+	FLinearColor DamageColor;
 
 public:
 

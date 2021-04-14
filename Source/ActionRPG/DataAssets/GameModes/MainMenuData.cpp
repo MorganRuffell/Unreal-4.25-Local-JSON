@@ -7,11 +7,19 @@ TSharedPtr<FJsonObject> UMainMenuData::ToJson()
 {
 	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
 	
+
+	jsonObject->SetNumberField("MainMenuUIZOrder",ZOrder);
+
+
+
 	return jsonObject;
 
 }
 
 bool UMainMenuData::FromJson(FJsonObject& jsonObject)
 {
-	return false;
+	ZOrder = jsonObject.GetIntegerField("MainMenuUIZOrder");
+
+
+	return true;
 }

@@ -29,7 +29,10 @@
 		"AutoBattleMode": false,
 		"EnemySpawnDelay": 3,
 		"WaveSpawnDelay": 4,
-		"GlobalTimeDilation": 0.25
+		"GlobalTimeDilation": 0.25,
+		"BattleTime": 60,
+		"PlayTimerStartTime": 1,
+		"DefaultPlayerName": "Developer"
 	},
 	"GoblinLevel1":
 	{
@@ -49,17 +52,21 @@
 		"MinSoulsDropped": 0,
 		"MaxSoulsDroppped": 0
 	},
-	"LevelData": null,
+	"LevelData":
+	{
+		"SceneIndex": 0
+	},
 	"PlayerData":
 	{
 		"Attack_DelayCount": 0,
 		"Attack_DelayTime": 0,
-		"CanUseAnyAttack": false,
 		"CameraZOffset": -1,
 		"PlayerMaxHealth": 1,
 		"PlayerMaxMana": 0,
 		"PlayerMaxMovementSpeed": 0,
-		"PlayerBaseLevel": 1
+		"PlayerBaseLevel": 1,
+		"CanUseAnyAttack": true,
+		"RemoteActivation": true
 	},
 	"SaveData":
 	{
@@ -88,7 +95,10 @@
 	},
 	"AIC_Boss": null,
 	"AIC_NPC": null,
-	"Level2": null,
+	"Level2":
+	{
+		"SceneIndex": 0
+	},
 	"HealthItem_DataAsset":
 	{
 		"InteractionRadius": 64,
@@ -118,5 +128,20 @@
 		"RotationSpeedSlow": 0.0099999997764825821,
 		"RotationSpeedMedium": 0.10000000149011612,
 		"RotationSpeedFast": 1
+	},
+	"SoulData":
+	{
+		"DelayFloor": 0.5,
+		"DelayCeiling": 1
+	},
+	"EnemyGlobal":
+	{
+		"BoundingBox_X": 40,
+		"BoundingBox_Y": 40,
+		"BoundingBox_Z": 40,
+		"SoulSpawnCount_Minimum": 1,
+		"SoulSpawnCount_Maximum": 3,
+		"PotionDropAmounts": 0.10000000149011612,
+		"TimeBonusPerKill": 5
 	}
 }

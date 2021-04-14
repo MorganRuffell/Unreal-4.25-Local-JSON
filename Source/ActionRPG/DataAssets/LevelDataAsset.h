@@ -37,5 +37,4 @@ public:
 
 	virtual bool FromJson(FJsonObject& jsonObject) override;
 
-
 };

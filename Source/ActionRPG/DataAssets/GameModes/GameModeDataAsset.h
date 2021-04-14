@@ -24,17 +24,23 @@ public:
 	UGameModeDataAsset();
 	~UGameModeDataAsset();
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float EnemySpawnDelay;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	bool AutoBattleMode;	
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float WaveSpawnDelay;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float GlobalTimeDilation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	float BattleTime;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	float PlayTimerStartTime;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game")
 	FString PlayerName;

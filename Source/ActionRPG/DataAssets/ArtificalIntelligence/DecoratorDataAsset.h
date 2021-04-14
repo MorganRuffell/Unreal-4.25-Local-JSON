@@ -9,6 +9,30 @@
 /**
  * 
  */
+USTRUCT(BlueprintType)
+struct FCheckHealth
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CheckHealth")
+	float MinHealthPercentage;
+
+};
+
+USTRUCT(BlueprintType)
+struct FCheckItem
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CheckItem")
+	int ItemSlotNumber = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CheckItem")
+	FString ItemKey = "None";
+
+};
+
+
 UCLASS(BlueprintType)
 class ACTIONRPG_API UDecoratorDataAsset : public UJSONDataAssetBase
 {
@@ -19,8 +43,12 @@ public:
 	UDecoratorDataAsset();
 	~UDecoratorDataAsset();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	float MinHealthPercentage;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CheckHealth")
+	FCheckHealth CheckHealthDecorator;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CheckHealth")
+	FCheckItem CheckItemDecorator;
+
 
 public:
 

@@ -26,6 +26,9 @@ TSharedPtr<FJsonObject> UGameModeDataAsset::ToJson()
 	jsonObject->SetNumberField("EnemySpawnDelay", EnemySpawnDelay);
 	jsonObject->SetNumberField("WaveSpawnDelay", WaveSpawnDelay);
 	jsonObject->SetNumberField("GlobalTimeDilation", GlobalTimeDilation);
+	jsonObject->SetNumberField("BattleTime", BattleTime);
+	jsonObject->SetNumberField("PlayTimerStartTime", PlayTimerStartTime);
+
 
 	jsonObject->SetStringField("DefaultPlayerName", PlayerName);
 
@@ -41,6 +44,8 @@ bool UGameModeDataAsset::FromJson(FJsonObject& jsonObject)
 	EnemySpawnDelay = jsonObject.GetNumberField("EnemySpawnDelay");
 	WaveSpawnDelay = jsonObject.GetNumberField("WaveSpawnDelay");
 	GlobalTimeDilation = jsonObject.GetNumberField("GlobalTimeDilation");
+	BattleTime = jsonObject.GetNumberField("BattleTime");
+	PlayTimerStartTime = jsonObject.GetNumberField("PlayerTimerStartTime");
 
 	PlayerName = jsonObject.GetStringField("DefaultPlayerName");
 

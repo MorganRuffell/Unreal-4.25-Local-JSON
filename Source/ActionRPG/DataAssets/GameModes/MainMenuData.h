@@ -16,7 +16,11 @@ UCLASS(BlueprintType)
 class ACTIONRPG_API UMainMenuData : public UJSONDataAssetBase
 {
 	GENERATED_BODY()
-	
+
+public:	
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ZOrder")
+	int ZOrder = 0;
 
 
 public:

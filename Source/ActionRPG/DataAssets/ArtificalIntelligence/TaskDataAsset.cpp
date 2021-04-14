@@ -5,6 +5,8 @@
 
 UTaskDataAsset::UTaskDataAsset()
 {
+	MeleeAttackDelay = 0.2f;
+
 	RadiusRange = 300.0f;
 	AcceptableDistance = 300.0f;
 	minSurrounders = 2;

@@ -5,32 +5,38 @@
 
 UServiceDataAsset::UServiceDataAsset()
 {
-	ClosestDistance = 9999.0f;
-	MinSpeed = 300.0f;
-	MaxSpeed = 600.0f;
+	NearestTargetService.ClosestDistance = 9999.0f;
+	NearestTargetService.TargetTag = "Player";
+	RandomMoveSpeedService.MinSpeed = 300.0f;
+	RandomMoveSpeedService.MaxSpeed = 600.0f;
+	
 }
 
 UServiceDataAsset::~UServiceDataAsset()
 {
-	
+
 }
 
 TSharedPtr<FJsonObject> UServiceDataAsset::ToJson()
 {
-	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();	
+	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
 
-	jsonObject->SetNumberField("ClosestDistance", ClosestDistance);
-	jsonObject->SetNumberField("MinimumSpeed", MinSpeed);
-	jsonObject->SetNumberField("MaximumSpeed", MaxSpeed);
-	
+	jsonObject->SetNumberField("ClosestDistance", NearestTargetService.ClosestDistance);
+	jsonObject->SetStringField("TargetTag", NearestTargetService.TargetTag);
+
+	jsonObject->SetNumberField("MinimumSpeed", RandomMoveSpeedService.MinSpeed);
+	jsonObject->SetNumberField("MaximumSpeed", RandomMoveSpeedService.MaxSpeed);
+
 	return jsonObject;
 }
 
 bool UServiceDataAsset::FromJson(FJsonObject& jsonObject)
 {
-	ClosestDistance = jsonObject.GetNumberField("ClosestDistance");
-	MinSpeed = jsonObject.GetNumberField("MinimumSpeed");
-	MaxSpeed = jsonObject.GetNumberField("MaximumSpeed");
+	NearestTargetService.ClosestDistance = jsonObject.GetNumberField("ClosestDistance");
+	NearestTargetService.TargetTag = jsonObject.GetStringField("TargetTag");
+
+	RandomMoveSpeedService.MinSpeed = jsonObject.GetNumberField("MinimumSpeed");
+	RandomMoveSpeedService.MaxSpeed = jsonObject.GetNumberField("MaximumSpeed");
 
 	return true;
 }

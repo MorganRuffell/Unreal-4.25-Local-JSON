@@ -9,6 +9,33 @@
 /**
  * 
  */
+
+USTRUCT(BlueprintType)
+struct FRandomMoveSpeed
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "RandomMoveSpeed")
+	float MinSpeed;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "RandomMoveSpeed")
+	float MaxSpeed;
+};
+
+USTRUCT(BlueprintType)
+struct FNearestTarget
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FindNearestTarget")
+	float ClosestDistance;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FindNearestTarget")
+	FString TargetTag;
+
+};
+
+
 UCLASS(BlueprintType)
 class ACTIONRPG_API UServiceDataAsset : public UJSONDataAssetBase
 {
@@ -19,14 +46,12 @@ public:
 	UServiceDataAsset();
 	~UServiceDataAsset();
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "ClosestDistance")
-	float ClosestDistance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FindNearestTarget")
+	FNearestTarget NearestTargetService;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "RandomMoveSpeed")
-	float MinSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RandomMoveSpeed")
+	FRandomMoveSpeed RandomMoveSpeedService;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "RandomMoveSpeed")
-	float MaxSpeed;
 
 public:
 

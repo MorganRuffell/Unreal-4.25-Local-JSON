@@ -9,6 +9,18 @@
 /**
  * 
  */
+USTRUCT(BlueprintType)
+struct FAttackMelee
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Melee Attack Delay")
+	float MeleeAttackDelay;
+
+
+};
+
+
 UCLASS(BlueprintType)
 class ACTIONRPG_API UTaskDataAsset : public UJSONDataAssetBase
 {
@@ -19,6 +31,17 @@ public:
 	UTaskDataAsset();
 	~UTaskDataAsset();
 	
+
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attack Melee Task")
+	FAttackMelee 
+
+
+public:
+
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Go Around Target")
 	float RadiusRange;
 

@@ -4,7 +4,8 @@
 
 #include "ActionRPG.h"
 #include "Engine/DataAsset.h"
-#include "DataAssets/GameModeDataAsset.h"
+#include "DataAssets/GameModes/MainMenuData.h"
+#include "DataAssets/GameModes/GameModeDataAsset.h"
 #include "GameFramework/GameModeBase.h"
 #include "RPGGameModeBase.generated.h"
 
@@ -14,12 +15,15 @@ class ACTIONRPG_API ARPGGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 
+public: 
+
+	ARPGGameModeBase();
+
 public:
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Game Mode External Data")
+	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Game Mode External Data")
 	UGameModeDataAsset* GameModeData;
 	
-	/** Constructor */
-	ARPGGameModeBase();
+	
 };
 
