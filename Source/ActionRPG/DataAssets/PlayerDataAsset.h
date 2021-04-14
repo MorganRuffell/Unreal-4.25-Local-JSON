@@ -7,7 +7,7 @@
 #include "Components/Visual.h"
 #include "Blueprint/UserWidget.h"
 #include "ActionRPG/Public/RPGCharacterBase.h"
-#include "DataAssets/JSONDataAssetBase.h"
+#include "DataAssets/JSON/JSONDataAssetBase.h"
 #include "Templates/SharedPointer.h"
 #include "PlayerDataAsset.generated.h"
 

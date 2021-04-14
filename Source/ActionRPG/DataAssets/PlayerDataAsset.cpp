@@ -45,6 +45,7 @@ bool UPlayerDataAsset::FromJson(FJsonObject& jsonObject)
 	PlayerData.PlayerMaxMana = jsonObject.GetNumberField("PlayerMaxMana");
 	PlayerData.PlayerMovementSpeed = jsonObject.GetNumberField("PlayerMaxMovementSpeed");
 	PlayerData.PlayerBaseLevel = jsonObject.GetNumberField("PlayerBaseLevel");
+
 	return true;
 }
 

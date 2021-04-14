@@ -4,7 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimMontage.h"
-#include "DataAssets/JSONDataAssetBase.h"
+#include "DataAssets/JSON/JSONDataAssetBase.h"
+
 #include "BossDataAsset.generated.h"
 /**
  * 

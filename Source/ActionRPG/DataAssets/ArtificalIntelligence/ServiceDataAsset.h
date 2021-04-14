@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "DataAssets/JSONDataAssetBase.h"
+#include "DataAssets/JSON/JSONDataAssetBase.h"
 #include "ServiceDataAsset.generated.h"
 
 /**

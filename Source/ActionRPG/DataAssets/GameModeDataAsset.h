@@ -6,7 +6,7 @@
 #include "Runtime/UMG/Public/UMG.h"
 #include "Blueprint/UserWidget.h"
 #include "GameFramework/HUD.h"
-#include "DataAssets/JSONDataAssetBase.h"
+#include "DataAssets/JSON/JSONDataAssetBase.h"
 #include "GameModeDataAsset.generated.h"
 
 /**
@@ -35,6 +35,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
 	float GlobalTimeDilation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game")
+	FString PlayerName;
 
 public:
 

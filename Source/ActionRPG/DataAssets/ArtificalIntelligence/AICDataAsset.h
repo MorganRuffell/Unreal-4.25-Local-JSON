@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 
 //We are no longer building this on a UDatAsset now they are on a JSON data asset
-#include "DataAssets/JSONDataAssetBase.h"
+#include "DataAssets/JSON/JSONDataAssetBase.h"
 
 #include "BehaviorTree/BlackboardData.h"
 #include "BehaviorTree/BehaviorTree.h"

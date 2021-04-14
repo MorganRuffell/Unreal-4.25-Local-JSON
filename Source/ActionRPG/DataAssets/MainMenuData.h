@@ -4,23 +4,20 @@
 
 #include "CoreMinimal.h"
 #include "DataAssets/JSON/JSONDataAssetBase.h"
-#include "DecoratorDataAsset.generated.h"
+#include "MainMenuData.generated.h"
 
 /**
  * 
  */
+
+//This is designed to be used in conjunction with a GameMode Data Asset
+
 UCLASS(BlueprintType)
-class ACTIONRPG_API UDecoratorDataAsset : public UJSONDataAssetBase
+class ACTIONRPG_API UMainMenuData : public UJSONDataAssetBase
 {
 	GENERATED_BODY()
-
-public:
 	
-	UDecoratorDataAsset();
-	~UDecoratorDataAsset();
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	float MinHealthPercentage;
 
 public:
 

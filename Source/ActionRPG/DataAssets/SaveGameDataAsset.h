@@ -3,7 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "DataAssets/JSONDataAssetBase.h"
+#include "DataAssets/JSON/JSONDataAssetBase.h"
+
 #include "Dom/JsonObject.h"
 #include "SaveGameDataAsset.generated.h"
 

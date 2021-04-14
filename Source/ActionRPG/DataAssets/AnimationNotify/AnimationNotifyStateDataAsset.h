@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Math/Color.h"
 #include "Particles/ParticleSystem.h"
-#include "DataAssets/JSONDataAssetBase.h"
+#include "DataAssets/JSON/JSONDataAssetBase.h"
 #include "AnimationNotifyStateDataAsset.generated.h"
 
 /**

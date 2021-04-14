@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "JsonObjectConverter.h"
-#include "DataAssets/JSONDataAssetBase.h"
+#include "DataAssets/JSON/JSONDataAssetBase.h"
 #include "Engine/StaticMesh.h"
 #include "Math/Color.h"
 #include "Sound/SoundBase.h"

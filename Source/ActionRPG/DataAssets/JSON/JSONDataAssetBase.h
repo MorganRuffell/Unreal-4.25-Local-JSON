@@ -8,7 +8,7 @@
 #include "Dom/JsonObject.h"
 
 //Headers for Interface, remember to IWYU
-#include "DataAssets/JSONDataAssetInterface.h"
+#include "DataAssets/JSON/Interfaces/JSONDataAssetInterface.h"
 
 #include "Engine/DataAsset.h"
 #include "JSONDataAssetBase.generated.h"

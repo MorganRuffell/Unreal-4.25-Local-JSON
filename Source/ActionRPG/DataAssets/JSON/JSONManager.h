@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Containers/Map.h"
 #include "GameFramework/Actor.h"
-#include "DataAssets/JSONDataAssetBase.h"
+#include "DataAssets/JSON/JSONDataAssetBase.h"
 
 
 //IWYU - Include what you use, JSON classes
@@ -14,6 +14,21 @@
 #include "Serialization/JsonSerializer.h"
 
 #include "JSONManager.generated.h"
+
+USTRUCT(Blueprintable, BlueprintType)
+struct FFileTypes 
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
+	FString JSON = ".json";
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
+	FString CSV = ".csv";
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
+	FString TEXT = ".txt";
+};
 
 UCLASS(Blueprintable, BlueprintType)
 class ACTIONRPG_API AJSONManager : public AActor
@@ -41,6 +56,15 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON")
 	FString JsonOutput;
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
+	FFileTypes _FileTypes;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
+	FString FileName = "SystemDesignData";
+
 
 
 public:
