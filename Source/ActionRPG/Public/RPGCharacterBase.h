@@ -216,10 +216,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void LoadGame();
 
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save Game Index")
 	int SaveGameIndex = 0;
-
 
 private:
 	URPGGameInstanceBase* GameInstance;

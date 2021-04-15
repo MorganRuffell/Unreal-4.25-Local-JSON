@@ -9,6 +9,11 @@ USaveGameDataAsset::USaveGameDataAsset()
 	
 }
 
+USaveGameDataAsset::~USaveGameDataAsset()
+{
+
+}
+
 void USaveGameDataAsset::SetupSlots()
 {
 	GameData.SaveSlotOne = SaveSlotsStruct.SlotOne;
@@ -16,10 +21,6 @@ void USaveGameDataAsset::SetupSlots()
 	GameData.SaveSlotThree = SaveSlotsStruct.SlotThree;
 }
 
-USaveGameDataAsset::~USaveGameDataAsset()
-{
-
-}
 
 TSharedPtr<FJsonObject> USaveGameDataAsset::ToJson()
 {

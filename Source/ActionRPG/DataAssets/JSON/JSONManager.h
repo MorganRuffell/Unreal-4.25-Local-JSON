@@ -66,10 +66,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
 	FString JSONFileName = "DataAssetsJSONData";
 
+public:
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
 	FString CurveFileName = "CurvetablesJSONData";
-
-public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Curve Tables")
 	TSet<UCurveTable*> CurveTables;
@@ -89,6 +89,12 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Outputs")
 	TMap<UJSONDataAssetBase*, FString> ObjectsFromJSON;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Inputs")
+	TMap<UCurveTable*, FString> ObjectsToJSON;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Outputs")
+	TMap<UCurveTable*, FString> ObjectsFromJSON;
 
 public:
 
