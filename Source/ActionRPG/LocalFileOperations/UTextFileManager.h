@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "Runtime/Core/Public/Misc/FileHelper.h"
 #include "UTextFileManager.generated.h"
 
 /**
@@ -15,6 +16,9 @@ class ACTIONRPG_API UUTextFileManager : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 	
 public:
+	
+	UFUNCTION(BlueprintCallable, Category = "File I/O")
+	static FString LoadFileToString(FString SystemDesignData);
 
 	//Saves the FString as a text array
 	UFUNCTION(BlueprintCallable, Category = "ToLocal", meta = (Keywords = "Save"))

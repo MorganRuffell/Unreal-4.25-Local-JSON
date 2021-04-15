@@ -49,9 +49,9 @@
 		"MaxSoulsDroppped": 40,
 		"EnemyJumpZVelocity": 420,
 		"EnemyMass": 100,
-		"EnemyMaxWalkSpeed": 300,
+		"EnemyMaxWalkSpeed": 200,
 		"EnemyGravityScale": 1,
-		"EnemyMaxAcceleration": 200
+		"EnemyMaxAcceleration": 2048
 	},
 	"GoblinLevel2":
 	{
@@ -60,9 +60,9 @@
 		"MaxSoulsDroppped": 0,
 		"EnemyJumpZVelocity": 420,
 		"EnemyMass": 100,
-		"EnemyMaxWalkSpeed": 300,
+		"EnemyMaxWalkSpeed": 200,
 		"EnemyGravityScale": 1,
-		"EnemyMaxAcceleration": 200
+		"EnemyMaxAcceleration": 2048
 	},
 	"GoblinLevel3":
 	{
@@ -71,9 +71,9 @@
 		"MaxSoulsDroppped": 0,
 		"EnemyJumpZVelocity": 420,
 		"EnemyMass": 100,
-		"EnemyMaxWalkSpeed": 300,
+		"EnemyMaxWalkSpeed": 200,
 		"EnemyGravityScale": 1,
-		"EnemyMaxAcceleration": 200
+		"EnemyMaxAcceleration": 2048
 	},
 	"LevelData":
 	{
@@ -112,9 +112,9 @@
 		"MaxSoulsDroppped": 0,
 		"EnemyJumpZVelocity": 420,
 		"EnemyMass": 100,
-		"EnemyMaxWalkSpeed": 300,
+		"EnemyMaxWalkSpeed": 200,
 		"EnemyGravityScale": 1,
-		"EnemyMaxAcceleration": 200
+		"EnemyMaxAcceleration": 2048
 	},
 	"Task":
 	{

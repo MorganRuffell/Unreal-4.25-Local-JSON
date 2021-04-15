@@ -1,7 +1,8 @@
 // Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
 
-
+#include "Templates/SharedPointer.h"
 #include "JSONManager.h"
+#include "JSONDataAssetBase.h"
 
 AJSONManager::AJSONManager()
 {
@@ -11,7 +12,10 @@ AJSONManager::AJSONManager()
 void AJSONManager::BeginPlay()
 {
 	Super::BeginPlay();
+
 }
+
+
 
 TSharedPtr<FJsonObject> AJSONManager::GetJsonFromString(const FString& jsonString)
 {
@@ -44,8 +48,6 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 	{
 		bFromJson = false;
 
-		//Ignore the map approach. Do it as a whole JSON string. We'll figure maps out later.
-
 		TSharedPtr<FJsonObject> LocalJSONObject = GetJsonFromString(JsonInput);
 
 		for (TPair<FString, TSharedPtr<FJsonValue>> pair : LocalJSONObject->Values)
@@ -56,16 +58,19 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 				{
 					TSharedPtr<FJsonObject> AssetJSON = pair.Value->AsObject();
 					AssetBase->FromJson(*AssetJSON.Get());
-
-					//Goes over all of the assets and you have to manually ensure that this is unique.
 				}
 			}
+
 		}
+
+		CurveTableProcessingFromJson();
 	}
 
 	if (propertyName == GET_MEMBER_NAME_CHECKED(AJSONManager, bToJson))
 	{
 		bToJson = false;
+
+		ObjectsToJSON.Empty();
 
 		if (JsonDataAssets.Num() > 0)
 		{
@@ -74,13 +79,50 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 			for (UJSONDataAssetBase* AssetBase : JsonDataAssets)
 			{
 				LocalJSONObject->SetObjectField(AssetBase->JSONKey, AssetBase->ToJson());
+				ObjectsToJSON.Add(AssetBase);
 			}
 
 			JsonOutput = GetStringFromJson(LocalJSONObject.ToSharedRef());
+
+			CurveTableProcessingToJson();
+		}
+	}
+}
+
+void AJSONManager::CurveTableProcessingToJson()
+{
+	if (CurveTableJsonOutput.IsEmpty() == true)
+	{
+		for (UCurveTable* CurveTable : CurveTables)
+		{
+			CurveTableJsonOutput.Append(CurveTable->GetTableAsJSON());
+		}
+	}
+	else
+	{
+		CurveTableJsonOutput.Reset();
+
+		for (UCurveTable* CurveTable : CurveTables)
+		{
+			CurveTableJsonOutput.Append(CurveTable->GetTableAsJSON());
 		}
 	}
 
 }
 
+void AJSONManager::CurveTableProcessingFromJson()
+{
+	if (CurveTableJsonOutput.IsEmpty() == false)
+	{
+		//TSharedRef<UCurveTable> LocalCurveTable = MakeShared<UCurveTable>();
+		
+		//for (TPair<FString, TSharedPtr<UCurveTable>> pair : LocalCurveTable->)
+		//{
+		//	//Make table from this?
+		//}
+	}
+	else
+	{
 
-
+	}
+}

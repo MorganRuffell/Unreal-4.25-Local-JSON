@@ -6,6 +6,9 @@
 #include "Items/RPGWeaponItem.h"
 #include "RPGGameInstanceBase.h"
 
+#include "LocalFileOperations/UTextFileManager.h"
+
+
 #include "ActionRPG/SaveGame/ActionRPGSaveGame.h"
 #include "Kismet/GameplayStatics.h"
 

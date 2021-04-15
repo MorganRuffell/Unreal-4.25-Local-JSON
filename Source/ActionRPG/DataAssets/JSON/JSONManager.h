@@ -7,6 +7,7 @@
 #include "GameFramework/Actor.h"
 #include "DataAssets/JSON/JSONDataAssetBase.h"
 
+#include "Engine/CurveTable.h"
 
 //IWYU - Include what you use, JSON classes
 #include "Serialization/JsonReader.h"
@@ -63,8 +64,22 @@ public:
 	FFileTypes _FileTypes;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
-	FString FileName = "SystemDesignData";
+	FString JSONFileName = "DataAssetsJSONData";
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
+	FString CurveFileName = "CurvetablesJSONData";
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Curve Tables")
+	TSet<UCurveTable*> CurveTables;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Curve Tables")
+	FString CurveTableJsonOutput;	
+	
+	void CurveTableProcessingToJson();
+
+	void CurveTableProcessingFromJson();
 
 
 public:
@@ -76,6 +91,7 @@ public:
 	TMap<UJSONDataAssetBase*, FString> ObjectsFromJSON;
 
 public:
+
 
 	TSharedPtr<FJsonObject> GetJsonFromString(const FString& jsonString);
 
