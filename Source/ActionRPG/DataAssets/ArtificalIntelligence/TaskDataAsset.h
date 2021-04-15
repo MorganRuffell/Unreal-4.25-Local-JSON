@@ -16,10 +16,47 @@ struct FAttackMelee
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Melee Attack Delay")
 	float MeleeAttackDelay;
-
-
 };
 
+USTRUCT(BlueprintType)
+struct FAttackSkill
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attack Skill Delay")
+	float SkillAttackDelay;
+};
+
+USTRUCT(BlueprintType)
+struct FGoAroundTarget
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Go Around Target")
+	float RadiusRange;
+};
+
+USTRUCT(BlueprintType)
+struct FTargetSurrounded
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Target Surrounders")
+	float AcceptableDistance;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Target Surroundeder")
+	int minSurrounders = 0;
+};
+
+USTRUCT(BlueprintType)
+struct FStopAndRotate
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Target Surrounders")
+	bool bTeleportPhysics = false;
+
+};
 
 UCLASS(BlueprintType)
 class ACTIONRPG_API UTaskDataAsset : public UJSONDataAssetBase
@@ -32,24 +69,23 @@ public:
 	~UTaskDataAsset();
 	
 
-
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attack Melee Task")
-	FAttackMelee 
+	FAttackMelee MeleeAttackData;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attack Skill")
+	FAttackSkill AttackSkillData;
 
-public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Go Around Target Task")
+	FGoAroundTarget GoAroundTargetTaskData;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Target Surround Data")
+	FTargetSurrounded TargetSurroundedData;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Go Around Target")
-	float RadiusRange;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stop and Rotate Data")
+	FStopAndRotate StopAndRotateData;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Is Target Surrounded")
-	float AcceptableDistance;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Is Target Surrounded")
-	int32 minSurrounders;
 
 public:
 

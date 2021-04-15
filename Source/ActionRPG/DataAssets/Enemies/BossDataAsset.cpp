@@ -20,6 +20,13 @@ TSharedPtr<FJsonObject> UBossDataAsset::ToJson()
 	jsonObject->SetNumberField("DeathDelayTime", DeathDelayTime);
 	jsonObject->SetNumberField("Animation Montage Index", AnimMontageSelection);
 
+	jsonObject->SetNumberField("GravityScale", CharacterMovementData.GravityScale);
+	jsonObject->SetNumberField("BossJumpZVelocity", CharacterMovementData.BossJumpZVelocity);
+	jsonObject->SetNumberField("BossMass", CharacterMovementData.BossMass);
+	jsonObject->SetNumberField("BossMaxAccleration", CharacterMovementData.BossMaxAcceleration);
+	jsonObject->SetNumberField("BossMaxWalkSpeed", CharacterMovementData.BossMaxWalkSpeed);
+	jsonObject->SetNumberField("BosMaxWalkSpeedCrouched", CharacterMovementData.BossMaxWalkSpeedCrouched);
+
 	jsonObject->SetNumberField("NormalAnimationSpeed", AnimationSpeed.normal);
 	jsonObject->SetNumberField("HalfAnimationSpeed", AnimationSpeed.Half);
 	jsonObject->SetNumberField("QuarterAnimationSpeed", AnimationSpeed.Quarter);
@@ -34,6 +41,12 @@ bool UBossDataAsset::FromJson(FJsonObject& jsonObject)
 {
 	DeathDelayTime = jsonObject.GetNumberField("DeathDelayTime");
 	AnimMontageSelection = jsonObject.GetNumberField("Animation Montage Index");
+
+	CharacterMovementData.BossJumpZVelocity = jsonObject.GetNumberField("BossJumpZVelocity");
+	CharacterMovementData.BossMass = jsonObject.GetNumberField("BossMass");
+	CharacterMovementData.BossMaxAcceleration = jsonObject.GetNumberField("BossMaxAccleration");
+	CharacterMovementData.BossMaxWalkSpeed= jsonObject.GetNumberField("BossMaxWalkSpeed");
+	CharacterMovementData.BossMaxWalkSpeedCrouched = jsonObject.GetNumberField("BossMaxWalkSpeedCrouched");
 
 	AnimationSpeed.normal = jsonObject.GetNumberField("NormalAnimationSpeed");
 	AnimationSpeed.Half = jsonObject.GetNumberField("HalfAnimationSpeed");

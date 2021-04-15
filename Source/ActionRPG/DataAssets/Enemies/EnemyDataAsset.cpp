@@ -6,8 +6,8 @@
 UEnemyDataAsset::UEnemyDataAsset()
 {
 	float _TimeBonusPerKill = 5.0f;
-	int32 _MinSoulsDropped = 1;
-	int32 _MaxSoulsDropped = 1;
+	int _MinSoulsDropped = 1;
+	int _MaxSoulsDropped = 5;
 
 	//Add in a field for potion drop chance.
 }
@@ -25,6 +25,12 @@ TSharedPtr<FJsonObject> UEnemyDataAsset::ToJson()
 	jsonObject->SetNumberField("MinSoulsDropped", _MinSoulsDropped);
 	jsonObject->SetNumberField("MaxSoulsDroppped", _MaxSoulsDropped);
 
+	jsonObject->SetNumberField("EnemyJumpZVelocity", EnemyMovementData.EnemyJumpZVelocity);
+	jsonObject->SetNumberField("EnemyMass", EnemyMovementData.EnemyMass);
+	jsonObject->SetNumberField("EnemyMaxWalkSpeed", EnemyMovementData.EnemyMaxWalkSpeed);
+	jsonObject->SetNumberField("EnemyGravityScale", EnemyMovementData.GravityScale);
+	jsonObject->SetNumberField("EnemyMaxAcceleration", EnemyMovementData.MaxAcceleration);
+
 	return jsonObject;
 }
 
@@ -35,6 +41,11 @@ bool UEnemyDataAsset::FromJson(FJsonObject& jsonObject)
 	_MinSoulsDropped = jsonObject.GetNumberField("MinSoulsDropped");
 	_MaxSoulsDropped = jsonObject.GetNumberField("MaxSoulsDroppped");
 
-	return(true);
-	
+	EnemyMovementData.EnemyJumpZVelocity = jsonObject.GetNumberField("EnemyJumpZVelocity");
+	EnemyMovementData.EnemyMass = jsonObject.GetNumberField("EnemyMass");
+	EnemyMovementData.EnemyMaxWalkSpeed = jsonObject.GetNumberField("EnemyMaxWalkSpeed");
+	EnemyMovementData.GravityScale = jsonObject.GetNumberField("EnemyGravityScale");
+	EnemyMovementData.MaxAcceleration = jsonObject.GetNumberField("EnemyMaxAcceleration");
+
+	return(true);	
 }

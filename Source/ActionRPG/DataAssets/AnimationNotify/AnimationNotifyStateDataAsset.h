@@ -25,6 +25,9 @@ struct FCameraShakeData
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Camera Shake Data")
 	float Falloff = 1.0f;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Camera Shake Data")
+	bool OrientShakeToEpicentre = false;
+
 };
 
 USTRUCT(BlueprintType)
@@ -36,7 +39,54 @@ struct FAttackDelay
 	float AttackDelayTime = 0.04f;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 MaxAttackDelayCount = 2.0f;
+	int MaxAttackDelayCount = 2.0f;
+};
+
+USTRUCT(BlueprintType)
+struct FANMoveForward
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool CanSweep = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool CanTeleport = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float MoveForwardValue = 40.f;
+
+};
+
+USTRUCT(BlueprintType)
+struct FSlowMotion
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float MotionSpeed = 0.5f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float TimeDilation = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float EndSpeed = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bForceSlowMotion = false;
+
+};
+
+USTRUCT(BlueprintType)
+struct FWeaponAttackNotifyData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float AttackDelay = 0.04;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int MaxAttackDelayCount = 2;
 };
 
 UCLASS(BlueprintType)
@@ -53,10 +103,22 @@ public:
 	FLinearColor EffectColor;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Attack Delay Timings")
-	FAttackDelay attackDelays;
+	FAttackDelay AttackDelays;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Camera Shake Data")
 	FCameraShakeData AnimNotifyCameraData;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "MoveForwardData")
+	FANMoveForward MoveForwardData;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "SlowMotionData")
+	FSlowMotion SlowMotionData;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "WeaponAttackNSData")
+	FWeaponAttackNotifyData WeaponAttackNSData;
+
+public:
+
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Movement Notifies")
 	float MoveValue;
@@ -64,10 +126,13 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Movement Notifies")
 	float MoveForwardValue;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Movement Notifies")
-	float MotionSpeed;
-
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Particle Systems")
 	UParticleSystem* GoblinFireParticleSystem;
+
+public:
+
+	virtual TSharedPtr<FJsonObject> ToJson() override;
+
+	virtual bool FromJson(FJsonObject& jsonObject) override;
 
 };

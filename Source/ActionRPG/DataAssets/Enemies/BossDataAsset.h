@@ -12,6 +12,31 @@
  */
 
 USTRUCT(BlueprintType)
+struct FBossCharacterMovement
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float GravityScale = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float BossMaxAcceleration = 200.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float BossMass = 100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float BossMaxWalkSpeed = 300.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float BossMaxWalkSpeedCrouched = 200.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float BossJumpZVelocity = 420.0f;
+
+};
+
+USTRUCT(BlueprintType)
 struct FAnimationSpeeds
 {
 	GENERATED_BODY()
@@ -43,7 +68,7 @@ public:
 	~UBossDataAsset();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
-	float DeathDelayTime;
+	float DeathDelayTime = 4.0f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attributes")
 	int AnimMontageSelection;
@@ -51,7 +76,12 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Animation")
 	FAnimationSpeeds AnimationSpeed;
 
-	//Animation Montages
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CharacterMovement")
+	FBossCharacterMovement CharacterMovementData;
+
+
+
+public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation")
 	UAnimMontage* SpiderAnimationMontage;

@@ -16,6 +16,28 @@
  * 
  */
 USTRUCT(BlueprintType)
+struct FEnemyMovementComponentData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float GravityScale = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float MaxAcceleration = 2048;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float EnemyMass = 100.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float EnemyMaxWalkSpeed = 200;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float EnemyJumpZVelocity = 420.0f;
+
+};
+
+USTRUCT(BlueprintType)
 struct FLevel3EnemyComponents
 {
 	GENERATED_BODY()
@@ -51,6 +73,11 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Level 3 Attributes")
 	FLevel3EnemyComponents Level3Attributes;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "EnemyMovementData")
+	FEnemyMovementComponentData EnemyMovementData;
+
+public: 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation")
 	UAnimMontage* FalldownAnimationMontage;

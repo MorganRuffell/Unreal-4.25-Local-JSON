@@ -22,7 +22,9 @@
 	},
 	"Decorator":
 	{
-		"Dec_MinHealthPercentage": 0.25
+		"Dec_MinHealthPercentage": 0.25,
+		"Dec_ItemSlotNumber": 0,
+		"Dec_ItemKey": "None"
 	},
 	"GameMode":
 	{
@@ -59,7 +61,7 @@
 	"PlayerData":
 	{
 		"Attack_DelayCount": 0,
-		"Attack_DelayTime": 0,
+		"Attack_DelayTime": 0.40000000596046448,
 		"CameraZOffset": -1,
 		"PlayerMaxHealth": 1,
 		"PlayerMaxMana": 0,
@@ -77,7 +79,8 @@
 	},
 	"Service":
 	{
-		"ClosestDistance": 100,
+		"ClosestDistance": 9999,
+		"TargetTag": "Player",
 		"MinimumSpeed": 300,
 		"MaximumSpeed": 600
 	},
@@ -89,9 +92,12 @@
 	},
 	"Task":
 	{
-		"Radius_Range": 300,
-		"AcceptableDist": 300,
-		"Minimum_SurroundingEnemies": 2
+		"MeleeAttackDelay": 0.20000000298023224,
+		"SkillAttackDelay": 0.20000000298023224,
+		"RadiusRange": 300,
+		"AcceptableDistance": 300,
+		"minSurrounders": 2,
+		"CanUseTeleportPhysics": false
 	},
 	"AIC_Boss": null,
 	"AIC_NPC": null,
@@ -143,5 +149,22 @@
 		"SoulSpawnCount_Maximum": 3,
 		"PotionDropAmounts": 0.10000000149011612,
 		"TimeBonusPerKill": 5
+	},
+	"AnimNotify":
+	{
+		"InnerRadius": 0,
+		"OuterRadius": 1000,
+		"Falloff": 1,
+		"OrientShakeToEpicentre": false,
+		"AttackDelayTime": 0.039999999105930328,
+		"MaxAttackDelayCount": 2,
+		"CanSweep": true,
+		"CanTeleport": false,
+		"MoveForwardValue": 40,
+		"ForceSlowMotion": false,
+		"TimeDilation": 1,
+		"EndSpeed": 1,
+		"MotionSpeed": 0.5,
+		"AttackDelay": 0.039999999105930328
 	}
 }
