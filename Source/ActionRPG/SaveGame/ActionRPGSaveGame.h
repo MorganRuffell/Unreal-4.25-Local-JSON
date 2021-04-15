@@ -54,10 +54,10 @@ struct FCharacterStats
 
 // Section for the players (F)transform
 
-	UPROPERTY(VisibleAnywhere, Category = PlayerLocation)
+	UPROPERTY(EditAnywhere, Category = PlayerLocation)
 	FVector PlayerLocation;
 	
-	UPROPERTY(VisibleAnywhere, Category = PlayerLocation)
+	UPROPERTY(EditAnywhere, Category = PlayerLocation)
 	FRotator PlayerRotation;
 
 };

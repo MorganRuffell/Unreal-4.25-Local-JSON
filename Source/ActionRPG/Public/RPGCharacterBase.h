@@ -213,8 +213,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SaveGame();
 
-	void SaveData();
-
 	UFUNCTION(BlueprintCallable)
 	void LoadGame();
 

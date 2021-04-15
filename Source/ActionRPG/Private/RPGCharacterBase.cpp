@@ -44,7 +44,7 @@ void ARPGCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	}
 	else
 	{
-		
+
 	}
 }
 
@@ -56,7 +56,7 @@ UAbilitySystemComponent* ARPGCharacterBase::GetAbilitySystemComponent() const
 void ARPGCharacterBase::AddStartupGameplayAbilities()
 {
 	check(AbilitySystemComponent);
-	
+
 	if (GetLocalRole() == ROLE_Authority && !bAbilitiesInitialized)
 	{
 		// Grant abilities, but only on the server	
@@ -174,7 +174,7 @@ void ARPGCharacterBase::FillSlottedAbilitySpecs(TMap<FRPGItemSlot, FGameplayAbil
 					// May be instances of code trying to cast old data types from object owner :(
 					SlottedAbilitySpecs.Add(ItemPair.Key, FGameplayAbilitySpec(itemData.GrantedAbility, AbilityLevel, INDEX_NONE, GetGameInstance()));
 				}
-			}			
+			}
 		}
 	}
 }
@@ -183,7 +183,7 @@ void ARPGCharacterBase::AddSlottedGameplayAbilities()
 {
 	TMap<FRPGItemSlot, FGameplayAbilitySpec> SlottedAbilitySpecs;
 	FillSlottedAbilitySpecs(SlottedAbilitySpecs);
-	
+
 	// Now add abilities if needed
 	for (const TPair<FRPGItemSlot, FGameplayAbilitySpec>& SpecPair : SlottedAbilitySpecs)
 	{
@@ -221,9 +221,9 @@ void ARPGCharacterBase::RemoveSlottedGameplayAbilities(bool bRemoveAll)
 				bShouldRemove = true;
 			}
 		}
-		
+
 		if (bShouldRemove)
-		{	
+		{
 			if (FoundSpec)
 			{
 				// Need to remove registered ability
@@ -420,7 +420,7 @@ bool ARPGCharacterBase::GetCooldownRemainingForTag(FGameplayTagContainer Cooldow
 
 void ARPGCharacterBase::HandleDamage(float DamageAmount, const FHitResult& HitInfo, const struct FGameplayTagContainer& DamageTags, ARPGCharacterBase* InstigatorPawn, AActor* DamageCauser)
 {
-	OnDamaged(DamageAmount, HitInfo, DamageTags, InstigatorPawn, DamageCauser);	
+	OnDamaged(DamageAmount, HitInfo, DamageTags, InstigatorPawn, DamageCauser);
 }
 
 void ARPGCharacterBase::HandleHealthChanged(float DeltaValue, const struct FGameplayTagContainer& EventTags)
@@ -468,19 +468,14 @@ void ARPGCharacterBase::SaveGame()
 	//Data that we are passing to the save game instance.
 	SaveGameInstance->CharacterData.PlayerLocation = this->GetActorLocation();
 
-	SaveData();
-}
-
-void ARPGCharacterBase::SaveData()
-{
 	if (UActionRPGSaveGame* SaveGameInstance = Cast<UActionRPGSaveGame>(UGameplayStatics::CreateSaveGameObject(UActionRPGSaveGame::StaticClass())))
 	{
 		SaveGameInstance->CharacterData.PlayerLocation = this->GetActorLocation();
 		SaveGameInstance->CharacterData.PlayerRotation = this->GetActorRotation();
 
-		//All of the logic here is done in BP.
+		UGameplayStatics::AsyncSaveGameToSlot(SaveGameInstance, "Slot One", 0);
 
-		UGameplayStatics::AsyncSaveGameToSlot(SaveGameInstance, "Slot One", SaveGameIndex);
+		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Data Saved!"));
 	}
 	else
 	{
@@ -491,22 +486,16 @@ void ARPGCharacterBase::SaveData()
 void ARPGCharacterBase::LoadGame()
 {
 	UActionRPGSaveGame* SaveGameInstance = Cast<UActionRPGSaveGame>(UGameplayStatics::CreateSaveGameObject(UActionRPGSaveGame::StaticClass()));
-	
+
 	FAsyncLoadGameFromSlotDelegate LoadingCallback;
-	UGameplayStatics::AsyncLoadGameFromSlot("Slot One", SaveGameIndex, LoadingCallback);
+	UGameplayStatics::AsyncLoadGameFromSlot("Slot One", 0, LoadingCallback);
 
-	if (SaveGameInstance->CharacterData.PlayerLocation.IsZero() != true)
-	{
-		this->SetActorLocation(SaveGameInstance->CharacterData.PlayerLocation);
-		this->SetActorRotation(SaveGameInstance->CharacterData.PlayerRotation);
 
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Loaded"));
-	}
-	else
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("There is no data to load."));
-	}
-	
+	this->SetActorLocation(SaveGameInstance->CharacterData.PlayerLocation);
+	this->SetActorRotation(SaveGameInstance->CharacterData.PlayerRotation);
+
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Loaded"));
+
 }
 
 #pragma optimize("", on)

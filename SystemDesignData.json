@@ -12,8 +12,14 @@
 	},
 	"BossDataAsset":
 	{
-		"DeathDelayTime": 0,
+		"DeathDelayTime": 4,
 		"Animation Montage Index": 0,
+		"GravityScale": 1,
+		"BossJumpZVelocity": 420,
+		"BossMass": 100,
+		"BossMaxAccleration": 200,
+		"BossMaxWalkSpeed": 300,
+		"BosMaxWalkSpeedCrouched": 200,
 		"NormalAnimationSpeed": 1,
 		"HalfAnimationSpeed": 0.5,
 		"QuarterAnimationSpeed": 0.25,
@@ -40,19 +46,34 @@
 	{
 		"time_bonus_per_kill": 5,
 		"MinSoulsDropped": 20,
-		"MaxSoulsDroppped": 40
+		"MaxSoulsDroppped": 40,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 300,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 200
 	},
 	"GoblinLevel2":
 	{
 		"time_bonus_per_kill": 0,
 		"MinSoulsDropped": 0,
-		"MaxSoulsDroppped": 0
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 300,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 200
 	},
 	"GoblinLevel3":
 	{
 		"time_bonus_per_kill": 0,
 		"MinSoulsDropped": 0,
-		"MaxSoulsDroppped": 0
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 300,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 200
 	},
 	"LevelData":
 	{
@@ -88,7 +109,12 @@
 	{
 		"time_bonus_per_kill": 0,
 		"MinSoulsDropped": 0,
-		"MaxSoulsDroppped": 0
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 300,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 200
 	},
 	"Task":
 	{
