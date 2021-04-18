@@ -15,9 +15,7 @@
 
 #include "ItemDataAsset.generated.h"
 
-/**
- * 
- */
+
 USTRUCT(BlueprintType)
 struct FPickupSoundValues
 {
@@ -59,7 +57,6 @@ struct FRotationSpeeds
 
 };
 
-
 UENUM(BlueprintType)
 enum class EPotionType : uint8
 {
@@ -68,7 +65,7 @@ enum class EPotionType : uint8
 	_DeathsDoor
 };
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, BlueprintType)
 class ACTIONRPG_API UItemDataAsset : public UJSONDataAssetBase
 {
 	GENERATED_BODY()
@@ -110,6 +107,5 @@ public:
 	virtual TSharedPtr<FJsonObject> ToJson() override;
 
 	virtual bool FromJson(FJsonObject& jsonObject) override;
-
 
 };

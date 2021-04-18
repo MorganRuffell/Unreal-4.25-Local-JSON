@@ -466,11 +466,6 @@ URPGGameInstanceBase* ARPGCharacterBase::GetGameInstance()
 
 void ARPGCharacterBase::SaveGame()
 {
-	UActionRPGSaveGame* SaveGameInstance = Cast<UActionRPGSaveGame>(UGameplayStatics::CreateSaveGameObject(UActionRPGSaveGame::StaticClass()));
-
-	//Data that we are passing to the save game instance.
-	SaveGameInstance->CharacterData.PlayerLocation = this->GetActorLocation();
-
 	if (UActionRPGSaveGame* SaveGameInstance = Cast<UActionRPGSaveGame>(UGameplayStatics::CreateSaveGameObject(UActionRPGSaveGame::StaticClass())))
 	{
 		SaveGameInstance->CharacterData.PlayerLocation = this->GetActorLocation();
@@ -488,17 +483,24 @@ void ARPGCharacterBase::SaveGame()
 
 void ARPGCharacterBase::LoadGame()
 {
-	UActionRPGSaveGame* SaveGameInstance = Cast<UActionRPGSaveGame>(UGameplayStatics::CreateSaveGameObject(UActionRPGSaveGame::StaticClass()));
-
+	//Create your delegate and bind tit -> Remember to bind your delegates.
 	FAsyncLoadGameFromSlotDelegate LoadingCallback;
+	LoadingCallback.BindUObject(this, &ARPGCharacterBase::OnGameLoaded);
+
 	UGameplayStatics::AsyncLoadGameFromSlot("Slot One", 0, LoadingCallback);
-
-
-	this->SetActorLocation(SaveGameInstance->CharacterData.PlayerLocation);
-	this->SetActorRotation(SaveGameInstance->CharacterData.PlayerRotation);
-
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Loaded"));
-
 }
 
+void ARPGCharacterBase::OnGameLoaded(const FString& SlotName, const int32 UserIndex, USaveGame* SaveGameObject)
+{
+	UActionRPGSaveGame* RPGSaveGame = Cast<UActionRPGSaveGame>(SaveGameObject);
+
+	//DO NOT USE POINTERS AS CONDITIONS - Be Verbose and clear about your types
+	if (RPGSaveGame != nullptr)
+	{
+		this->SetActorLocation(RPGSaveGame->CharacterData.PlayerLocation);
+		this->SetActorRotation(RPGSaveGame->CharacterData.PlayerRotation);
+	}
+
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("Game Loaded"));
+}
 #pragma optimize("", on)

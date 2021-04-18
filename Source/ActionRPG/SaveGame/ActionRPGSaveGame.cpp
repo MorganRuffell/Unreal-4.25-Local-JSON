@@ -8,12 +8,21 @@ UActionRPGSaveGame::UActionRPGSaveGame()
 	PlayerName = TEXT("Developer");
 	UserIndex = 0;
 	
-	CharacterData.PlayerLocation = FVector(0.0f,0.0f,0.0f);
-	CharacterData.PlayerRotation = FRotator(0.0f,0.0f,0.0f);
-}
+	SetupPostion(CharacterData.PlayerLocation);
+	SetupPostion(CharacterData.PlayerRotation);
 
+	CharacterData.PlayerRotation = FRotator(0.0f,0.0f,0.0f);
+	CharacterData.PlayerLocation = FVector(0.0f, 0.0f, 0.0f);
+
+}
 
 UActionRPGSaveGame::~UActionRPGSaveGame()
 {
 
+}
+
+template<class T>
+inline T UActionRPGSaveGame::SetupPostion(T Position)
+{
+	return T();
 }

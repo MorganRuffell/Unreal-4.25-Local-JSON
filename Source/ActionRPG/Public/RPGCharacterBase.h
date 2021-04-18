@@ -216,6 +216,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void LoadGame();
 
+	UFUNCTION()
+	void OnGameLoaded(const FString& SlotName, const int32 UserIndex, USaveGame* SaveGameObject);
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Save Game Index")
 	int SaveGameIndex = 0;
 

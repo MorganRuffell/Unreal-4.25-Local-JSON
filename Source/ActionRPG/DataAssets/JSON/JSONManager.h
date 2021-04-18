@@ -5,8 +5,8 @@
 #include "CoreMinimal.h"
 #include "Containers/Map.h"
 #include "GameFramework/Actor.h"
+#include "JsonManagerDataAsset.h"
 #include "DataAssets/JSON/JSONDataAssetBase.h"
-
 #include "Engine/CurveTable.h"
 
 //IWYU - Include what you use, JSON classes
@@ -91,13 +91,12 @@ public:
 	TMap<UJSONDataAssetBase*, FString> ObjectsFromJSON;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Inputs")
-	TMap<UCurveTable*, FString> ObjectsToJSON;
+	TMap<UCurveTable*, FString> CurvesToJSON;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Outputs")
-	TMap<UCurveTable*, FString> ObjectsFromJSON;
+	TMap<UCurveTable*, FString> CurvesFromJSON;
 
 public:
-
 
 	TSharedPtr<FJsonObject> GetJsonFromString(const FString& jsonString);
 

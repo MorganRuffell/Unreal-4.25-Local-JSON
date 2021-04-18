@@ -7,6 +7,7 @@
 #include "AbilitySystemComponent.h"
 #include "Abilities/RPGGameplayAbility.h"
 #include "GameFramework/SaveGame.h"
+#include <UnrealString.h>
 #include "ActionRPGSaveGame.generated.h"
 
 USTRUCT(BlueprintType)
@@ -73,6 +74,9 @@ public:
 	UActionRPGSaveGame();
 	~UActionRPGSaveGame();
 
+	
+	template<class T>
+	T SetupPostion(T Position);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Basic)
 	FString PlayerName;
@@ -84,3 +88,4 @@ public:
 	FCharacterStats CharacterData;
 
 };
+

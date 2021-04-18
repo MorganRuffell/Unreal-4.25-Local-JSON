@@ -71,7 +71,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Data")
 	FGameSavedData GameData;
 
-
 	UPROPERTY(VisibleAnywhere, Category = "Game Data")
 	double MaximumAmountofSaveGames;
 

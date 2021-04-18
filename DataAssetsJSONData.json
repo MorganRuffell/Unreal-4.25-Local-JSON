@@ -196,5 +196,42 @@
 	"Grunt Animation Blueprint Data":
 	{
 		"AnimationIndexDiceRoll": 3
+	},
+	"UICommands":
+	{
+		"UI_StatisticsCommand": "stat Unit",
+		"UI_StatisticsRHICommand": "stat RHI"
+	},
+	"UIDisplay":
+	{
+		"UI_Delay": 10,
+		"UI_Delay_PlaybackSpeed": 1,
+		"UI_Delay_NumberofLoops": 1,
+		"RestoreState": false,
+		"BaseColor_Red": 1,
+		"BaseColor_Green": 1,
+		"BaseColor_Blue": 1,
+		"WarningColor_Red": 1,
+		"WarningColor_Green": 0,
+		"WarningColor_Blue": 0
+	},
+	"ExampleKey":
+	{
+		"IsAbsolute": false,
+		"SoundSystemGameInstance_Pitch": 0,
+		"SoundSystemGameInstance_UserIndex": 0,
+		"SoundSystemGameInstance_SlotName": "GlobalOptions",
+		"SoundSystemGameInstance_ApplyToChildren": true,
+		"VolumeLevels_Zero": 0,
+		"VolumeLevels_Small": 0.0010000000474974513,
+		"VolumeLevels_Max": 1,
+		"PlayTime": 3,
+		"PlayUntilStopped": 1
+	},
+	"JSONManager":
+	{
+		"JsonFileName": "DataAssetsJsonData",
+		"CurveJsonFileName": "DataAssetsCurveJsonData",
+		"AllowOverwriting": true
 	}
 }
