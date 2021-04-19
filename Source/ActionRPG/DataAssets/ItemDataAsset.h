@@ -103,6 +103,12 @@ public:
 
 public:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Light Attributes")
+	bool UseSRGB = true;
+
+
+public:
+
 	//If you override a virtual function, always use a the override keyword
 	virtual TSharedPtr<FJsonObject> ToJson() override;
 

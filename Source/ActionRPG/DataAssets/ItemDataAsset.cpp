@@ -27,6 +27,8 @@ TSharedPtr<FJsonObject> UItemDataAsset::ToJson()
 	jsonObject->SetNumberField("RotationSpeedMedium", RotationSpeeds.Medium);
 	jsonObject->SetNumberField("RotationSpeedFast", RotationSpeeds.Fast);
 
+	jsonObject->SetBoolField("UseSRGB", UseSRGB);
+
 	return jsonObject;
 }
 
@@ -40,10 +42,12 @@ bool UItemDataAsset::FromJson(FJsonObject& JsonObject)
 	_SoundAttributes.PitchMultiplier = JsonObject.GetNumberField("PitchMultiplier");
 	_SoundAttributes.SoundStartTime = JsonObject.GetNumberField("SoundStartTime");
 
+
+	UseSRGB = JsonObject.GetBoolField("UseSRGB");
+
 	RotationSpeeds.Slow = JsonObject.GetNumberField("RotationSpeedSlow");
 	RotationSpeeds.Medium = JsonObject.GetNumberField("RotationSpeedMedium");
 	RotationSpeeds.Fast = JsonObject.GetNumberField("RotationSpeedFast");
-
 
 	return (true);
 }
