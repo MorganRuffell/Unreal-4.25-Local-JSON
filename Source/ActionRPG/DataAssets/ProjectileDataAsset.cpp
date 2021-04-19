@@ -10,20 +10,23 @@ UProjectileDataAsset::UProjectileDataAsset()
 
 UProjectileDataAsset::~UProjectileDataAsset()
 {
+
 }
 
 TSharedPtr<FJsonObject> UProjectileDataAsset::ToJson()
 {
 	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
 
-	jsonObject->SetNumberField("Projectile Damage", AttackDamage);
+	jsonObject->SetNumberField("UpperProjectileDamage", UpperAttackDamage);
+	jsonObject->SetNumberField("LowerProjectileDamage", LowerAttackDamage);
 
 	return jsonObject;
 }
 
 bool UProjectileDataAsset::FromJson(FJsonObject& jsonObject)
 {
-	AttackDamage = jsonObject.GetNumberField("Projectile Damage");
+	UpperAttackDamage = jsonObject.GetNumberField("UpperProjectileDamage");
+	LowerAttackDamage = jsonObject.GetNumberField("LowerProjectileDamage");
 
 	return true;
 }

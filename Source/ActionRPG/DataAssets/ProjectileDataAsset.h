@@ -23,7 +23,11 @@ public:
 public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDamage")
-	float AttackDamage = 300.0f;
+	float UpperAttackDamage = 300.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDamage")
+	float LowerAttackDamage = 150.0f;
+
 
 
 public:
