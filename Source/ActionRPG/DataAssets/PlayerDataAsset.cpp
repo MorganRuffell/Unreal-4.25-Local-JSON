@@ -20,8 +20,10 @@ TSharedPtr<FJsonObject> UPlayerDataAsset::ToJson()
 
 	if (jsonObject.IsUnique())
 	{
-		jsonObject->SetNumberField("Attack_DelayCount", AttackDelayCount);
-		jsonObject->SetNumberField("Attack_DelayTime", AttackDelayTime);
+		jsonObject->SetNumberField("Attack_DelayCount", AttackDelayData.AttackDelayCount);
+		jsonObject->SetNumberField("Attack_HigherDelayTime", AttackDelayData.AttackDelayTime_Upper);
+		jsonObject->SetNumberField("Attack_LowerDelayTime", AttackDelayData.AttackDelayTime_Lower);
+
 		jsonObject->SetNumberField("CameraZOffset", PlayerControllerAttr.CameraZOffsetMultiplier);
 
 		jsonObject->SetNumberField("PlayerMaxHealth", PlayerData.PlayerMaxHealth);
@@ -38,9 +40,11 @@ TSharedPtr<FJsonObject> UPlayerDataAsset::ToJson()
 
 bool UPlayerDataAsset::FromJson(FJsonObject& jsonObject)
 {
-	AttackDelayCount = jsonObject.GetNumberField("Attack_DelayCount");
-	AttackDelayTime = jsonObject.GetNumberField("Attack_DelayTime");
 	PlayerControllerAttr.CameraZOffsetMultiplier = jsonObject.GetNumberField("CameraZOffset");
+
+	AttackDelayData.AttackDelayCount = jsonObject.GetNumberField("Attack_DelayCount");
+	AttackDelayData.AttackDelayTime_Upper = jsonObject.GetNumberField("Attack_HigherDelayTime");
+	AttackDelayData.AttackDelayTime_Lower = jsonObject.GetNumberField("Attack_LowerDelayTime");
 
 	PlayerData.PlayerMaxHealth = jsonObject.GetNumberField("PlayerMaxHealth");
 	PlayerData.PlayerMaxMana = jsonObject.GetNumberField("PlayerMaxMana");
@@ -49,7 +53,6 @@ bool UPlayerDataAsset::FromJson(FJsonObject& jsonObject)
 
 	bCanUseAnyAttack = jsonObject.GetBoolField("CanUseAnyAttack");
 	CanRemoteActivate = jsonObject.GetBoolField("RemoteActivation");
-
 
 	return true;
 }

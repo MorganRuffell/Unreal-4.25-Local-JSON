@@ -62,6 +62,21 @@ struct FPlayerControllerAttributes
 
 };
 
+USTRUCT(BlueprintType)
+struct FAttackDelayData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDelay")
+	float AttackDelayTime_Upper;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDelay")
+	float AttackDelayTime_Lower;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDelay")
+	int32 AttackDelayCount;
+};
+
 UENUM(BlueprintType)
 enum class ERPGSlots : uint8
 {
@@ -82,13 +97,10 @@ public:
 	UPlayerDataAsset();
 	~UPlayerDataAsset();
 	
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDelay")
-	int32 AttackDelayCount;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDelay")
-	float AttackDelayTime;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDelay")
+	FAttackDelayData AttackDelayData;
+
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Attack")
 	bool bCanUseAnyAttack;
 
