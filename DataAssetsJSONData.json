@@ -8,7 +8,8 @@
 		"SoundStartTime": 0.5,
 		"RotationSpeedSlow": 0.0099999997764825821,
 		"RotationSpeedMedium": 0.10000000149011612,
-		"RotationSpeedFast": 1
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
 	},
 	"BossDataAsset":
 	{
@@ -82,7 +83,8 @@
 	"PlayerData":
 	{
 		"Attack_DelayCount": 0,
-		"Attack_DelayTime": 0.40000000596046448,
+		"Attack_HigherDelayTime": 0,
+		"Attack_LowerDelayTime": 0,
 		"CameraZOffset": -1,
 		"PlayerMaxHealth": 1,
 		"PlayerMaxMana": 0,
@@ -139,7 +141,8 @@
 		"SoundStartTime": 0.5,
 		"RotationSpeedSlow": 0.0099999997764825821,
 		"RotationSpeedMedium": 0.10000000149011612,
-		"RotationSpeedFast": 1
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
 	},
 	"Item_DeathsDoor":
 	{
@@ -149,7 +152,8 @@
 		"SoundStartTime": 0.5,
 		"RotationSpeedSlow": 0.0099999997764825821,
 		"RotationSpeedMedium": 0.10000000149011612,
-		"RotationSpeedFast": 1
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
 	},
 	"ManaItem":
 	{
@@ -159,7 +163,8 @@
 		"SoundStartTime": 0.5,
 		"RotationSpeedSlow": 0.0099999997764825821,
 		"RotationSpeedMedium": 0.10000000149011612,
-		"RotationSpeedFast": 1
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
 	},
 	"SoulData":
 	{
@@ -215,7 +220,7 @@
 		"WarningColor_Green": 0,
 		"WarningColor_Blue": 0
 	},
-	"ExampleKey":
+	"GameInstanceData":
 	{
 		"IsAbsolute": false,
 		"SoundSystemGameInstance_Pitch": 0,
@@ -233,5 +238,49 @@
 		"JsonFileName": "DataAssetsJsonData",
 		"CurveJsonFileName": "DataAssetsCurveJsonData",
 		"AllowOverwriting": true
+	},
+	"ProjectileData":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"SpawnBox0":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox1":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox2":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"ProjectileData1":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"ProjectileData2":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"GameStateData":
+	{
+		"OnlyRelevantToOwner": false,
+		"NetLoadOnClient": false,
+		"NetUseOwnerRelevancy": false,
+		"Replicates": true,
+		"ServerWorldTimeUpdateFrequency": 0.10000000149011612,
+		"NetUpdateFrequency": 10,
+		"MinNetUpdateFrequency": 2,
+		"NetPriority": 1
 	}
 }
