@@ -282,5 +282,6 @@
 		"NetUpdateFrequency": 10,
 		"MinNetUpdateFrequency": 2,
 		"NetPriority": 1
-	}
+	},
+	"ExampleKey": null
 }
