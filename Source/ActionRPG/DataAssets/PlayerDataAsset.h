@@ -96,7 +96,21 @@ public:
 
 	UPlayerDataAsset();
 	~UPlayerDataAsset();
+
+public:
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
+	bool CanUseInventory = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
+	bool CanUseTeleportPhysics = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, CateGory = "PlayerController")
+	float CloseInventoryDelay = 0.75f;
+
+
+
+public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackDelay")
 	FAttackDelayData AttackDelayData;
@@ -106,6 +120,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "RemoteActivation")
 	bool CanRemoteActivate;
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RPG Slots")
 	ERPGSlots _RPGSlot;

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Math/Color.h"
 #include "DataAssets/JSON/JSONDataAssetBase.h"
 #include "DirectionalLightData.generated.h"
 
@@ -34,6 +35,9 @@ public:
 	bool CanCastShadows = true;
 
 public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Light Color")
+	FLinearColor DirectionalColor;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Light Color")
 	float Red = 255;

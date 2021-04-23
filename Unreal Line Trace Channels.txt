@@ -1,0 +1,24 @@
+Unreal Engine C++ Notes:
+
+
+Line Trace By Channel
+
+	When setting up a line trace you can add the trace result in the project settings to all of the collision profiles, detect and control it's behaviour.
+	This is all done through the project settings -> Collision. 
+
+	Here you have a range of collision profiles. These collision profiles are added to actors in your scene to establish how they behave when they come into contact with other actors.
+	
+	When you create another channel you add another channel to these collision profiles. Remember back to when we were making the character run around and punch things, in this we were turning on and off collisions and enabling
+	and changing the behaviour of specific collision channels. 
+
+	We use this in firing, melee combat. Loads of things. Being able to abstract these options into our gameplay is extremely important and adds a layer of complexity to our games. As this allows us to turn things on and off.
+	
+
+Damage:
+
+	Unreal has a multilayered and complex damage system.
+
+	#include "Engine/EngineTypes.h"
+
+	Have a look in here at all of the complicated and multilayed ways we can work with the actors systems isnide of unreal. These interface directly with AActor, APawn and ACharacter allowing us to quickly and easily 
+	create awesome gameplay.  
