@@ -22,3 +22,14 @@ Damage:
 
 	Have a look in here at all of the complicated and multilayed ways we can work with the actors systems isnide of unreal. These interface directly with AActor, APawn and ACharacter allowing us to quickly and easily 
 	create awesome gameplay.  
+
+	This only works on AActor derieved types but these methods are all virtual and can be overriden dependent on the class.
+	
+	These offer a more complicated way to work with damage than we are used to, but are the correct way to do it!
+	
+	Before calling these things you need to ensure that all actors or at least the ones it colliding with are not null.
+
+
+Virtual Methods
+
+	- 	Dynamic Dispatch: This is a C++ language feature that allows it to find out what kind of object it actually is when using a derieved class with pointer syntax. And call methods that are overriding virtual ones.
