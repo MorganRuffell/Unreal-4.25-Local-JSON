@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "Misc/Paths.h"
+#include "CoreMisc.h"
 #include "Runtime/Core/Public/Misc/FileHelper.h"
 #include "UTextFileManager.generated.h"
 

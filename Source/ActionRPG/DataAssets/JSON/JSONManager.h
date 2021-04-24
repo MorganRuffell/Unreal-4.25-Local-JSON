@@ -29,6 +29,10 @@ struct FFileTypes
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
 	FString TEXT = ".txt";
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
+	FString XML = ".xml"; 
+
 };
 
 UCLASS(Blueprintable, BlueprintType)
@@ -37,7 +41,7 @@ class ACTIONRPG_API AJSONManager : public AActor
 	GENERATED_BODY()
 
 public:
-	AJSONManager();
+	AJSONManager(); 
 
 public:
 
@@ -97,7 +101,7 @@ public:
 	TMap<UCurveTable*, FString> CurvesFromJSON;
 
 public:
-
+	
 	TSharedPtr<FJsonObject> GetJsonFromString(const FString& jsonString);
 
 	FString GetStringFromJson(TSharedRef<FJsonObject> jsonObject);

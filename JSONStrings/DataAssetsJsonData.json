@@ -283,5 +283,31 @@
 		"MinNetUpdateFrequency": 2,
 		"NetPriority": 1
 	},
-	"ExampleKey": null
+	"DirectionalLightData":
+	{
+		"_LightIntensity": 0.10000000149011612,
+		"_IndirectLightingIntensity": 1.5,
+		"_VolumentricScatteringIntensity": 1,
+		"_CanUseTemperature": false,
+		"_CanCastShadows": true,
+		"RedComponent": 255,
+		"GreenComponent": 255,
+		"BlueComponent": 255
+	},
+	"ParticleSystem0":
+	{
+		"_TimeDilation": 0,
+		"_SecondsBeforeInactive": 0,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	},
+	"ParticleSystem1":
+	{
+		"_TimeDilation": 0.5,
+		"_SecondsBeforeInactive": 1,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	}
 }

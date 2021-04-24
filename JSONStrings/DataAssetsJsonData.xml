@@ -1,0 +1,1249 @@
+
+{
+	"BaseItemData":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"BossDataAsset":
+	{
+		"DeathDelayTime": 4,
+		"Animation Montage Index": 0,
+		"GravityScale": 1,
+		"BossJumpZVelocity": 420,
+		"BossMass": 100,
+		"BossMaxAccleration": 200,
+		"BossMaxWalkSpeed": 300,
+		"BosMaxWalkSpeedCrouched": 200,
+		"NormalAnimationSpeed": 1,
+		"HalfAnimationSpeed": 0.5,
+		"QuarterAnimationSpeed": 0.25,
+		"FasterAnimationSpeed": 1.25,
+		"FastestAnimationSpeed": 1.5
+	},
+	"Decorator":
+	{
+		"Dec_MinHealthPercentage": 0.25,
+		"Dec_ItemSlotNumber": 0,
+		"Dec_ItemKey": "None"
+	},
+	"GameMode":
+	{
+		"AutoBattleMode": false,
+		"EnemySpawnDelay": 3,
+		"WaveSpawnDelay": 4,
+		"GlobalTimeDilation": 0.25,
+		"BattleTime": 60,
+		"PlayTimerStartTime": 1,
+		"DefaultPlayerName": "Developer"
+	},
+	"GoblinLevel1":
+	{
+		"time_bonus_per_kill": 5,
+		"MinSoulsDropped": 20,
+		"MaxSoulsDroppped": 40,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"GoblinLevel2":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"GoblinLevel3":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"LevelData":
+	{
+		"SceneIndex": 0
+	},
+	"PlayerData":
+	{
+		"Attack_DelayCount": 0,
+		"Attack_HigherDelayTime": 0,
+		"Attack_LowerDelayTime": 0,
+		"CameraZOffset": -1,
+		"PlayerMaxHealth": 1,
+		"PlayerMaxMana": 0,
+		"PlayerMaxMovementSpeed": 0,
+		"PlayerBaseLevel": 1,
+		"CanUseAnyAttack": true,
+		"RemoteActivation": true
+	},
+	"SaveData":
+	{
+		"SaveGameIndex": 0,
+		"SaveGameSlot1": "Slot One",
+		"SaveGameSlot2": "Slot Two",
+		"SaveGameSlot3": "Slot Three"
+	},
+	"Service":
+	{
+		"ClosestDistance": 9999,
+		"TargetTag": "Player",
+		"MinimumSpeed": 300,
+		"MaximumSpeed": 600
+	},
+	"Spider":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"Task":
+	{
+		"MeleeAttackDelay": 0.20000000298023224,
+		"SkillAttackDelay": 0.20000000298023224,
+		"RadiusRange": 300,
+		"AcceptableDistance": 300,
+		"minSurrounders": 2,
+		"CanUseTeleportPhysics": false
+	},
+	"AIC_Boss": null,
+	"AIC_NPC": null,
+	"Level2":
+	{
+		"SceneIndex": 0
+	},
+	"HealthItem_DataAsset":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"Item_DeathsDoor":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"ManaItem":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"SoulData":
+	{
+		"DelayFloor": 0.5,
+		"DelayCeiling": 1
+	},
+	"EnemyGlobal":
+	{
+		"BoundingBox_X": 40,
+		"BoundingBox_Y": 40,
+		"BoundingBox_Z": 40,
+		"SoulSpawnCount_Minimum": 1,
+		"SoulSpawnCount_Maximum": 3,
+		"PotionDropAmounts": 0.10000000149011612,
+		"TimeBonusPerKill": 5
+	},
+	"AnimNotify":
+	{
+		"InnerRadius": 0,
+		"OuterRadius": 1000,
+		"Falloff": 1,
+		"OrientShakeToEpicentre": false,
+		"AttackDelayTime": 0.039999999105930328,
+		"MaxAttackDelayCount": 2,
+		"CanSweep": true,
+		"CanTeleport": false,
+		"MoveForwardValue": 40,
+		"ForceSlowMotion": false,
+		"TimeDilation": 1,
+		"EndSpeed": 1,
+		"MotionSpeed": 0.5,
+		"AttackDelay": 0.039999999105930328
+	},
+	"Grunt Animation Blueprint Data":
+	{
+		"AnimationIndexDiceRoll": 3
+	},
+	"UICommands":
+	{
+		"UI_StatisticsCommand": "stat Unit",
+		"UI_StatisticsRHICommand": "stat RHI"
+	},
+	"UIDisplay":
+	{
+		"UI_Delay": 10,
+		"UI_Delay_PlaybackSpeed": 1,
+		"UI_Delay_NumberofLoops": 1,
+		"RestoreState": false,
+		"BaseColor_Red": 1,
+		"BaseColor_Green": 1,
+		"BaseColor_Blue": 1,
+		"WarningColor_Red": 1,
+		"WarningColor_Green": 0,
+		"WarningColor_Blue": 0
+	},
+	"GameInstanceData":
+	{
+		"IsAbsolute": false,
+		"SoundSystemGameInstance_Pitch": 0,
+		"SoundSystemGameInstance_UserIndex": 0,
+		"SoundSystemGameInstance_SlotName": "GlobalOptions",
+		"SoundSystemGameInstance_ApplyToChildren": true,
+		"VolumeLevels_Zero": 0,
+		"VolumeLevels_Small": 0.0010000000474974513,
+		"VolumeLevels_Max": 1,
+		"PlayTime": 3,
+		"PlayUntilStopped": 1
+	},
+	"JSONManager":
+	{
+		"JsonFileName": "DataAssetsJsonData",
+		"CurveJsonFileName": "DataAssetsCurveJsonData",
+		"AllowOverwriting": true
+	},
+	"ProjectileData":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"SpawnBox0":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox1":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox2":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"ProjectileData1":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"ProjectileData2":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"GameStateData":
+	{
+		"OnlyRelevantToOwner": false,
+		"NetLoadOnClient": false,
+		"NetUseOwnerRelevancy": false,
+		"Replicates": true,
+		"ServerWorldTimeUpdateFrequency": 0.10000000149011612,
+		"NetUpdateFrequency": 10,
+		"MinNetUpdateFrequency": 2,
+		"NetPriority": 1
+	},
+	"DirectionalLightData":
+	{
+		"_LightIntensity": 0.10000000149011612,
+		"_IndirectLightingIntensity": 1.5,
+		"_VolumentricScatteringIntensity": 1,
+		"_CanUseTemperature": false,
+		"_CanCastShadows": true,
+		"RedComponent": 255,
+		"GreenComponent": 255,
+		"BlueComponent": 255
+	},
+	"ParticleSystem0":
+	{
+		"_TimeDilation": 0,
+		"_SecondsBeforeInactive": 0,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	},
+	"ParticleSystem1":
+	{
+		"_TimeDilation": 0.5,
+		"_SecondsBeforeInactive": 1,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	}
+}
+{
+	"BaseItemData":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"BossDataAsset":
+	{
+		"DeathDelayTime": 4,
+		"Animation Montage Index": 0,
+		"GravityScale": 1,
+		"BossJumpZVelocity": 420,
+		"BossMass": 100,
+		"BossMaxAccleration": 200,
+		"BossMaxWalkSpeed": 300,
+		"BosMaxWalkSpeedCrouched": 200,
+		"NormalAnimationSpeed": 1,
+		"HalfAnimationSpeed": 0.5,
+		"QuarterAnimationSpeed": 0.25,
+		"FasterAnimationSpeed": 1.25,
+		"FastestAnimationSpeed": 1.5
+	},
+	"Decorator":
+	{
+		"Dec_MinHealthPercentage": 0.25,
+		"Dec_ItemSlotNumber": 0,
+		"Dec_ItemKey": "None"
+	},
+	"GameMode":
+	{
+		"AutoBattleMode": false,
+		"EnemySpawnDelay": 3,
+		"WaveSpawnDelay": 4,
+		"GlobalTimeDilation": 0.25,
+		"BattleTime": 60,
+		"PlayTimerStartTime": 1,
+		"DefaultPlayerName": "Developer"
+	},
+	"GoblinLevel1":
+	{
+		"time_bonus_per_kill": 5,
+		"MinSoulsDropped": 20,
+		"MaxSoulsDroppped": 40,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"GoblinLevel2":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"GoblinLevel3":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"LevelData":
+	{
+		"SceneIndex": 0
+	},
+	"PlayerData":
+	{
+		"Attack_DelayCount": 0,
+		"Attack_HigherDelayTime": 0,
+		"Attack_LowerDelayTime": 0,
+		"CameraZOffset": -1,
+		"PlayerMaxHealth": 1,
+		"PlayerMaxMana": 0,
+		"PlayerMaxMovementSpeed": 0,
+		"PlayerBaseLevel": 1,
+		"CanUseAnyAttack": true,
+		"RemoteActivation": true
+	},
+	"SaveData":
+	{
+		"SaveGameIndex": 0,
+		"SaveGameSlot1": "Slot One",
+		"SaveGameSlot2": "Slot Two",
+		"SaveGameSlot3": "Slot Three"
+	},
+	"Service":
+	{
+		"ClosestDistance": 9999,
+		"TargetTag": "Player",
+		"MinimumSpeed": 300,
+		"MaximumSpeed": 600
+	},
+	"Spider":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"Task":
+	{
+		"MeleeAttackDelay": 0.20000000298023224,
+		"SkillAttackDelay": 0.20000000298023224,
+		"RadiusRange": 300,
+		"AcceptableDistance": 300,
+		"minSurrounders": 2,
+		"CanUseTeleportPhysics": false
+	},
+	"AIC_Boss": null,
+	"AIC_NPC": null,
+	"Level2":
+	{
+		"SceneIndex": 0
+	},
+	"HealthItem_DataAsset":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"Item_DeathsDoor":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"ManaItem":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"SoulData":
+	{
+		"DelayFloor": 0.5,
+		"DelayCeiling": 1
+	},
+	"EnemyGlobal":
+	{
+		"BoundingBox_X": 40,
+		"BoundingBox_Y": 40,
+		"BoundingBox_Z": 40,
+		"SoulSpawnCount_Minimum": 1,
+		"SoulSpawnCount_Maximum": 3,
+		"PotionDropAmounts": 0.10000000149011612,
+		"TimeBonusPerKill": 5
+	},
+	"AnimNotify":
+	{
+		"InnerRadius": 0,
+		"OuterRadius": 1000,
+		"Falloff": 1,
+		"OrientShakeToEpicentre": false,
+		"AttackDelayTime": 0.039999999105930328,
+		"MaxAttackDelayCount": 2,
+		"CanSweep": true,
+		"CanTeleport": false,
+		"MoveForwardValue": 40,
+		"ForceSlowMotion": false,
+		"TimeDilation": 1,
+		"EndSpeed": 1,
+		"MotionSpeed": 0.5,
+		"AttackDelay": 0.039999999105930328
+	},
+	"Grunt Animation Blueprint Data":
+	{
+		"AnimationIndexDiceRoll": 3
+	},
+	"UICommands":
+	{
+		"UI_StatisticsCommand": "stat Unit",
+		"UI_StatisticsRHICommand": "stat RHI"
+	},
+	"UIDisplay":
+	{
+		"UI_Delay": 10,
+		"UI_Delay_PlaybackSpeed": 1,
+		"UI_Delay_NumberofLoops": 1,
+		"RestoreState": false,
+		"BaseColor_Red": 1,
+		"BaseColor_Green": 1,
+		"BaseColor_Blue": 1,
+		"WarningColor_Red": 1,
+		"WarningColor_Green": 0,
+		"WarningColor_Blue": 0
+	},
+	"GameInstanceData":
+	{
+		"IsAbsolute": false,
+		"SoundSystemGameInstance_Pitch": 0,
+		"SoundSystemGameInstance_UserIndex": 0,
+		"SoundSystemGameInstance_SlotName": "GlobalOptions",
+		"SoundSystemGameInstance_ApplyToChildren": true,
+		"VolumeLevels_Zero": 0,
+		"VolumeLevels_Small": 0.0010000000474974513,
+		"VolumeLevels_Max": 1,
+		"PlayTime": 3,
+		"PlayUntilStopped": 1
+	},
+	"JSONManager":
+	{
+		"JsonFileName": "DataAssetsJsonData",
+		"CurveJsonFileName": "DataAssetsCurveJsonData",
+		"AllowOverwriting": true
+	},
+	"ProjectileData":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"SpawnBox0":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox1":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox2":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"ProjectileData1":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"ProjectileData2":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"GameStateData":
+	{
+		"OnlyRelevantToOwner": false,
+		"NetLoadOnClient": false,
+		"NetUseOwnerRelevancy": false,
+		"Replicates": true,
+		"ServerWorldTimeUpdateFrequency": 0.10000000149011612,
+		"NetUpdateFrequency": 10,
+		"MinNetUpdateFrequency": 2,
+		"NetPriority": 1
+	},
+	"DirectionalLightData":
+	{
+		"_LightIntensity": 0.10000000149011612,
+		"_IndirectLightingIntensity": 1.5,
+		"_VolumentricScatteringIntensity": 1,
+		"_CanUseTemperature": false,
+		"_CanCastShadows": true,
+		"RedComponent": 255,
+		"GreenComponent": 255,
+		"BlueComponent": 255
+	},
+	"ParticleSystem0":
+	{
+		"_TimeDilation": 0,
+		"_SecondsBeforeInactive": 0,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	},
+	"ParticleSystem1":
+	{
+		"_TimeDilation": 0.5,
+		"_SecondsBeforeInactive": 1,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	}
+}
+{
+	"BaseItemData":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"BossDataAsset":
+	{
+		"DeathDelayTime": 4,
+		"Animation Montage Index": 0,
+		"GravityScale": 1,
+		"BossJumpZVelocity": 420,
+		"BossMass": 100,
+		"BossMaxAccleration": 200,
+		"BossMaxWalkSpeed": 300,
+		"BosMaxWalkSpeedCrouched": 200,
+		"NormalAnimationSpeed": 1,
+		"HalfAnimationSpeed": 0.5,
+		"QuarterAnimationSpeed": 0.25,
+		"FasterAnimationSpeed": 1.25,
+		"FastestAnimationSpeed": 1.5
+	},
+	"Decorator":
+	{
+		"Dec_MinHealthPercentage": 0.25,
+		"Dec_ItemSlotNumber": 0,
+		"Dec_ItemKey": "None"
+	},
+	"GameMode":
+	{
+		"AutoBattleMode": false,
+		"EnemySpawnDelay": 3,
+		"WaveSpawnDelay": 4,
+		"GlobalTimeDilation": 0.25,
+		"BattleTime": 60,
+		"PlayTimerStartTime": 1,
+		"DefaultPlayerName": "Developer"
+	},
+	"GoblinLevel1":
+	{
+		"time_bonus_per_kill": 5,
+		"MinSoulsDropped": 20,
+		"MaxSoulsDroppped": 40,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"GoblinLevel2":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"GoblinLevel3":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"LevelData":
+	{
+		"SceneIndex": 0
+	},
+	"PlayerData":
+	{
+		"Attack_DelayCount": 0,
+		"Attack_HigherDelayTime": 0,
+		"Attack_LowerDelayTime": 0,
+		"CameraZOffset": -1,
+		"PlayerMaxHealth": 1,
+		"PlayerMaxMana": 0,
+		"PlayerMaxMovementSpeed": 0,
+		"PlayerBaseLevel": 1,
+		"CanUseAnyAttack": true,
+		"RemoteActivation": true
+	},
+	"SaveData":
+	{
+		"SaveGameIndex": 0,
+		"SaveGameSlot1": "Slot One",
+		"SaveGameSlot2": "Slot Two",
+		"SaveGameSlot3": "Slot Three"
+	},
+	"Service":
+	{
+		"ClosestDistance": 9999,
+		"TargetTag": "Player",
+		"MinimumSpeed": 300,
+		"MaximumSpeed": 600
+	},
+	"Spider":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"Task":
+	{
+		"MeleeAttackDelay": 0.20000000298023224,
+		"SkillAttackDelay": 0.20000000298023224,
+		"RadiusRange": 300,
+		"AcceptableDistance": 300,
+		"minSurrounders": 2,
+		"CanUseTeleportPhysics": false
+	},
+	"AIC_Boss": null,
+	"AIC_NPC": null,
+	"Level2":
+	{
+		"SceneIndex": 0
+	},
+	"HealthItem_DataAsset":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"Item_DeathsDoor":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"ManaItem":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"SoulData":
+	{
+		"DelayFloor": 0.5,
+		"DelayCeiling": 1
+	},
+	"EnemyGlobal":
+	{
+		"BoundingBox_X": 40,
+		"BoundingBox_Y": 40,
+		"BoundingBox_Z": 40,
+		"SoulSpawnCount_Minimum": 1,
+		"SoulSpawnCount_Maximum": 3,
+		"PotionDropAmounts": 0.10000000149011612,
+		"TimeBonusPerKill": 5
+	},
+	"AnimNotify":
+	{
+		"InnerRadius": 0,
+		"OuterRadius": 1000,
+		"Falloff": 1,
+		"OrientShakeToEpicentre": false,
+		"AttackDelayTime": 0.039999999105930328,
+		"MaxAttackDelayCount": 2,
+		"CanSweep": true,
+		"CanTeleport": false,
+		"MoveForwardValue": 40,
+		"ForceSlowMotion": false,
+		"TimeDilation": 1,
+		"EndSpeed": 1,
+		"MotionSpeed": 0.5,
+		"AttackDelay": 0.039999999105930328
+	},
+	"Grunt Animation Blueprint Data":
+	{
+		"AnimationIndexDiceRoll": 3
+	},
+	"UICommands":
+	{
+		"UI_StatisticsCommand": "stat Unit",
+		"UI_StatisticsRHICommand": "stat RHI"
+	},
+	"UIDisplay":
+	{
+		"UI_Delay": 10,
+		"UI_Delay_PlaybackSpeed": 1,
+		"UI_Delay_NumberofLoops": 1,
+		"RestoreState": false,
+		"BaseColor_Red": 1,
+		"BaseColor_Green": 1,
+		"BaseColor_Blue": 1,
+		"WarningColor_Red": 1,
+		"WarningColor_Green": 0,
+		"WarningColor_Blue": 0
+	},
+	"GameInstanceData":
+	{
+		"IsAbsolute": false,
+		"SoundSystemGameInstance_Pitch": 0,
+		"SoundSystemGameInstance_UserIndex": 0,
+		"SoundSystemGameInstance_SlotName": "GlobalOptions",
+		"SoundSystemGameInstance_ApplyToChildren": true,
+		"VolumeLevels_Zero": 0,
+		"VolumeLevels_Small": 0.0010000000474974513,
+		"VolumeLevels_Max": 1,
+		"PlayTime": 3,
+		"PlayUntilStopped": 1
+	},
+	"JSONManager":
+	{
+		"JsonFileName": "DataAssetsJsonData",
+		"CurveJsonFileName": "DataAssetsCurveJsonData",
+		"AllowOverwriting": true
+	},
+	"ProjectileData":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"SpawnBox0":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox1":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox2":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"ProjectileData1":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"ProjectileData2":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"GameStateData":
+	{
+		"OnlyRelevantToOwner": false,
+		"NetLoadOnClient": false,
+		"NetUseOwnerRelevancy": false,
+		"Replicates": true,
+		"ServerWorldTimeUpdateFrequency": 0.10000000149011612,
+		"NetUpdateFrequency": 10,
+		"MinNetUpdateFrequency": 2,
+		"NetPriority": 1
+	},
+	"DirectionalLightData":
+	{
+		"_LightIntensity": 0.10000000149011612,
+		"_IndirectLightingIntensity": 1.5,
+		"_VolumentricScatteringIntensity": 1,
+		"_CanUseTemperature": false,
+		"_CanCastShadows": true,
+		"RedComponent": 255,
+		"GreenComponent": 255,
+		"BlueComponent": 255
+	},
+	"ParticleSystem0":
+	{
+		"_TimeDilation": 0,
+		"_SecondsBeforeInactive": 0,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	},
+	"ParticleSystem1":
+	{
+		"_TimeDilation": 0.5,
+		"_SecondsBeforeInactive": 1,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	}
+}
+{
+	"BaseItemData":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"BossDataAsset":
+	{
+		"DeathDelayTime": 4,
+		"Animation Montage Index": 0,
+		"GravityScale": 1,
+		"BossJumpZVelocity": 420,
+		"BossMass": 100,
+		"BossMaxAccleration": 200,
+		"BossMaxWalkSpeed": 300,
+		"BosMaxWalkSpeedCrouched": 200,
+		"NormalAnimationSpeed": 1,
+		"HalfAnimationSpeed": 0.5,
+		"QuarterAnimationSpeed": 0.25,
+		"FasterAnimationSpeed": 1.25,
+		"FastestAnimationSpeed": 1.5
+	},
+	"Decorator":
+	{
+		"Dec_MinHealthPercentage": 0.25,
+		"Dec_ItemSlotNumber": 0,
+		"Dec_ItemKey": "None"
+	},
+	"GameMode":
+	{
+		"AutoBattleMode": false,
+		"EnemySpawnDelay": 3,
+		"WaveSpawnDelay": 4,
+		"GlobalTimeDilation": 0.25,
+		"BattleTime": 60,
+		"PlayTimerStartTime": 1,
+		"DefaultPlayerName": "Developer"
+	},
+	"GoblinLevel1":
+	{
+		"time_bonus_per_kill": 5,
+		"MinSoulsDropped": 20,
+		"MaxSoulsDroppped": 40,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"GoblinLevel2":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"GoblinLevel3":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"LevelData":
+	{
+		"SceneIndex": 0
+	},
+	"PlayerData":
+	{
+		"Attack_DelayCount": 0,
+		"Attack_HigherDelayTime": 0,
+		"Attack_LowerDelayTime": 0,
+		"CameraZOffset": -1,
+		"PlayerMaxHealth": 1,
+		"PlayerMaxMana": 0,
+		"PlayerMaxMovementSpeed": 0,
+		"PlayerBaseLevel": 1,
+		"CanUseAnyAttack": true,
+		"RemoteActivation": true
+	},
+	"SaveData":
+	{
+		"SaveGameIndex": 0,
+		"SaveGameSlot1": "Slot One",
+		"SaveGameSlot2": "Slot Two",
+		"SaveGameSlot3": "Slot Three"
+	},
+	"Service":
+	{
+		"ClosestDistance": 9999,
+		"TargetTag": "Player",
+		"MinimumSpeed": 300,
+		"MaximumSpeed": 600
+	},
+	"Spider":
+	{
+		"time_bonus_per_kill": 0,
+		"MinSoulsDropped": 0,
+		"MaxSoulsDroppped": 0,
+		"EnemyJumpZVelocity": 420,
+		"EnemyMass": 100,
+		"EnemyMaxWalkSpeed": 200,
+		"EnemyGravityScale": 1,
+		"EnemyMaxAcceleration": 2048
+	},
+	"Task":
+	{
+		"MeleeAttackDelay": 0.20000000298023224,
+		"SkillAttackDelay": 0.20000000298023224,
+		"RadiusRange": 300,
+		"AcceptableDistance": 300,
+		"minSurrounders": 2,
+		"CanUseTeleportPhysics": false
+	},
+	"AIC_Boss": null,
+	"AIC_NPC": null,
+	"Level2":
+	{
+		"SceneIndex": 0
+	},
+	"HealthItem_DataAsset":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"Item_DeathsDoor":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"ManaItem":
+	{
+		"InteractionRadius": 64,
+		"VolumeMultiplier": 1,
+		"PitchMultiplier": 1,
+		"SoundStartTime": 0.5,
+		"RotationSpeedSlow": 0.0099999997764825821,
+		"RotationSpeedMedium": 0.10000000149011612,
+		"RotationSpeedFast": 1,
+		"UseSRGB": true
+	},
+	"SoulData":
+	{
+		"DelayFloor": 0.5,
+		"DelayCeiling": 1
+	},
+	"EnemyGlobal":
+	{
+		"BoundingBox_X": 40,
+		"BoundingBox_Y": 40,
+		"BoundingBox_Z": 40,
+		"SoulSpawnCount_Minimum": 1,
+		"SoulSpawnCount_Maximum": 3,
+		"PotionDropAmounts": 0.10000000149011612,
+		"TimeBonusPerKill": 5
+	},
+	"AnimNotify":
+	{
+		"InnerRadius": 0,
+		"OuterRadius": 1000,
+		"Falloff": 1,
+		"OrientShakeToEpicentre": false,
+		"AttackDelayTime": 0.039999999105930328,
+		"MaxAttackDelayCount": 2,
+		"CanSweep": true,
+		"CanTeleport": false,
+		"MoveForwardValue": 40,
+		"ForceSlowMotion": false,
+		"TimeDilation": 1,
+		"EndSpeed": 1,
+		"MotionSpeed": 0.5,
+		"AttackDelay": 0.039999999105930328
+	},
+	"Grunt Animation Blueprint Data":
+	{
+		"AnimationIndexDiceRoll": 3
+	},
+	"UICommands":
+	{
+		"UI_StatisticsCommand": "stat Unit",
+		"UI_StatisticsRHICommand": "stat RHI"
+	},
+	"UIDisplay":
+	{
+		"UI_Delay": 10,
+		"UI_Delay_PlaybackSpeed": 1,
+		"UI_Delay_NumberofLoops": 1,
+		"RestoreState": false,
+		"BaseColor_Red": 1,
+		"BaseColor_Green": 1,
+		"BaseColor_Blue": 1,
+		"WarningColor_Red": 1,
+		"WarningColor_Green": 0,
+		"WarningColor_Blue": 0
+	},
+	"GameInstanceData":
+	{
+		"IsAbsolute": false,
+		"SoundSystemGameInstance_Pitch": 0,
+		"SoundSystemGameInstance_UserIndex": 0,
+		"SoundSystemGameInstance_SlotName": "GlobalOptions",
+		"SoundSystemGameInstance_ApplyToChildren": true,
+		"VolumeLevels_Zero": 0,
+		"VolumeLevels_Small": 0.0010000000474974513,
+		"VolumeLevels_Max": 1,
+		"PlayTime": 3,
+		"PlayUntilStopped": 1
+	},
+	"JSONManager":
+	{
+		"JsonFileName": "DataAssetsJsonData",
+		"CurveJsonFileName": "DataAssetsCurveJsonData",
+		"AllowOverwriting": true
+	},
+	"ProjectileData":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"SpawnBox0":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox1":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"SpawnBox2":
+	{
+		"BoxExtendX": 64,
+		"BoxExtendY": 64,
+		"BoxExtendZ": 64
+	},
+	"ProjectileData1":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"ProjectileData2":
+	{
+		"UpperProjectileDamage": 300,
+		"LowerProjectileDamage": 150
+	},
+	"GameStateData":
+	{
+		"OnlyRelevantToOwner": false,
+		"NetLoadOnClient": false,
+		"NetUseOwnerRelevancy": false,
+		"Replicates": true,
+		"ServerWorldTimeUpdateFrequency": 0.10000000149011612,
+		"NetUpdateFrequency": 10,
+		"MinNetUpdateFrequency": 2,
+		"NetPriority": 1
+	},
+	"DirectionalLightData":
+	{
+		"_LightIntensity": 0.10000000149011612,
+		"_IndirectLightingIntensity": 1.5,
+		"_VolumentricScatteringIntensity": 1,
+		"_CanUseTemperature": false,
+		"_CanCastShadows": true,
+		"RedComponent": 255,
+		"GreenComponent": 255,
+		"BlueComponent": 255
+	},
+	"ParticleSystem0":
+	{
+		"_TimeDilation": 0,
+		"_SecondsBeforeInactive": 0,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	},
+	"ParticleSystem1":
+	{
+		"_TimeDilation": 0.5,
+		"_SecondsBeforeInactive": 1,
+		"UsingAbsoluteScale": false,
+		"AllowRecycling": false,
+		"_ReturnMaterialOnMove": false
+	}
+}

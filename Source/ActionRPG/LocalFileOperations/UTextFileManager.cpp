@@ -7,15 +7,15 @@
 
 FString UUTextFileManager::LoadFileToString(FString SystemDesignData)
 {
-	FString directory = FPaths::ProjectDir();
+	FString directory = FPaths::ProjectDir() + FString("JSONStrings");
 	FString result;
-	
+
 	IPlatformFile& file = FPlatformFileManager::Get().GetPlatformFile();
 
 	if (file.CreateDirectory(*directory))
 	{
 		FString myFile = directory + "/" + SystemDesignData;
-		FFileHelper::LoadFileToString(result, *myFile);	
+		FFileHelper::LoadFileToString(result, *myFile);
 	}
 
 	return result;
@@ -34,14 +34,14 @@ bool UUTextFileManager::SaveArrayText(FString SaveDir, FString FileName, TArray<
 			return false;
 		}
 	}
-	
+
 	FString FinalString = "";
 	for (FString& Each : SaveText)
 	{
 		FinalString += Each;
 		FinalString += LINE_TERMINATOR;
 	}
-	
+
 	return FFileHelper::SaveStringToFile(FinalString, *SaveDir);
 }
 

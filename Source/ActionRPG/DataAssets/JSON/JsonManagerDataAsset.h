@@ -19,12 +19,19 @@ class ACTIONRPG_API UJsonManagerDataAsset : public UJSONDataAssetBase
 	
 public:
 
+	//The file name of the JSON String made by the JSON Data Assets
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
 	FString JSONFileName = "DataAssetsJsonData";
 
+	//The file name of the JSON String made by the Curve Tables of character data
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
 	FString CurveJSONFileName = "DataAssetsCurveJsonData";
 
+	//The directory (Local to the project) where these files are stored.
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
+	FString _directory = "JSONStrings";
+
+	//Whether we are allowing overwriting
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileTypes")
 	bool AllowOverwriting = true;
 
