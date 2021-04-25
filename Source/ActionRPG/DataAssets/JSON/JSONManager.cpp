@@ -15,8 +15,6 @@ void AJSONManager::BeginPlay()
 
 }
 
-
-
 TSharedPtr<FJsonObject> AJSONManager::GetJsonFromString(const FString& jsonString)
 {
 	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
