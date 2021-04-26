@@ -1,6 +1,12 @@
 Unreal Engine C++ Notes:
 
 
+Volumetric Fog - Light Rays
+	
+	Must be enabled in the directional light component.
+	Works in tandem with the volumetric fog.
+
+
 Line Trace By Channel
 
 	When setting up a line trace you can add the trace result in the project settings to all of the collision profiles, detect and control it's behaviour.
