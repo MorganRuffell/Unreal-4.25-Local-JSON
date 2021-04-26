@@ -5,6 +5,7 @@ Volumetric Fog - Light Rays
 	
 	Must be enabled in the directional light component.
 	Works in tandem with the volumetric fog.
+	https://www.youtube.com/watch?v=Akb4P71KL0s
 
 
 Line Trace By Channel
