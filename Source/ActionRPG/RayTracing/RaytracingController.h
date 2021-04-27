@@ -4,9 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "DataAssets/Effects/RaytracingDataAsset.h"
 #include "RaytracingController.generated.h"
 
-UCLASS()
+UCLASS(Blueprintable)
 class ACTIONRPG_API ARaytracingController : public AActor
 {
 	GENERATED_BODY()
@@ -14,6 +15,11 @@ class ACTIONRPG_API ARaytracingController : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ARaytracingController();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RaytracingData")
+	URaytracingDataAsset* RaytracingData;
+
+
 
 protected:
 	// Called when the game starts or when spawned

@@ -3,3 +3,22 @@
 
 #include "RaytracingDataAsset.h"
 
+URaytracingDataAsset::URaytracingDataAsset()
+{
+
+}
+
+URaytracingDataAsset::~URaytracingDataAsset()
+{
+
+}
+
+TSharedPtr<FJsonObject> URaytracingDataAsset::ToJson()
+{
+	return TSharedPtr<FJsonObject>();
+}
+
+bool URaytracingDataAsset::FromJson(FJsonObject& jsonObject)
+{
+	return false;
+}
