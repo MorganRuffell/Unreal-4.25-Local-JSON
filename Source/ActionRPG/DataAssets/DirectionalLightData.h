@@ -50,6 +50,20 @@ public:
 
 public:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Raytracing")
+	bool RTRT_AffectGI = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Raytracing")
+	bool RTRT_CastRaytracedShadow = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Raytracing")
+	bool RTRT_AffectTransluenctLighting = true;
+
+
+
+
+public:
+
 	virtual TSharedPtr<FJsonObject> ToJson() override;
 
 	virtual bool FromJson(FJsonObject& jsonObject) override;
