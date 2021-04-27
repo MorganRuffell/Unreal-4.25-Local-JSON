@@ -320,5 +320,6 @@
 		"ColorDataBlue": 1,
 		"ColorDataGreen": 0.6600000262260437,
 		"ColorDataAlpha": 1
-	}
+	},
+	"RaytracingData": null
 }

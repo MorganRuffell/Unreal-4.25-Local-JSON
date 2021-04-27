@@ -29,6 +29,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sounds")
 	USoundBase* AmbientMusic;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual Effects")
+	float _SunSpeed = 0.2f;
 
 public:
 
