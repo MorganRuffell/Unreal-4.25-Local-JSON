@@ -16,6 +16,10 @@ void ARaytracingController::BeginPlay()
 {
 	Super::BeginPlay();
 	
+
+	GetJSONDataAssetData();
+
+
 }
 
 // Called every frame
@@ -24,4 +28,17 @@ void ARaytracingController::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+bool ARaytracingController::GetJSONDataAssetData()
+{
+	
+	
+
+	throw std::logic_error("The method or operation is not implemented.");
+}
+
+//bool ARaytracingController::GetJSONDataAssetData(UJSONDataAssetBase DataAsset)
+//{
+//	throw std::logic_error("The method or operation is not implemented.");
+//}
 
