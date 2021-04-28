@@ -1,0 +1,17 @@
+You want to move stuff away from BP as much as possible.
+Expose as little in BP as possible.
+
+In lionhead they took the stuff from TDs to C++.
+
+Create a technical blog to talk about what you are doing, copying what they said at the Rare interview.
+
+# Interesting books:
+
+Efficent C++ - Herb Shutter
+
+Scott Myer : Effective C++
+
+# Memory Allocation 
+
+Optiming.
+For editor tools LINQ is useful? NEVER use in production game code and DO not use at runtime.
