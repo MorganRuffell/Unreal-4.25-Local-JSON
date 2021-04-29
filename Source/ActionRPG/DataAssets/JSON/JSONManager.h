@@ -5,9 +5,12 @@
 #include "CoreMinimal.h"
 #include "Containers/Map.h"
 #include "GameFramework/Actor.h"
-#include "JsonManagerDataAsset.h"
+#include "DataAssets/JSON/JsonManagerDataAsset.h"
 #include "DataAssets/JSON/JSONDataAssetBase.h"
 #include "Engine/CurveTable.h"
+#include "Misc/Paths.h"
+#include "LocalFileOperations/UTextFileManager.h"
+
 
 //IWYU - Include what you use, JSON classes
 #include "Serialization/JsonReader.h"
@@ -45,6 +48,11 @@ public:
 
 public:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
+	UJsonManagerDataAsset* ManagerData;
+
+public:
+
 // Fields for the new section that will allow me to prase multiple JSON Objects
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Editor")
@@ -61,6 +69,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON")
 	FString JsonOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON")
+	TArray<FString> FileContents;
 
 public:
 
@@ -101,7 +112,16 @@ public:
 	TMap<UCurveTable*, FString> CurvesFromJSON;
 
 public:
+
+	UFUNCTION()
+	void CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType);
 	
+	UFUNCTION()
+	void SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents,bool AllowOverwriting, FString FileDirectoryToLoadFrom);
+
+public:
+
+
 	TSharedPtr<FJsonObject> GetJsonFromString(const FString& jsonString);
 
 	FString GetStringFromJson(TSharedRef<FJsonObject> jsonObject);

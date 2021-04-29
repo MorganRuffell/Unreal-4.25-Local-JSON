@@ -15,30 +15,34 @@ ARaytracingController::ARaytracingController()
 void ARaytracingController::BeginPlay()
 {
 	Super::BeginPlay();
-	
-
+	RaytracingSystem->bEnabled = true;
 	GetJSONDataAssetData();
-
-
 }
 
 // Called every frame
 void ARaytracingController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 bool ARaytracingController::GetJSONDataAssetData()
 {
-	
-	
-
-	throw std::logic_error("The method or operation is not implemented.");
+	if (RaytracingSystem->bEnabled == true)
+	{
+		RaytracingData->Intensity = RaytracingSystem->Settings.AmbientOcclusionIntensity;
+		RaytracingData->Radius = RaytracingSystem->Settings.AmbientOcclusionRadius;
+		RaytracingData->IsEnabled = RaytracingSystem->Settings.RayTracingAO;
+		RaytracingData->SamplesPerPixelAO = RaytracingSystem->Settings.RayTracingAOSamplesPerPixel;
+		RaytracingData->MaxRoughness = RaytracingSystem->Settings.bOverride_RayTracingReflectionsMaxRoughness;
+		RaytracingData->MaxBounces = RaytracingSystem->Settings.PathTracingMaxBounces;
+		RaytracingData->SamplesPerPixel = RaytracingSystem->Settings.PathTracingSamplesPerPixel;
+		RaytracingData->CanUseRefractions = RaytracingSystem->Settings.bOverride_RayTracingReflectionsTranslucency;
+		
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
-
-//bool ARaytracingController::GetJSONDataAssetData(UJSONDataAssetBase DataAsset)
-//{
-//	throw std::logic_error("The method or operation is not implemented.");
-//}
 
