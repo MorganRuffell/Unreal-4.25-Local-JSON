@@ -17,46 +17,6 @@ void AJSONManager::BeginPlay()
 
 }
 
-void AJSONManager::CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType)
-{
-	SaveToLocalDirectory(JsonOutput, FileType.JSON, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileType.XML, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileType.CSV, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileType.TEXT, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-
-	SaveToLocalDirectory(JsonOutput, FileType.TEXT, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileType.XML, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileType.CSV, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileType.JSON, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-
-}
-
-void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents, bool AllowOverwriting, FString FileDirectoryToLoadFrom)
-{
-	if (AllowOverwriting)
-	{
-		FString SaveDirectory = "";
-
-		_FileContents.Add(JSONOutputString);
-		SaveDirectory = FPaths::ProjectDir().Append(FileDirectoryToLoadFrom);
-
-		FileName.Append(FileType);
-
-		UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
-	}
-	else
-	{
-		FString SaveDirectory = "";
-
-		_FileContents.Add(JSONOutputString);
-		SaveDirectory = FPaths::ProjectDir().Append(FileDirectoryToLoadFrom);
-
-		FileName.Append(FileType);
-
-		UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
-	}
-}
-
 TSharedPtr<FJsonObject> AJSONManager::GetJsonFromString(const FString& jsonString)
 {
 	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
@@ -125,6 +85,27 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 			JsonOutput = GetStringFromJson(LocalJSONObject.ToSharedRef());
 
 			CurveTableProcessingToJson();
+			WaveProgressionDataToJSON();
+		}
+	}
+}
+
+void AJSONManager::WaveProgressionDataToJSON()
+{
+	if (WaveProgressionString.IsEmpty() == true)
+	{
+		for (UDataTable* DataTable : WaveProgressionData)
+		{
+			WaveProgressionString.Append(DataTable->GetTableAsJSON());
+		}
+	}
+	else
+	{
+		WaveProgressionData.Reset();
+
+		for (UDataTable* DataTable : WaveProgressionData)
+		{
+			WaveProgressionString.Append(DataTable->GetTableAsJSON());
 		}
 	}
 }
@@ -154,15 +135,57 @@ void AJSONManager::CurveTableProcessingFromJson()
 {
 	if (CurveTableJsonOutput.IsEmpty() == false)
 	{
-		//TSharedRef<UCurveTable> LocalCurveTable = MakeShared<UCurveTable>();
-
-		//for (TPair<FString, TSharedPtr<UCurveTable>> pair : LocalCurveTable->)
-		//{
-		//	//Make table from this?
-		//}
+		/*for (UCurveTable* CurveTable : CurveTables)
+		{
+		}*/
 	}
 	else
 	{
 
+	}
+}
+
+void AJSONManager::CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType)
+{
+	SaveToLocalDirectory(JsonOutput, FileType.JSON, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(JsonOutput, FileType.XML, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(JsonOutput, FileType.CSV, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(JsonOutput, FileType.TEXT, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+
+	SaveToLocalDirectory(CurveTableJsonOutput, FileType.TEXT, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(CurveTableJsonOutput, FileType.XML, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(CurveTableJsonOutput, FileType.CSV, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(CurveTableJsonOutput, FileType.JSON, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+
+	SaveToLocalDirectory(WaveProgressionString, FileType.TEXT, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(WaveProgressionString, FileType.XML, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(WaveProgressionString, FileType.CSV, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(WaveProgressionString, FileType.JSON, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+
+}
+
+void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents, bool AllowOverwriting, FString FileDirectoryToLoadFrom)
+{
+	if (AllowOverwriting)
+	{
+		FString SaveDirectory = "";
+
+		_FileContents.Add(JSONOutputString);
+		SaveDirectory = FPaths::ProjectDir().Append(FileDirectoryToLoadFrom);
+
+		FileName.Append(FileType);
+
+		UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
+	}
+	else
+	{
+		FString SaveDirectory = "";
+
+		_FileContents.Add(JSONOutputString);
+		SaveDirectory = FPaths::ProjectDir().Append(FileDirectoryToLoadFrom);
+
+		FileName.Append(FileType);
+
+		UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
 	}
 }

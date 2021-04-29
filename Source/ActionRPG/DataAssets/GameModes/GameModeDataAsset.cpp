@@ -22,14 +22,13 @@ TSharedPtr<FJsonObject> UGameModeDataAsset::ToJson()
 {
 	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
 
+	
 	jsonObject->SetBoolField("AutoBattleMode", AutoBattleMode);
 	jsonObject->SetNumberField("EnemySpawnDelay", EnemySpawnDelay);
 	jsonObject->SetNumberField("WaveSpawnDelay", WaveSpawnDelay);
 	jsonObject->SetNumberField("GlobalTimeDilation", GlobalTimeDilation);
 	jsonObject->SetNumberField("BattleTime", BattleTime);
 	jsonObject->SetNumberField("PlayTimerStartTime", PlayTimerStartTime);
-
-
 	jsonObject->SetStringField("DefaultPlayerName", PlayerName);
 
 	
@@ -46,7 +45,6 @@ bool UGameModeDataAsset::FromJson(FJsonObject& jsonObject)
 	GlobalTimeDilation = jsonObject.GetNumberField("GlobalTimeDilation");
 	BattleTime = jsonObject.GetNumberField("BattleTime");
 	PlayTimerStartTime = jsonObject.GetNumberField("PlayerTimerStartTime");
-
 	PlayerName = jsonObject.GetStringField("DefaultPlayerName");
 
 

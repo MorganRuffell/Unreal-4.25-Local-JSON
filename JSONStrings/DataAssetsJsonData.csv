@@ -311,10 +311,10 @@
 	},
 	"EHeightFog":
 	{
-		"_FogDensity": 0.10000000149011612,
+		"_FogDensity": 0.0099999997764825821,
 		"_MaxOpacity": 1,
 		"_InscatteringExp": 4,
-		"_StartDistance": 0,
+		"_StartDistance": 3188.0556640625,
 		"ColorDataRed": 0.79199999570846558,
 		"ColorDataBlue": 1,
 		"ColorDataGreen": 0.6600000262260437,

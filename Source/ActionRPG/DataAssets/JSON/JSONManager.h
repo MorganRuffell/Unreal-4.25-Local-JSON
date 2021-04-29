@@ -8,6 +8,7 @@
 #include "DataAssets/JSON/JsonManagerDataAsset.h"
 #include "DataAssets/JSON/JSONDataAssetBase.h"
 #include "Engine/CurveTable.h"
+#include "Engine/DataTable.h"
 #include "Misc/Paths.h"
 #include "LocalFileOperations/UTextFileManager.h"
 
@@ -50,6 +51,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
 	UJsonManagerDataAsset* ManagerData;
+
 
 public:
 
@@ -96,6 +98,16 @@ public:
 
 	void CurveTableProcessingFromJson();
 
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Wave Progression Data")
+	TSet<UDataTable*> WaveProgressionData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WaveProgressionData")
+	FString WaveProgressionString;
+
+	void WaveProgressionDataToJSON();
+
 
 public:
 
@@ -106,10 +118,17 @@ public:
 	TMap<UJSONDataAssetBase*, FString> ObjectsFromJSON;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Inputs")
-	TMap<UCurveTable*, FString> CurvesToJSON;
+	TMap<UDataTable*, FString> CurvesToJSON;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Outputs")
-	TMap<UCurveTable*, FString> CurvesFromJSON;
+	TMap<UDataTable*, FString> CurvesFromJSON;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Inputs")
+	TMap<UDataTable*, FString> WaveProgressionToJSON;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Outputs")
+	TMap<UDataTable*, FString> WaveProgressionFromJSON;
+
 
 public:
 

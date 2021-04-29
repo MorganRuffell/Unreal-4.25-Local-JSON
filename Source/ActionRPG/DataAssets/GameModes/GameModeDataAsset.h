@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Runtime/UMG/Public/UMG.h"
+
+
 #include "Blueprint/UserWidget.h"
 #include "GameFramework/HUD.h"
 #include "DataAssets/JSON/JSONDataAssetBase.h"
@@ -24,6 +26,8 @@ public:
 	UGameModeDataAsset();
 	~UGameModeDataAsset();
 	
+public:
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float EnemySpawnDelay;
 
@@ -51,6 +55,5 @@ public:
 	virtual TSharedPtr<FJsonObject> ToJson() override;
 
 	virtual bool FromJson(FJsonObject& jsonObject) override;
-
 
 };

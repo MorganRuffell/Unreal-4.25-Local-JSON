@@ -27,6 +27,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
 	FString CurveJSONFileName = "DataAssetsCurveJsonData";
 
+	//The file name of the JSON String made by the Curve Tables of character data
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
+	FString WaveJSONFileName = "WaveProgressionJSONData";
+
+
 	//The directory (Local to the project) where these files are stored.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
 	FString _directory = "JSONStrings";
