@@ -13,8 +13,8 @@ void AJSONManager::BeginPlay()
 {
 	Super::BeginPlay();
 
-	CollectJSONData(ManagerData,_FileTypes);
 
+	CollectJSONData(ManagerData,_FileTypes);
 }
 
 TSharedPtr<FJsonObject> AJSONManager::GetJsonFromString(const FString& jsonString)

@@ -6,6 +6,7 @@
 #include "Engine/DataAsset.h"
 #include "DataAssets/GameModes/MainMenuData.h"
 #include "DataAssets/GameModes/GameModeDataAsset.h"
+#include "DataAssets/JSON/JsonManagerDataAsset.h"
 #include "GameFramework/GameModeBase.h"
 #include "RPGGameModeBase.generated.h"
 
@@ -24,6 +25,8 @@ public:
 	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Game Mode External Data")
 	UGameModeDataAsset* GameModeData;
 	
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Mode External Data")
+	UJsonManagerDataAsset* JSONManagerData;
+
 };
 

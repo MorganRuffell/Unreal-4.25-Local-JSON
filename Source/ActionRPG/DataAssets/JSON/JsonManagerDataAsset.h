@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "DataAssets/JSON/JSONDataAssetBase.h"
 #include "JsonManagerDataAsset.generated.h"
 
@@ -39,6 +40,13 @@ public:
 	//Whether we are allowing overwriting
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileTypes")
 	bool AllowOverwriting = true;
+
+public:
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WaveDataTables")
+	TSet<UDataTable*> LocalWaveProgressionData;
+
 
 public:
 

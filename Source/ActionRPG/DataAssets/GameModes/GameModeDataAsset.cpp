@@ -31,7 +31,7 @@ TSharedPtr<FJsonObject> UGameModeDataAsset::ToJson()
 	jsonObject->SetNumberField("PlayTimerStartTime", PlayTimerStartTime);
 	jsonObject->SetStringField("DefaultPlayerName", PlayerName);
 
-	
+
 	return jsonObject;
 }
 
@@ -49,5 +49,4 @@ bool UGameModeDataAsset::FromJson(FJsonObject& jsonObject)
 
 
 	return (true);
-
 }
