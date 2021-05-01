@@ -22,21 +22,21 @@
 #include "JSONManager.generated.h"
 
 USTRUCT(Blueprintable, BlueprintType)
-struct FFileTypes 
+struct FFileTypes
 {
 	GENERATED_BODY()
-	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
-	FString JSON = ".json";
+
+		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
+		FString JSON = ".json";
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
-	FString CSV = ".csv";
+		FString CSV = ".csv";
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
-	FString TEXT = ".txt";
+		FString TEXT = ".txt";
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
-	FString XML = ".xml"; 
+		FString XML = ".xml";
 
 };
 
@@ -46,55 +46,55 @@ class ACTIONRPG_API AJSONManager : public AActor
 	GENERATED_BODY()
 
 public:
-	AJSONManager(); 
+	AJSONManager();
 
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
-	UJsonManagerDataAsset* ManagerData;
+		UJsonManagerDataAsset* ManagerData;
 
 
 public:
 
-// Fields for the new section that will allow me to prase multiple JSON Objects
+	// Fields for the new section that will allow me to prase multiple JSON Objects
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Editor")
-	FString JsonInput;
+		FString JsonInput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON")
-	bool bFromJson;
+		bool bFromJson;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON")
-	bool bToJson;
+		bool bToJson;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON")
-	TSet<UJSONDataAssetBase*> JsonDataAssets;
+		TSet<UJSONDataAssetBase*> JsonDataAssets;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON")
-	FString JsonOutput;
+		FString JsonOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON")
-	TArray<FString> FileContents;
+		TArray<FString> FileContents;
 
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
-	FFileTypes _FileTypes;
+		FFileTypes _FileTypes;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
-	FString JSONFileName = "DataAssetsJSONData";
+		FString JSONFileName = "DataAssetsJSONData";
 
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
-	FString CurveFileName = "CurvetablesJSONData";
+		FString CurveFileName = "CurvetablesJSONData";
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Curve Tables")
-	TSet<UCurveTable*> CurveTables;
-	
+		TSet<UCurveTable*> CurveTables;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Curve Tables")
-	FString CurveTableJsonOutput;	
-	
+		FString CurveTableJsonOutput;
+
 	void CurveTableProcessingToJson();
 
 	void CurveTableProcessingFromJson();
@@ -134,10 +134,21 @@ public:
 public:
 
 	UFUNCTION()
-	void CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType);
-	
+	void CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType) const;
+
 	UFUNCTION()
-	void SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents,bool AllowOverwriting, FString FileDirectoryToLoadFrom);
+	void SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents, bool AllowOverwriting, FString FileDirectoryToLoadFrom)  const;
+
+	//These are for saving each of the tables individually.
+	UFUNCTION()
+	void SaveJSONAssetsToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const;
+
+	UFUNCTION()
+	void SaveCurvetablesToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const;
+
+	UFUNCTION()
+	void SaveDataTablesToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const;
+
 
 public:
 

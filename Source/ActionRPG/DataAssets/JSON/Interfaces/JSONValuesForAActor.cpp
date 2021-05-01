@@ -11,6 +11,16 @@ bool IJSONValuesForAActor::GetJSONDataAssetData()
 	return true;
 }
 
+bool IJSONValuesForAActor::GetJSONDataAssetData(UJSONDataAssetBase DataAsset) const
+{
+	return false;
+}
+
+bool IJSONValuesForAActor::GetJSONDataAssetData() const
+{
+	return false;
+}
+
 bool IJSONValuesForAActor::GetJSONDataAssetData(UJSONDataAssetBase DataAsset)
 {
 	return true;

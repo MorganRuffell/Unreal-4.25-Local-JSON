@@ -145,26 +145,38 @@ void AJSONManager::CurveTableProcessingFromJson()
 	}
 }
 
-void AJSONManager::CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType)
+void AJSONManager::CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType) const
 {
-	SaveToLocalDirectory(JsonOutput, FileType.JSON, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileType.XML, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileType.CSV, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileType.TEXT, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-
-	SaveToLocalDirectory(CurveTableJsonOutput, FileType.TEXT, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(CurveTableJsonOutput, FileType.XML, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(CurveTableJsonOutput, FileType.CSV, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(CurveTableJsonOutput, FileType.JSON, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-
-	SaveToLocalDirectory(WaveProgressionString, FileType.TEXT, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(WaveProgressionString, FileType.XML, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(WaveProgressionString, FileType.CSV, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(WaveProgressionString, FileType.JSON, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-
+	SaveJSONAssetsToLocalDirectory(ManagerDataAsset,FileType);
+	SaveCurvetablesToLocalDirectory(ManagerDataAsset,FileType);
+	SaveDataTablesToLocalDirectory(ManagerDataAsset,FileType);
 }
 
-void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents, bool AllowOverwriting, FString FileDirectoryToLoadFrom)
+void AJSONManager::SaveJSONAssetsToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const
+{
+	SaveToLocalDirectory(JsonOutput, FileTypes.JSON, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(JsonOutput, FileTypes.XML, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(JsonOutput, FileTypes.CSV, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(JsonOutput, FileTypes.TEXT, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+}
+
+void AJSONManager::SaveCurvetablesToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const
+{
+	SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.TEXT, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.XML, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.CSV, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.JSON, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+}
+
+void AJSONManager::SaveDataTablesToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const
+{
+	SaveToLocalDirectory(WaveProgressionString, FileTypes.TEXT, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(WaveProgressionString, FileTypes.XML, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(WaveProgressionString, FileTypes.CSV, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	SaveToLocalDirectory(WaveProgressionString, FileTypes.JSON, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+}
+
+void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents, bool AllowOverwriting, FString FileDirectoryToLoadFrom) const
 {
 	if (AllowOverwriting)
 	{
@@ -177,6 +189,7 @@ void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileTy
 
 		UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
 	}
+
 	else
 	{
 		FString SaveDirectory = "";
@@ -189,3 +202,4 @@ void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileTy
 		UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
 	}
 }
+

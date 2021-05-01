@@ -35,7 +35,8 @@ public:
 
 public:
 
-	bool GetJSONDataAssetData() override;
+	UFUNCTION()
+	bool GetJSONDataAssetData() const final override;
 
 	//bool GetJSONDataAssetData(UJSONDataAssetBase DataAsset) override;
 

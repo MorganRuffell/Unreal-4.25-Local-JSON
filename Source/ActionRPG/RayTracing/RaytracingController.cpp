@@ -25,7 +25,7 @@ void ARaytracingController::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
-bool ARaytracingController::GetJSONDataAssetData()
+bool ARaytracingController::GetJSONDataAssetData() const
 {
 	if (RaytracingSystem->bEnabled == true)
 	{
@@ -37,7 +37,7 @@ bool ARaytracingController::GetJSONDataAssetData()
 		RaytracingData->MaxBounces = RaytracingSystem->Settings.PathTracingMaxBounces;
 		RaytracingData->SamplesPerPixel = RaytracingSystem->Settings.PathTracingSamplesPerPixel;
 		RaytracingData->CanUseRefractions = RaytracingSystem->Settings.bOverride_RayTracingReflectionsTranslucency;
-		
+
 		return true;
 	}
 	else
@@ -45,4 +45,9 @@ bool ARaytracingController::GetJSONDataAssetData()
 		return false;
 	}
 }
+
+//bool ARaytracingController::GetJSONDataAssetData()
+//{
+//	
+//}
 

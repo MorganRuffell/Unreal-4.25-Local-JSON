@@ -29,4 +29,10 @@ public:
 	
 	virtual bool GetJSONDataAssetData();
 
+	virtual bool GetJSONDataAssetData(UJSONDataAssetBase DataAsset) const;
+
+	virtual bool GetJSONDataAssetData() const ;
 };
+ 
+
+

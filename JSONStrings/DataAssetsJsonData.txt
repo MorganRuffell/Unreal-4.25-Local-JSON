@@ -320,5 +320,14 @@
 		"ColorDataGreen": 0.6600000262260437,
 		"ColorDataAlpha": 1
 	},
-	"RaytracingData": null
+	"RaytracingData":
+	{
+		"Intensity_AO": 0.5,
+		"Radius_AO": 200,
+		"MaxRoughness": 0.60000002384185791,
+		"RaytracingIntensity": 0.5,
+		"IsPostProcessEnabled": true,
+		"IsAOEnabled": true,
+		"CanIncludeTranslucents": true
+	}
 }
