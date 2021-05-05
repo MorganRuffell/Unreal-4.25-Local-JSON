@@ -40,7 +40,7 @@ ARPGCharacterBase::ARPGCharacterBase()
 
 void ARPGCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	if (PlayerInputComponent)
+	if (PlayerInputComponent != nullptr)
 	{
 		PlayerInputComponent->BindAction("Save", IE_Pressed, this, &ARPGCharacterBase::SaveGame);
 		PlayerInputComponent->BindAction("Load", IE_Pressed, this, &ARPGCharacterBase::LoadGame);
