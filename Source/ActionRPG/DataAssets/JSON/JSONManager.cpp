@@ -13,8 +13,14 @@ void AJSONManager::BeginPlay()
 {
 	Super::BeginPlay();
 
-
-	CollectJSONData(ManagerData,_FileTypes);
+	if (HasAuthority())
+	{
+		CollectJSONData(ManagerData, _FileTypes);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("This client does not have authority and cannot complete this operation"));
+	}
 }
 
 TSharedPtr<FJsonObject> AJSONManager::GetJsonFromString(const FString& jsonString)
@@ -40,6 +46,8 @@ FString AJSONManager::GetStringFromJson(TSharedRef<FJsonObject> jsonObject)
 //On validate eqv. 
 void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
+	if (!HasAuthority()) { return; }
+
 	Super::PostEditChangeProperty(PropertyChangedEvent);
 
 	FName propertyName = PropertyChangedEvent.Property->GetFName();
@@ -147,9 +155,9 @@ void AJSONManager::CurveTableProcessingFromJson()
 
 void AJSONManager::CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType) const
 {
-	SaveJSONAssetsToLocalDirectory(ManagerDataAsset,FileType);
-	SaveCurvetablesToLocalDirectory(ManagerDataAsset,FileType);
-	SaveDataTablesToLocalDirectory(ManagerDataAsset,FileType);
+	SaveJSONAssetsToLocalDirectory(ManagerDataAsset, FileType);
+	SaveCurvetablesToLocalDirectory(ManagerDataAsset, FileType);
+	SaveDataTablesToLocalDirectory(ManagerDataAsset, FileType);
 }
 
 void AJSONManager::SaveJSONAssetsToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const
@@ -178,28 +186,37 @@ void AJSONManager::SaveDataTablesToLocalDirectory(UJsonManagerDataAsset* Manager
 
 void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents, bool AllowOverwriting, FString FileDirectoryToLoadFrom) const
 {
-	if (AllowOverwriting)
+	if (HasAuthority())
 	{
-		FString SaveDirectory = "";
+		if (AllowOverwriting)
+		{
+			FString SaveDirectory = "";
 
-		_FileContents.Add(JSONOutputString);
-		SaveDirectory = FPaths::ProjectDir().Append(FileDirectoryToLoadFrom);
+			_FileContents.Add(JSONOutputString);
+			SaveDirectory = FPaths::ProjectDir().Append(FileDirectoryToLoadFrom);
 
-		FileName.Append(FileType);
+			FileName.Append(FileType);
 
-		UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
+			UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
+		}
+
+		else
+		{
+			FString SaveDirectory = "";
+
+			_FileContents.Add(JSONOutputString);
+			SaveDirectory = FPaths::ProjectDir().Append(FileDirectoryToLoadFrom);
+
+			FileName.Append(FileType);
+
+			UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
+		}
+
 	}
-
 	else
 	{
-		FString SaveDirectory = "";
-
-		_FileContents.Add(JSONOutputString);
-		SaveDirectory = FPaths::ProjectDir().Append(FileDirectoryToLoadFrom);
-
-		FileName.Append(FileType);
-
-		UUTextFileManager::SaveArrayText(SaveDirectory, FileName, _FileContents, AllowOverwriting);
+		UE_LOG(LogTemp, Warning, TEXT("This client does not have the required permissions to perform this action."));
 	}
+	
 }
 
