@@ -324,7 +324,7 @@
 	{
 		"Intensity_AO": 0.5,
 		"Radius_AO": 200,
-		"MaxRoughness": 0.60000002384185791,
+		"MaxRoughness": 1,
 		"RaytracingIntensity": 0.5,
 		"IsPostProcessEnabled": true,
 		"IsAOEnabled": true,
