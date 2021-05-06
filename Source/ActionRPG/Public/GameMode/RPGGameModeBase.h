@@ -6,6 +6,8 @@
 #include "Engine/DataAsset.h"
 #include "DataAssets/GameModes/MainMenuData.h"
 #include "DataAssets/GameModes/GameModeDataAsset.h"
+#include "Containers/UnrealString.h"
+#include "Math/UnrealMathUtility.h"
 #include "DataAssets/JSON/JsonManagerDataAsset.h"
 #include "GameFramework/GameModeBase.h"
 #include "RPGGameModeBase.generated.h"
@@ -19,6 +21,11 @@ class ACTIONRPG_API ARPGGameModeBase : public AGameModeBase
 public: 
 
 	ARPGGameModeBase();
+
+	UFUNCTION(BlueprintPure)
+	void SelectWaveTablefromSet(TSet<UDataTable*> WaveTableSet, int CurrentWave, UDataTable*& SelectedWaveTable, FName& RowName);
+
+
 
 public:
 	
