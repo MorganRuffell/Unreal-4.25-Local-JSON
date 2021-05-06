@@ -1,7 +1,7 @@
 {
 	"BaseItemData":
 	{
-		"InteractionRadius": 64,
+		"InteractionRadius": 256
 		"VolumeMultiplier": 1,
 		"PitchMultiplier": 1,
 		"SoundStartTime": 0.5,

@@ -4,6 +4,8 @@
 #include "JSONManager.h"
 #include "JSONDataAssetBase.h"
 
+#pragma optimize("",off)
+
 AJSONManager::AJSONManager()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -91,6 +93,7 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 			}
 
 			JsonOutput = GetStringFromJson(LocalJSONObject.ToSharedRef());
+			JsonInput = JsonOutput;
 
 			CurveTableProcessingToJson();
 			WaveProgressionDataToJSON();
@@ -220,3 +223,4 @@ void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileTy
 	
 }
 
+#pragma optimize("",on)

@@ -31,7 +31,7 @@ public:
 
 	virtual TSharedPtr<FJsonObject> ToJson() override { return nullptr; }
 
-	virtual bool FromJson(FJsonObject& jsonObject) override { return false; }
+	virtual bool FromJson(FJsonObject& jsonObject) override { return true; }
 
 };
 
