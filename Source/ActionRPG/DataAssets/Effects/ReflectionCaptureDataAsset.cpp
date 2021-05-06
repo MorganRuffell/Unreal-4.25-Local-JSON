@@ -14,8 +14,6 @@ UReflectionCaptureDataAsset::~UReflectionCaptureDataAsset()
 {
 
 
-
-
 }
 
 TSharedPtr<FJsonObject> UReflectionCaptureDataAsset::ToJson()
