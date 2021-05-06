@@ -329,5 +329,15 @@
 		"IsPostProcessEnabled": true,
 		"IsAOEnabled": true,
 		"CanIncludeTranslucents": true
+	},
+	"SmallReflectionCaptureData":
+	{
+		"InfluenceRadius": 1000,
+		"Brightness": 1
+	},
+	"LargeReflectionCaptureData":
+	{
+		"InfluenceRadius": 4500,
+		"Brightness": 1
 	}
 }

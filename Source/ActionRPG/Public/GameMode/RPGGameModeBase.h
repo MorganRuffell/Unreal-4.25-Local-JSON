@@ -7,6 +7,7 @@
 #include "DataAssets/GameModes/MainMenuData.h"
 #include "DataAssets/GameModes/GameModeDataAsset.h"
 #include "Containers/UnrealString.h"
+#include "Containers/Set.h"
 #include "Math/UnrealMathUtility.h"
 #include "DataAssets/JSON/JsonManagerDataAsset.h"
 #include "GameFramework/GameModeBase.h"
@@ -23,7 +24,7 @@ public:
 	ARPGGameModeBase();
 
 	UFUNCTION(BlueprintPure)
-	void SelectWaveTablefromSet(TSet<UDataTable*> WaveTableSet, int CurrentWave, UDataTable*& SelectedWaveTable, FName& RowName);
+	void SelectWaveTablefromSet(TSet<UDataTable*> WaveTableSet, int CurrentWave, TArray<UDataTable*>& SelectedWaveTable, FName& RowName);
 
 
 

@@ -10,7 +10,7 @@ ARPGGameModeBase::ARPGGameModeBase()
 	PlayerControllerClass = ARPGPlayerControllerBase::StaticClass();
 }
 
-void ARPGGameModeBase::SelectWaveTablefromSet(TSet<UDataTable*> WaveTableSet, int CurrentWave, UDataTable*& SelectedWaveTable, FName& RowName)
+void ARPGGameModeBase::SelectWaveTablefromSet(TSet<UDataTable*> WaveTableSet, int CurrentWave, TArray<UDataTable*>& SelectedWaveTable, FName& RowName)
 {
 	TArray<UDataTable*> DataTables = WaveTableSet.Array();
 	FString WaveIntro = "Wave_";
@@ -18,8 +18,4 @@ void ARPGGameModeBase::SelectWaveTablefromSet(TSet<UDataTable*> WaveTableSet, in
 
 	RowName = FName(*WaveIntro);
 	RowName = FName(WaveIndex.FromInt(CurrentWave));
-	
-	int WaveDataTableIndex = 0;
-
-	SelectedWaveTable = DataTables[WaveDataTableIndex];
 }
