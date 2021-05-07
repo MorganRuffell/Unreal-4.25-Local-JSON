@@ -18,7 +18,9 @@ public class ActionRPG : ModuleRules
 				"GameplayTasks",
 				"NavigationSystem",
 				"GameplayAbilities",
-				"GameplayTags"
+				"GameplayTags",
+				"JSON",
+				"JsonUtilities"
 			}
 		);
 

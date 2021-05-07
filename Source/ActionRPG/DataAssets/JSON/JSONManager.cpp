@@ -70,8 +70,9 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 				}
 			}
 
+			CreateJSONDataAssetCollection(ObjectsFromJSON);
 		}
- 
+
 		WaveProgressionDataFromJson();
 		CurveTableProcessingFromJson();
 	}
@@ -93,7 +94,7 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 
 			for (UJSONDataAssetBase* AssetBase : JsonDataAssets)
 			{
-				FString OutputString;	
+				FString OutputString;
 
 				TSharedPtr<FJsonObject> IndividualDataAsset = MakeShared<FJsonObject>();
 
@@ -105,7 +106,8 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 				OutputString = GetStringFromJson(IndividualDataAsset.ToSharedRef());
 				ObjectsToJSON.Add(AssetBase, OutputString);
 			}
-			
+
+
 			JsonOutput = GetStringFromJson(LocalJSONObject.ToSharedRef());
 			JsonInput = JsonOutput;
 
@@ -115,29 +117,72 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 	}
 }
 
+void AJSONManager::CreateJSONDataAssetCollection(TMap<UJSONDataAssetBase*, FString> Collection)
+{
+	if (CollectionControls.CanCreateJSONCollection == false) { return; }
+
+	for (UJSONDataAssetBase* AssetBase : JsonDataAssets)
+	{
+		FString OutputString;
+
+		TSharedPtr<FJsonObject> IndividualDataAsset = MakeShared<FJsonObject>();
+
+		TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+
+		FJsonSerializer::Serialize(IndividualDataAsset.ToSharedRef(), Writer);
+
+		IndividualDataAsset->SetObjectField(AssetBase->JSONKey, AssetBase->ToJson());
+		OutputString = GetStringFromJson(IndividualDataAsset.ToSharedRef());
+		Collection.Add(AssetBase, OutputString);
+	}
+}
+
 void AJSONManager::WaveProgressionDataToJSON()
 {
+
 	if (WaveProgressionString.IsEmpty() == true)
 	{
 		for (UDataTable* DataTable : WaveProgressionData)
 		{
 			WaveProgressionString.Append(DataTable->GetTableAsJSON());
 		}
-
 	}
+
 	else
 	{
-		WaveProgressionData.Reset();
+		WaveProgressionString.Empty();
 
 		for (UDataTable* DataTable : WaveProgressionData)
 		{
 			WaveProgressionString.Append(DataTable->GetTableAsJSON());
 		}
 	}
+
+	CreateWaveDataTableCollection(WaveProgressionToJSON);
+
+}
+
+void AJSONManager::CreateWaveDataTableCollection(TMap<UDataTable*, FString> Collection)
+{
+	if (!CollectionControls.CanCreateDataTableCollection) { return; }
+
+	for (UDataTable* DataTable : WaveProgressionData)
+	{
+		FString OutputString;
+
+		OutputString = DataTable->GetTableAsJSON(EDataTableExportFlags::UsePrettyPropertyNames);
+
+		Collection.Add(DataTable, OutputString);
+	}
 }
 
 void AJSONManager::CurveTableProcessingToJson()
 {
+	if (CollectionControls.CanCreateCurveCollection == true)
+	{
+		CreateAttributeTableCollection(CurvesToJSON);
+	}
+
 	if (CurveTableJsonOutput.IsEmpty() == true)
 	{
 		for (UCurveTable* CurveTable : CurveTables)
@@ -145,6 +190,7 @@ void AJSONManager::CurveTableProcessingToJson()
 			CurveTableJsonOutput.Append(CurveTable->GetTableAsJSON());
 		}
 	}
+
 	else
 	{
 		CurveTableJsonOutput.Reset();
@@ -154,11 +200,33 @@ void AJSONManager::CurveTableProcessingToJson()
 			CurveTableJsonOutput.Append(CurveTable->GetTableAsJSON());
 		}
 	}
+}
 
+void AJSONManager::CreateAttributeTableCollection(TMap<UCurveTable*, FString> Collection)
+{
+	if (CollectionControls.CanCreateCurveCollection == false) { return; }
+
+	for (UCurveTable* CurveTable : CurveTables)
+	{
+		FString OutputString;
+
+		OutputString = CurveTable->GetTableAsJSON();
+
+		Collection.Add(CurveTable, OutputString);
+	}
 }
 
 void AJSONManager::CurveTableProcessingFromJson()
 {
+	for (UCurveTable* CurveTable : CurveTables)
+	{
+		FString OutputString;
+
+		OutputString = CurveTable->GetTableAsJSON();
+
+		CurvesFromJSON.Add(CurveTable, OutputString);
+	}
+
 	if (CurveTableJsonOutput.IsEmpty() == false)
 	{
 		/*for (UCurveTable* CurveTable : CurveTables)
@@ -173,46 +241,80 @@ void AJSONManager::CurveTableProcessingFromJson()
 
 void AJSONManager::WaveProgressionDataFromJson()
 {
+	for (UDataTable* DataTable : WaveProgressionData)
+	{
+		FString OutputString;
 
+		OutputString = DataTable->GetTableAsJSON(EDataTableExportFlags::UsePrettyPropertyNames);
 
+		WaveProgressionFromJSON.Add(DataTable, OutputString);
+	}
 }
-
 
 void AJSONManager::CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType) const
 {
-	SaveJSONAssetsToLocalDirectory(ManagerDataAsset, FileType);
-	SaveCurvetablesToLocalDirectory(ManagerDataAsset, FileType);
-	SaveDataTablesToLocalDirectory(ManagerDataAsset, FileType);
+	if (CanSaveToLocalDirectory)
+	{
+		SaveJSONAssetsToLocalDirectory(ManagerDataAsset, FileType);
+		SaveCurvetablesToLocalDirectory(ManagerDataAsset, FileType);
+		SaveDataTablesToLocalDirectory(ManagerDataAsset, FileType);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Saving To local directory is disabled"));
+
+	}
 }
 
 void AJSONManager::SaveJSONAssetsToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const
 {
-	SaveToLocalDirectory(JsonOutput, FileTypes.JSON, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileTypes.XML, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileTypes.CSV, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(JsonOutput, FileTypes.TEXT, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	if (LocalFileControls.CanSaveJSONData)
+	{
+		SaveToLocalDirectory(JsonOutput, FileTypes.JSON, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(JsonOutput, FileTypes.XML, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(JsonOutput, FileTypes.CSV, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(JsonOutput, FileTypes.TEXT, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Saving JSON Data Locally is disabled, cannot save!"));
+	}
 }
 
 void AJSONManager::SaveCurvetablesToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const
 {
-	SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.TEXT, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.XML, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.CSV, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.JSON, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	if (LocalFileControls.CanSaveAttributeData)
+	{
+		SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.TEXT, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.XML, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.CSV, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(CurveTableJsonOutput, FileTypes.JSON, ManagerDataAsset->CurveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Saving Attribute JSON data locally is disabled, cannot save!"));
+	}
 }
 
 void AJSONManager::SaveDataTablesToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const
 {
-	SaveToLocalDirectory(WaveProgressionString, FileTypes.TEXT, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(WaveProgressionString, FileTypes.XML, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(WaveProgressionString, FileTypes.CSV, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-	SaveToLocalDirectory(WaveProgressionString, FileTypes.JSON, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-}
+	if (LocalFileControls.CanSaveWaveData)
+	{
+		SaveToLocalDirectory(WaveProgressionString, FileTypes.TEXT, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(WaveProgressionString, FileTypes.XML, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(WaveProgressionString, FileTypes.CSV, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(WaveProgressionString, FileTypes.JSON, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Saving wave data locally is disabled, cannot save!"));
 
+	}	
+}
 
 void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents, bool AllowOverwriting, FString FileDirectoryToLoadFrom) const
 {
-	if (HasAuthority())
+	if (HasAuthority() && CanSaveToLocalDirectory)
 	{
 		if (AllowOverwriting)
 		{
@@ -243,7 +345,6 @@ void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileTy
 	{
 		UE_LOG(LogTemp, Warning, TEXT("This client does not have the required permissions to perform this action."));
 	}
-	
 }
 
 #pragma optimize("",on)

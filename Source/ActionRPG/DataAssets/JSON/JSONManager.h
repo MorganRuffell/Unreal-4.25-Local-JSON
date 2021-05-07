@@ -19,26 +19,59 @@
 #include "Serialization/JsonWriter.h"
 #include "Serialization/JsonSerializer.h"
 #include <UnrealString.h>
+#include "JsonObjectConverter.h"
+
+
 
 #include "JSONManager.generated.h"
+USTRUCT(BlueprintType, Blueprintable)
+struct FCollectionControls
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON - Collections")
+	bool CanCreateJSONCollection = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON - Collections")
+	bool CanCreateCurveCollection = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON - Collections")
+	bool CanCreateDataTableCollection = true;
+
+};
+
+USTRUCT(BlueprintType, Blueprintable)
+struct FLocalFileControls
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON - Collections")
+	bool CanSaveJSONData = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON - Collections")
+	bool CanSaveAttributeData = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON - Collections")
+	bool CanSaveWaveData = true;
+
+};
 
 USTRUCT(Blueprintable, BlueprintType)
 struct FFileTypes
 {
 	GENERATED_BODY()
 
-		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
-		FString JSON = ".json";
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
+	FString JSON = ".json";
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
-		FString CSV = ".csv";
+	FString CSV = ".csv";
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
-		FString TEXT = ".txt";
+	FString TEXT = ".txt";
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "LocalFile")
-		FString XML = ".xml";
-
+	FString XML = ".xml";
 };
 
 UCLASS(Blueprintable, BlueprintType)
@@ -52,30 +85,45 @@ public:
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
-		UJsonManagerDataAsset* ManagerData;
+	UJsonManagerDataAsset* ManagerData;
 
-
+	
 public:
 
 	// Fields for the new section that will allow me to prase multiple JSON Objects
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Editor")
-		FString JsonInput;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON")
+	bool bFromJson;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control JSON")
-		bool bFromJson;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON")
+	bool bToJson;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control JSON")
-		bool bToJson;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON")
+	bool CanSaveToLocalDirectory = true;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "_Control JSON")
+	TArray<FString> FileContents;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON")
+	FCollectionControls CollectionControls;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON")
+	FLocalFileControls LocalFileControls;
+
+public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON")
-		TSet<UJSONDataAssetBase*> JsonDataAssets;
+	TSet<UJSONDataAssetBase*> JsonDataAssets;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON")
-		FString JsonOutput;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Output")
+	FString JsonOutput;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON")
-		TArray<FString> FileContents;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Input")
+	FString JsonInput;
+
+public:
+
 
 public:
 
@@ -119,11 +167,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Outputs")
 	TMap<UJSONDataAssetBase*, FString> ObjectsFromJSON;
 
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Inputs")
-	TMap<UDataTable*, FString> CurvesToJSON;
+	TMap<UCurveTable*, FString> CurvesToJSON;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Outputs")
-	TMap<UDataTable*, FString> CurvesFromJSON;
+	TMap<UCurveTable*, FString> CurvesFromJSON;
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Inputs")
 	TMap<UDataTable*, FString> WaveProgressionToJSON;
@@ -153,11 +203,21 @@ public:
 public:
 
 	UFUNCTION()
+	void CreateJSONDataAssetCollection(TMap<UJSONDataAssetBase*, FString> Collection);
+
+	UFUNCTION()
+	void CreateWaveDataTableCollection(TMap<UDataTable*, FString> Collection);
+
+	UFUNCTION()
+	void CreateAttributeTableCollection(TMap<UCurveTable*, FString> Collection);
+
+public:
+
+	UFUNCTION()
 	void WaveProgressionDataFromJson();
 
 
 public:
-
 
 	TSharedPtr<FJsonObject> GetJsonFromString(const FString& jsonString);
 
