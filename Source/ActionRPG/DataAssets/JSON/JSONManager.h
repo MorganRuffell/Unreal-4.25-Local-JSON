@@ -18,6 +18,7 @@
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonWriter.h"
 #include "Serialization/JsonSerializer.h"
+#include <UnrealString.h>
 
 #include "JSONManager.generated.h"
 
@@ -61,10 +62,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Editor")
 		FString JsonInput;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control JSON")
 		bool bFromJson;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Control JSON")
 		bool bToJson;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON")
@@ -148,6 +149,11 @@ public:
 
 	UFUNCTION()
 	void SaveDataTablesToLocalDirectory(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileTypes) const;
+
+public:
+
+	UFUNCTION()
+	void WaveProgressionDataFromJson();
 
 
 public:

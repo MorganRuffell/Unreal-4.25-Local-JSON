@@ -3,6 +3,7 @@
 #include "Templates/SharedPointer.h"
 #include "JSONManager.h"
 #include "JSONDataAssetBase.h"
+#include <UnrealString.h>
 
 #pragma optimize("",off)
 
@@ -13,8 +14,6 @@ AJSONManager::AJSONManager()
 
 void AJSONManager::BeginPlay()
 {
-	Super::BeginPlay();
-
 	if (HasAuthority())
 	{
 		CollectJSONData(ManagerData, _FileTypes);
@@ -72,7 +71,8 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 			}
 
 		}
-
+ 
+		WaveProgressionDataFromJson();
 		CurveTableProcessingFromJson();
 	}
 
@@ -89,9 +89,23 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 			for (UJSONDataAssetBase* AssetBase : JsonDataAssets)
 			{
 				LocalJSONObject->SetObjectField(AssetBase->JSONKey, AssetBase->ToJson());
-				ObjectsToJSON.Add(AssetBase);
 			}
 
+			for (UJSONDataAssetBase* AssetBase : JsonDataAssets)
+			{
+				FString OutputString;	
+
+				TSharedPtr<FJsonObject> IndividualDataAsset = MakeShared<FJsonObject>();
+
+				TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+
+				FJsonSerializer::Serialize(IndividualDataAsset.ToSharedRef(), Writer);
+
+				IndividualDataAsset->SetObjectField(AssetBase->JSONKey, AssetBase->ToJson());
+				OutputString = GetStringFromJson(IndividualDataAsset.ToSharedRef());
+				ObjectsToJSON.Add(AssetBase, OutputString);
+			}
+			
 			JsonOutput = GetStringFromJson(LocalJSONObject.ToSharedRef());
 			JsonInput = JsonOutput;
 
@@ -109,6 +123,7 @@ void AJSONManager::WaveProgressionDataToJSON()
 		{
 			WaveProgressionString.Append(DataTable->GetTableAsJSON());
 		}
+
 	}
 	else
 	{
@@ -156,6 +171,13 @@ void AJSONManager::CurveTableProcessingFromJson()
 	}
 }
 
+void AJSONManager::WaveProgressionDataFromJson()
+{
+
+
+}
+
+
 void AJSONManager::CollectJSONData(UJsonManagerDataAsset* ManagerDataAsset, FFileTypes FileType) const
 {
 	SaveJSONAssetsToLocalDirectory(ManagerDataAsset, FileType);
@@ -186,6 +208,7 @@ void AJSONManager::SaveDataTablesToLocalDirectory(UJsonManagerDataAsset* Manager
 	SaveToLocalDirectory(WaveProgressionString, FileTypes.CSV, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
 	SaveToLocalDirectory(WaveProgressionString, FileTypes.JSON, ManagerDataAsset->WaveJSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
 }
+
 
 void AJSONManager::SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents, bool AllowOverwriting, FString FileDirectoryToLoadFrom) const
 {

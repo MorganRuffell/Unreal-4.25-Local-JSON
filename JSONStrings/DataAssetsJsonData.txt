@@ -1,7 +1,7 @@
 {
 	"BaseItemData":
 	{
-		"InteractionRadius": 256
+		"InteractionRadius": 64,
 		"VolumeMultiplier": 1,
 		"PitchMultiplier": 1,
 		"SoundStartTime": 0.5,
@@ -324,7 +324,7 @@
 	{
 		"Intensity_AO": 0.5,
 		"Radius_AO": 200,
-		"MaxRoughness": 1,
+		"MaxRoughness": 0.60000002384185791,
 		"RaytracingIntensity": 0.5,
 		"IsPostProcessEnabled": true,
 		"IsAOEnabled": true,
