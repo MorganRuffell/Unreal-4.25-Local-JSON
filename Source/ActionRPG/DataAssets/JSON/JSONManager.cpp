@@ -14,7 +14,7 @@ AJSONManager::AJSONManager()
 
 void AJSONManager::BeginPlay()
 {
-	if (HasAuthority())
+	if (HasAuthority() && CanSaveToLocalDirectory)
 	{
 		CollectJSONData(ManagerData, _FileTypes);
 	}
@@ -137,6 +137,36 @@ void AJSONManager::CreateJSONDataAssetCollection(TMap<UJSONDataAssetBase*, FStri
 	}
 }
 
+
+void AJSONManager::CreateWaveDataTableCollection(TMap<UDataTable*, FString> Collection)
+{
+	if (!CollectionControls.CanCreateDataTableCollection) { return; }
+
+	for (UDataTable* DataTable : WaveProgressionData)
+	{
+		FString OutputString;
+
+		OutputString = DataTable->GetTableAsJSON(EDataTableExportFlags::UsePrettyPropertyNames);
+
+		Collection.Add(DataTable, OutputString);
+	}
+}
+
+
+void AJSONManager::CreateAttributeTableCollection(TMap<UCurveTable*, FString> Collection)
+{
+	if (CollectionControls.CanCreateCurveCollection == false) { return; }
+
+	for (UCurveTable* CurveTable : CurveTables)
+	{
+		FString OutputString;
+
+		OutputString = CurveTable->GetTableAsJSON();
+
+		Collection.Add(CurveTable, OutputString);
+	}
+}
+
 void AJSONManager::WaveProgressionDataToJSON()
 {
 
@@ -162,20 +192,6 @@ void AJSONManager::WaveProgressionDataToJSON()
 
 }
 
-void AJSONManager::CreateWaveDataTableCollection(TMap<UDataTable*, FString> Collection)
-{
-	if (!CollectionControls.CanCreateDataTableCollection) { return; }
-
-	for (UDataTable* DataTable : WaveProgressionData)
-	{
-		FString OutputString;
-
-		OutputString = DataTable->GetTableAsJSON(EDataTableExportFlags::UsePrettyPropertyNames);
-
-		Collection.Add(DataTable, OutputString);
-	}
-}
-
 void AJSONManager::CurveTableProcessingToJson()
 {
 	if (CollectionControls.CanCreateCurveCollection == true)
@@ -199,20 +215,6 @@ void AJSONManager::CurveTableProcessingToJson()
 		{
 			CurveTableJsonOutput.Append(CurveTable->GetTableAsJSON());
 		}
-	}
-}
-
-void AJSONManager::CreateAttributeTableCollection(TMap<UCurveTable*, FString> Collection)
-{
-	if (CollectionControls.CanCreateCurveCollection == false) { return; }
-
-	for (UCurveTable* CurveTable : CurveTables)
-	{
-		FString OutputString;
-
-		OutputString = CurveTable->GetTableAsJSON();
-
-		Collection.Add(CurveTable, OutputString);
 	}
 }
 
