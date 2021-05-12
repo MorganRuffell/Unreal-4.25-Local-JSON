@@ -19,7 +19,7 @@
 		"BossMass": 100,
 		"BossMaxAccleration": 200,
 		"BossMaxWalkSpeed": 300,
-		"BosMaxWalkSpeedCrouched": 200,
+		"BosMaxWalkSpeedCrouched": 0,
 		"NormalAnimationSpeed": 1,
 		"HalfAnimationSpeed": 0.5,
 		"QuarterAnimationSpeed": 0.25,
@@ -39,7 +39,7 @@
 		"WaveSpawnDelay": 4,
 		"GlobalTimeDilation": 0.25,
 		"BattleTime": 60,
-		"PlayTimerStartTime": 1,
+		"PlayTimerStartTime": 0,
 		"DefaultPlayerName": "Developer"
 	},
 	"GoblinLevel1":
@@ -203,8 +203,8 @@
 	},
 	"UICommands":
 	{
-		"UI_StatisticsCommand": "stat Unit",
-		"UI_StatisticsRHICommand": "stat RHI"
+		"UI_StatisticsCommand": "",
+		"UI_StatisticsRHICommand": ""
 	},
 	"UIDisplay":
 	{
@@ -322,9 +322,9 @@
 	},
 	"RaytracingData":
 	{
-		"Intensity_AO": 0.5,
+		"Intensity_AO": 0,
 		"Radius_AO": 200,
-		"MaxRoughness": 0.60000002384185791,
+		"MaxRoughness": 1,
 		"RaytracingIntensity": 0.5,
 		"IsPostProcessEnabled": true,
 		"IsAOEnabled": true,
