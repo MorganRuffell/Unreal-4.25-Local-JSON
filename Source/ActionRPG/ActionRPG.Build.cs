@@ -20,7 +20,9 @@ public class ActionRPG : ModuleRules
 				"GameplayAbilities",
 				"GameplayTags",
 				"JSON",
-				"JsonUtilities"
+				"JsonUtilities",
+				"Blutility",
+				"UMG"
 			}
 		);
 
@@ -35,7 +37,10 @@ public class ActionRPG : ModuleRules
 				"GameplayTags",
 				"GameplayTasks",
 				"JSON",
-				"JsonUtilities"
+				"JsonUtilities",
+				"Blutility",
+				"UMG"
+
 			}
 		);
 

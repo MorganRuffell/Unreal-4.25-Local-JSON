@@ -3,25 +3,30 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Containers/Map.h"
 #include "GameFramework/Actor.h"
+
+//
 #include "DataAssets/JSON/JsonManagerDataAsset.h"
 #include "DataAssets/JSON/JSONDataAssetBase.h"
+
+//Different Data storage systems
 #include "Engine/CurveTable.h"
 #include "Engine/DataTable.h"
+
+//File path controllers
 #include "Misc/Paths.h"
 #include "LocalFileOperations/UTextFileManager.h"
 
-
+#include "Containers/Map.h"
 
 //IWYU - Include what you use, JSON classes
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonWriter.h"
 #include "Serialization/JsonSerializer.h"
+
+
 #include <UnrealString.h>
 #include "JsonObjectConverter.h"
-
-
 
 #include "JSONManager.generated.h"
 USTRUCT(BlueprintType, Blueprintable)
@@ -122,8 +127,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Input")
 	FString JsonInput;
 
-public:
-
 
 public:
 
@@ -139,7 +142,7 @@ public:
 		FString CurveFileName = "CurvetablesJSONData";
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Curve Tables")
-		TSet<UCurveTable*> CurveTables;
+	TSet<UCurveTable*> CurveTables;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Curve Tables")
 		FString CurveTableJsonOutput;
