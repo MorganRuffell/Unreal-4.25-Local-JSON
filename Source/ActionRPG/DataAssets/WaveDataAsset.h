@@ -14,15 +14,6 @@
  */
 class ARPGCharacterBase;
 
-UENUM(BlueprintType)
-enum class EWaveDifficult : uint8
-{
-	WD_Easy		UMETA(DisplayName = "Easy"),
-	WD_Normal	UMETA(DisplayName = "Normal"),
-	WD_Hard		UMETA(DisplayName = "Hard")
-};
-
-
 USTRUCT(BlueprintType)
 struct FSpawnGroup
 {

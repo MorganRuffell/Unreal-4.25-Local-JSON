@@ -59,6 +59,9 @@ struct FLocalFileControls
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON - Collections")
 	bool CanSaveWaveData = true;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON - Collections")
+	bool CanSaveJSONDifficultyData = true;
+
 };
 
 USTRUCT(Blueprintable, BlueprintType)
@@ -130,7 +133,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Output")
 	FString JsonOutput;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Output")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Output - Difficulty")
 	FString JsonDifficultyOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Input")

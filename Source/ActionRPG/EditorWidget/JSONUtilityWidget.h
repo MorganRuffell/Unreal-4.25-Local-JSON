@@ -21,7 +21,6 @@ public:
 	UJSONUtilityWidget();
 	~UJSONUtilityWidget();
 
-
 public:
 	
 	//Now do what you wanna do... 
@@ -39,7 +38,6 @@ public:
 	UFUNCTION()
 	void SaveToLocalDirectory(FString JSONOutputString, FString FileType, FString FileName, TArray<FString> _FileContents, bool AllowOverwriting, FString FileDirectoryToLoadFrom) const;
 	
-
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
@@ -64,7 +62,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON")
 	bool CanSaveToLocalDirectory;
-
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Output")

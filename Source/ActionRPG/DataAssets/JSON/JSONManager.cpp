@@ -302,10 +302,13 @@ void AJSONManager::SaveJSONAssetsToLocalDirectory(UJsonManagerDataAsset* Manager
 		SaveToLocalDirectory(JsonOutput, FileTypes.CSV, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
 		SaveToLocalDirectory(JsonOutput, FileTypes.TEXT, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
 
-		SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.JSON, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-		SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.XML, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-		SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.CSV, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
-		SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.TEXT, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		if (LocalFileControls.CanSaveJSONDifficultyData)
+		{
+			SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.JSON, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+			SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.XML, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+			SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.CSV, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+			SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.TEXT, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		}
 	}
 	else
 	{

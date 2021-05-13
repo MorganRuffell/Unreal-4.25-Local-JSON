@@ -40,7 +40,6 @@ public class ActionRPG : ModuleRules
 				"JsonUtilities",
 				"Blutility",
 				"UMG"
-
 			}
 		);
 

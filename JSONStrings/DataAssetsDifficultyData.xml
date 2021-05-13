@@ -1,0 +1,138 @@
+
+{
+	"VeryEasyDifficultyData":
+	{
+		"WaveData": [
+			{
+				"WaveTime": 90,
+				"EnemiesGroups": [
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'"
+						]
+					},
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'"
+						]
+					},
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'"
+						]
+					}
+				]
+			}
+		]
+	},
+	"EasyDifficultyData":
+	{
+		"WaveData": [
+			{
+				"WaveTime": 120,
+				"EnemiesGroups": [
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'"
+						]
+					},
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_02.NPC_Goblin_Level_02_C'"
+						]
+					}
+				]
+			}
+		]
+	},
+	"MediumDifficultyData":
+	{
+		"WaveData": [
+			{
+				"WaveTime": 120,
+				"EnemiesGroups": [
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_02.NPC_Goblin_Level_02_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'"
+						]
+					},
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_02.NPC_Goblin_Level_02_C'"
+						]
+					}
+				]
+			}
+		]
+	},
+	"HardDifficultyData":
+	{
+		"WaveData": [
+			{
+				"WaveTime": 160,
+				"EnemiesGroups": [
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_02.NPC_Goblin_Level_02_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_02.NPC_Goblin_Level_02_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_02.NPC_Goblin_Level_02_C'"
+						]
+					},
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_03.NPC_Goblin_Level_03_C'"
+						]
+					}
+				]
+			}
+		]
+	},
+	"VeryHardDifficultyData":
+	{
+		"WaveData": [
+			{
+				"WaveTime": 100,
+				"EnemiesGroups": [
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_03.NPC_Goblin_Level_03_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_01.NPC_Goblin_Level_01_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_02.NPC_Goblin_Level_02_C'"
+						]
+					}
+				]
+			}
+		]
+	},
+	"ImpossibleDifficultyData":
+	{
+		"WaveData": [
+			{
+				"WaveTime": 0,
+				"EnemiesGroups": [
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_03.NPC_Goblin_Level_03_C'",
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_03.NPC_Goblin_Level_03_C'"
+						]
+					},
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/Boss/NPC_SpiderBoss.NPC_SpiderBoss_C'"
+						]
+					},
+					{
+						"enemies": [
+							"BlueprintGeneratedClass'/Game/Blueprints/NPC/NPC_Goblin_Level_02.NPC_Goblin_Level_02_C'"
+						]
+					}
+				]
+			}
+		]
+	}
+}
