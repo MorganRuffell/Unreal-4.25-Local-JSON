@@ -84,13 +84,21 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 
 		ObjectsToJSON.Empty();
 
-		if (JsonDataAssets.Num() > 0)
+		if (JsonDataAssets.Num() > 0 && DifficultyJsonDataAssets.Num())
 		{
 			TSharedPtr<FJsonObject> LocalJSONObject = MakeShared<FJsonObject>();
+			TSharedPtr<FJsonObject> DifficultyJSONObject = MakeShared<FJsonObject>();
+
 
 			for (UJSONDataAssetBase* AssetBase : JsonDataAssets)
 			{
 				LocalJSONObject->SetObjectField(AssetBase->JSONKey, AssetBase->ToJson());
+			}
+
+			for (UJSONDataAssetBase* DifficultyData : DifficultyJsonDataAssets)
+			{
+				LocalJSONObject->SetObjectField(DifficultyData->JSONKey, DifficultyData->ToJson());
+				DifficultyJSONObject->SetObjectField(DifficultyData->JSONKey, DifficultyData->ToJson());
 			}
 
 			for (UJSONDataAssetBase* AssetBase : JsonDataAssets)
@@ -108,9 +116,25 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 				ObjectsToJSON.Add(AssetBase, OutputString);
 			}
 
+			for (UJSONDataAssetBase* AssetBase : DifficultyJsonDataAssets)
+			{
+				FString OutputString;
+
+				TSharedPtr<FJsonObject> IndividualDataAsset = MakeShared<FJsonObject>();
+
+				TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutputString);
+
+				FJsonSerializer::Serialize(IndividualDataAsset.ToSharedRef(), Writer);
+
+				IndividualDataAsset->SetObjectField(AssetBase->JSONKey, AssetBase->ToJson());
+				OutputString = GetStringFromJson(IndividualDataAsset.ToSharedRef());
+				ObjectsToJSON.Add(AssetBase, OutputString);
+			}
 
 			JsonOutput = GetStringFromJson(LocalJSONObject.ToSharedRef());
 			JsonInput = JsonOutput;
+
+			JsonDifficultyOutput = GetStringFromJson(DifficultyJSONObject.ToSharedRef());
 
 			CurveTableProcessingToJson();
 			WaveProgressionDataToJSON();
@@ -277,6 +301,11 @@ void AJSONManager::SaveJSONAssetsToLocalDirectory(UJsonManagerDataAsset* Manager
 		SaveToLocalDirectory(JsonOutput, FileTypes.XML, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
 		SaveToLocalDirectory(JsonOutput, FileTypes.CSV, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
 		SaveToLocalDirectory(JsonOutput, FileTypes.TEXT, ManagerDataAsset->JSONFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+
+		SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.JSON, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.XML, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.CSV, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
+		SaveToLocalDirectory(JsonDifficultyOutput, FileTypes.TEXT, ManagerDataAsset->JSONDifficultyFileName, FileContents, ManagerDataAsset->AllowOverwriting, ManagerDataAsset->_directory);
 	}
 	else
 	{

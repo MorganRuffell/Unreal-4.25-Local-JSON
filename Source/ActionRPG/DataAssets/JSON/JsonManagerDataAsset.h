@@ -24,6 +24,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
 	FString JSONFileName = "DataAssetsJsonData";
 
+	//The file name of the JSON String made by the JSON Data Assets
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
+	FString JSONDifficultyFileName = "DataAssetsDifficultyData";
+
 	//The file name of the JSON String made by the Curve Tables of character data
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
 	FString CurveJSONFileName = "DataAssetsCurveJsonData";
@@ -31,7 +35,6 @@ public:
 	//The file name of the JSON String made by the Curve Tables of character data
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
 	FString WaveJSONFileName = "WaveProgressionJSONData";
-
 
 	//The directory (Local to the project) where these files are stored.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FileName")
@@ -43,6 +46,14 @@ public:
 
 public:
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSONDifficultySystem")
+	bool UseJSONDifficultySystem;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSONDifficultySystem")
+	int JSONDifficultyIndex;
+
+
+public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "WaveDataTables")
 	TSet<UDataTable*> LocalWaveProgressionData;

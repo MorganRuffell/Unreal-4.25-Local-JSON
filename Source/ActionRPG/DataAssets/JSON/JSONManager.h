@@ -106,6 +106,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON")
 	bool CanSaveToLocalDirectory = true;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "_Control JSON")
+	bool UseDifficultyDataAssets;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "_Control JSON")
 	TArray<FString> FileContents;
@@ -121,8 +123,15 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON")
 	TSet<UJSONDataAssetBase*> JsonDataAssets;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON - Difficulty")
+	TSet<UJSONDataAssetBase*> DifficultyJsonDataAssets;
+
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Output")
 	FString JsonOutput;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Output")
+	FString JsonDifficultyOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Input")
 	FString JsonInput;
@@ -131,10 +140,10 @@ public:
 public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
-		FFileTypes _FileTypes;
+	FFileTypes _FileTypes;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Local File")
-		FString JSONFileName = "DataAssetsJSONData";
+	FString JSONFileName = "DataAssetsJSONData";
 
 public:
 

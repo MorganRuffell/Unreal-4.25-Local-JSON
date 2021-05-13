@@ -5,6 +5,7 @@
 #include "ActionRPG.h"
 #include "Engine/DataAsset.h"
 #include "DataAssets/GameModes/MainMenuData.h"
+#include "DataAssets/WaveDataAsset.h"
 #include "DataAssets/GameModes/GameModeDataAsset.h"
 #include "Containers/UnrealString.h"
 #include "Containers/Set.h"
@@ -26,6 +27,8 @@ public:
 	UFUNCTION(BlueprintPure)
 	void SelectWaveTablefromSet(TSet<UDataTable*> WaveTableSet, int CurrentWave, TArray<UDataTable*>& SelectedWaveTable, FName& RowName);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
+	TSet<UWaveDataAsset*> WaveDifficultyData; 
 
 
 public:
