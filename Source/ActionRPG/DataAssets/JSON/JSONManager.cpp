@@ -9,6 +9,7 @@
 
 AJSONManager::AJSONManager()
 {
+
 	PrimaryActorTick.bCanEverTick = true;
 }
 
