@@ -102,6 +102,19 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
 	bool CanUseInventory = true;
 
+	//Serialize these
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
+	bool CanUseHUD = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
+	bool ForcePCUI = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
+	bool ForceMobileUI = false;
+
+	//
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
 	bool CanUseTeleportPhysics = false;
 

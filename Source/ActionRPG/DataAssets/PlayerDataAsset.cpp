@@ -33,6 +33,9 @@ TSharedPtr<FJsonObject> UPlayerDataAsset::ToJson()
 
 		jsonObject->SetBoolField("CanUseAnyAttack", bCanUseAnyAttack);
 		jsonObject->SetBoolField("RemoteActivation", CanRemoteActivate);
+		jsonObject->SetBoolField("CanUseHUD", CanUseHUD);
+		jsonObject->SetBoolField("ForcePCUI", ForcePCUI);
+		jsonObject->SetBoolField("ForceMobileUI", ForceMobileUI);
 	}
 
 	return jsonObject;
@@ -53,6 +56,10 @@ bool UPlayerDataAsset::FromJson(FJsonObject& jsonObject)
 
 	bCanUseAnyAttack = jsonObject.GetBoolField("CanUseAnyAttack");
 	CanRemoteActivate = jsonObject.GetBoolField("RemoteActivation");
+	CanUseHUD = jsonObject.GetBoolField("CanUseHUD");
+	ForcePCUI = jsonObject.GetBoolField("ForcePCUI");
+	ForceMobileUI = jsonObject.GetBoolField("ForceMobileUI");
+
 
 	return true;
 }
