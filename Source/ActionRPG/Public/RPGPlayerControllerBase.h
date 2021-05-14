@@ -60,6 +60,12 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = Inventory)
 		FOnSlottedItemChanged OnSlottedItemChanged;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Soft class references")
+	TArray<TSoftClassPtr<UUserWidget>> WidgetBluepints;
+
+
+public:
+
 	/** Called after the inventory was changed and we notified all delegates */
 	UFUNCTION(BlueprintImplementableEvent, Category = Inventory)
 		void InventoryItemChanged(bool bAdded, const FString& ItemKey, ERPGItemType ItemType);

@@ -3,21 +3,23 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "DataAssets/Effects/ExponentialHeightDataAsset.h"
 #include "GameFramework/Actor.h"
-#include "ARPGHeightFog.generated.h"
+#include "DataAssets/NPCSpawnBoxDataAsset.h"
+#include "ARPGSpawnBox.generated.h"
 
 UCLASS()
-class ACTIONRPG_API AARPGHeightFog : public AActor
+class ACTIONRPG_API AARPGSpawnBox : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AARPGHeightFog();
+	AARPGSpawnBox();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data Assets")
-	TSoftObjectPtr<UExponentialHeightDataAsset> SoftHeightFogData;
+	TArray<TSoftObjectPtr<UNPCSpawnBoxDataAsset>> SoftSpawnBoxDataArray;
+
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,4 +28,5 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
 };

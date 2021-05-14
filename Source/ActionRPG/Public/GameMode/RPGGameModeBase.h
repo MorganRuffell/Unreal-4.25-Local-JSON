@@ -9,6 +9,7 @@
 #include "DataAssets/GameModes/GameModeDataAsset.h"
 #include "Containers/UnrealString.h"
 #include "Containers/Set.h"
+#include "Components/WidgetComponent.h"
 #include "Math/UnrealMathUtility.h"
 #include "DataAssets/JSON/JsonManagerDataAsset.h"
 #include "GameFramework/GameModeBase.h"
@@ -28,7 +29,10 @@ public:
 	void SelectWaveTablefromSet(TSet<UDataTable*> WaveTableSet, int CurrentWave, TArray<UDataTable*>& SelectedWaveTable, FName& RowName);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
-	TSet<UWaveDataAsset*> WaveDifficultyData; 
+	TSet<TSoftObjectPtr<UWaveDataAsset>> SoftWaveDifficultyData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
+	TSoftClassPtr<UUserWidget> WaveEndClass;
 
 
 public:

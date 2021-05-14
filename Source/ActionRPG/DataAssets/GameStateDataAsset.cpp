@@ -15,6 +15,7 @@ UGameStateDataAsset::~UGameStateDataAsset()
 
 TSharedPtr<FJsonObject> UGameStateDataAsset::ToJson()
 {
+
 	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
 
 	if (JsonObject != nullptr)

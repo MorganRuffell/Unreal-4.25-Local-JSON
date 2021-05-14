@@ -7,6 +7,7 @@
 #include "GameFramework/Character.h"
 #include "UObject/ScriptInterface.h"
 #include "RPGInventoryInterface.h"
+
 #include "AbilitySystemInterface.h"
 #include "Abilities/RPGAbilitySystemComponent.h"
 #include "Abilities/RPGAttributeSet.h"
@@ -35,7 +36,6 @@ public:
 
 	//Input component
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;	
-
 
 	// Implement IAbilitySystemInterface
 	UAbilitySystemComponent* GetAbilitySystemComponent() const override;
@@ -97,6 +97,9 @@ public:
 	bool GetCooldownRemainingForTag(FGameplayTagContainer CooldownTags, float& TimeRemaining, float& CooldownDuration);
 
 protected:
+
+	
+
 	/** The level of this character, should not be modified directly once it has already spawned */
 	UPROPERTY(EditAnywhere, Replicated, Category = Abilities)
 	int32 CharacterLevel;
@@ -133,6 +136,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Inventory)
 	TMap<FRPGItemSlot, FGameplayAbilitySpecHandle> SlottedAbilities;
 
+	
 	/** Delegate handles */
 	FDelegateHandle InventoryUpdateHandle;
 	FDelegateHandle InventoryLoadedHandle;
