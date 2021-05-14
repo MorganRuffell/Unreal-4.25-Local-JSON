@@ -4,6 +4,8 @@
 
 #include "ActionRPG.h"
 #include "Engine/DataAsset.h"
+#include "Engine/StreamableManager.h"
+#include "Templates/Casts.h"
 #include "DataAssets/GameModes/MainMenuData.h"
 #include "DataAssets/WaveDataAsset.h"
 #include "DataAssets/GameModes/GameModeDataAsset.h"
@@ -29,10 +31,14 @@ public:
 	void SelectWaveTablefromSet(TSet<UDataTable*> WaveTableSet, int CurrentWave, TArray<UDataTable*>& SelectedWaveTable, FName& RowName);
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
-	TSet<TSoftObjectPtr<UWaveDataAsset>> SoftWaveDifficultyData;
+	TArray<TSoftObjectPtr<UWaveDataAsset>> SoftWaveDifficultyData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
 	TSoftClassPtr<UUserWidget> WaveEndClass;
+
+		
+	UFUNCTION(BlueprintCallable)
+	void GetWaveFromObject(UJsonManagerDataAsset* JSONManagerData, FWaveData& DaWayve);
 
 
 public:

@@ -11,6 +11,8 @@
 #include "Items/RPGTokenItem.h"
 #include "Items/RPGWeaponItem.h"
 
+#include "DataAssets/GameModes/GameInstanceDataAsset.h"
+
 #include "Engine/GameInstance.h"
 #include "RPGGameInstanceBase.generated.h"
 
@@ -26,9 +28,20 @@ UCLASS()
 class ACTIONRPG_API URPGGameInstanceBase : public UGameInstance
 {
 	GENERATED_BODY()
+
+
 public:
 	// Constructor
 	URPGGameInstanceBase();		
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data Assets")
+	UGameInstanceDataAsset* GameInstanceData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data Assets")
+	TSoftObjectPtr<UGameInstanceDataAsset> SoftGameInstanceData;
+
+
+public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Inventory)
 	TMap<FString, FRPGPotionItemStruct> Potions;
