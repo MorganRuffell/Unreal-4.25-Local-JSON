@@ -38,12 +38,12 @@ public:
 
 		
 	UFUNCTION(BlueprintCallable)
-	void GetWaveFromObject(UJsonManagerDataAsset* JSONManagerData, FWaveData& DaWayve);
+	void GetWaveFromObject(UJsonManagerDataAsset* JSONManagerData, FWaveData& NewWave);
 
 
 public:
 	
-	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Game Mode External Data")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Mode External Data")
 	UGameModeDataAsset* GameModeData;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Mode External Data")

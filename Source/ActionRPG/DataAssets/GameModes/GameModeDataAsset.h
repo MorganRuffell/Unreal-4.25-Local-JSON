@@ -35,6 +35,10 @@ public:
 	bool AutoBattleMode;	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
+	bool UseJSONDifficultySystemExperimentalMode = false;
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")
 	float WaveSpawnDelay;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Attributes")

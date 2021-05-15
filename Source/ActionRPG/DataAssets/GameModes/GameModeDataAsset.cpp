@@ -24,6 +24,8 @@ TSharedPtr<FJsonObject> UGameModeDataAsset::ToJson()
 
 	
 	jsonObject->SetBoolField("AutoBattleMode", AutoBattleMode);
+	jsonObject->SetBoolField("UseJSONDifficultySystemExperimentalMode", UseJSONDifficultySystemExperimentalMode);
+
 	jsonObject->SetNumberField("EnemySpawnDelay", EnemySpawnDelay);
 	jsonObject->SetNumberField("WaveSpawnDelay", WaveSpawnDelay);
 	jsonObject->SetNumberField("GlobalTimeDilation", GlobalTimeDilation);
@@ -40,6 +42,8 @@ bool UGameModeDataAsset::FromJson(FJsonObject& jsonObject)
 	// You can use try get fields to limit data issues
 
 	AutoBattleMode = jsonObject.GetBoolField("AutoBattleMode");
+	UseJSONDifficultySystemExperimentalMode = jsonObject.GetBoolField("UseJSONDifficultySystemExperimentalMode");
+
 	EnemySpawnDelay = jsonObject.GetNumberField("EnemySpawnDelay");
 	WaveSpawnDelay = jsonObject.GetNumberField("WaveSpawnDelay");
 	GlobalTimeDilation = jsonObject.GetNumberField("GlobalTimeDilation");
