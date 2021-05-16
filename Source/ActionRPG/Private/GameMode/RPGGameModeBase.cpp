@@ -42,4 +42,3 @@ void ARPGGameModeBase::GetWaveFromObject(UJsonManagerDataAsset* JSONManagerData,
 		}
 	}
 }
-
