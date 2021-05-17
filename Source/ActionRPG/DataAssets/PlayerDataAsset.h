@@ -102,8 +102,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
 	bool CanUseInventory = true;
 
-	//Serialize these
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
 	bool CanUseHUD = true;
 
@@ -112,16 +110,13 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
 	bool ForceMobileUI = false;
-
-	//
+	
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerController")
 	bool CanUseTeleportPhysics = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, CateGory = "PlayerController")
 	float CloseInventoryDelay = 0.75f;
-
-
 
 public:
 	
