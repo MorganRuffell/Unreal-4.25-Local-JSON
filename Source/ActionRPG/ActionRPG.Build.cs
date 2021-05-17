@@ -22,7 +22,8 @@ public class ActionRPG : ModuleRules
 				"JSON",
 				"JsonUtilities",
 				"Blutility",
-				"UMG"
+				"UMG",
+				"LevelSequence"
 			}
 		);
 
@@ -39,7 +40,9 @@ public class ActionRPG : ModuleRules
 				"JSON",
 				"JsonUtilities",
 				"Blutility",
-				"UMG"
+				"UMG",
+				"LevelSequence"
+
 			}
 		);
 

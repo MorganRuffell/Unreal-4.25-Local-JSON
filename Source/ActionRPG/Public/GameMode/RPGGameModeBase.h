@@ -3,6 +3,7 @@
 #pragma once
 
 #include "ActionRPG.h"
+#include "LevelSequenceActor.h"
 #include "Engine/DataAsset.h"
 #include "Engine/StreamableManager.h"
 #include "Templates/Casts.h"
@@ -34,7 +35,13 @@ public:
 	TArray<TSoftObjectPtr<UWaveDataAsset>> SoftWaveDifficultyData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
-	TSoftClassPtr<UUserWidget> WaveEndClass;
+	TArray<TSoftClassPtr<UUserWidget>> WaveStartEndClasses;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
+	TSoftClassPtr<ALevelSequenceActor> SoftLevelSequenceReference;
+
+
+public:	
 
 		
 	UFUNCTION(BlueprintCallable)
