@@ -130,14 +130,11 @@ public:
 	TSet<UJSONDataAssetBase*> DifficultyJsonDataAssets;
 
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Output")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "JSON Output")
 	FString JsonOutput;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Output - Difficulty")
 	FString JsonDifficultyOutput;
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "JSON Input")
-	FString JsonInput;
 
 
 public:

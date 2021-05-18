@@ -37,6 +37,16 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Artifical Intelligence")
 	int BehaviorTreeIndex = 0;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Artifical Intelligence")
+	bool UseRandomBehaviorTree = false;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Artifical Intelligence")
+	int BehaviorTreeIndexUpper = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Artifical Intelligence")
+	int BehaviorTreeIndexLower = 0;
+
+
 public:
 
 	virtual TSharedPtr<FJsonObject> ToJson() override;

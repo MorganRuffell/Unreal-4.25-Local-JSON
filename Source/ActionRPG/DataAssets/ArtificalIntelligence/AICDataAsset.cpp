@@ -13,10 +13,24 @@ UAICDataAsset::~UAICDataAsset()
 
 TSharedPtr<FJsonObject> UAICDataAsset::ToJson()
 {
-	return TSharedPtr<FJsonObject>();
+	TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
+
+	jsonObject->SetNumberField("BehaviorTreeIndex", BehaviorTreeIndex);
+	jsonObject->SetNumberField("BehaviorTreeIndexLower", BehaviorTreeIndexLower);
+	jsonObject->SetNumberField("BehaviorTreeIndexUpper", BehaviorTreeIndexUpper);
+
+	jsonObject->SetBoolField("UseRandomBehaviorTree", UseRandomBehaviorTree);
+
+	return jsonObject;
 }
 
 bool UAICDataAsset::FromJson(FJsonObject& jsonObject)
 {
-	return false;
+	BehaviorTreeIndex = jsonObject.GetIntegerField("BehaviorTreeIndex");
+	BehaviorTreeIndexUpper = jsonObject.GetIntegerField("BehaviorTreeIndexUpper");
+	BehaviorTreeIndexLower = jsonObject.GetIntegerField("BehaviorTreeIndexLower");
+
+	UseRandomBehaviorTree = jsonObject.GetBoolField("UseRandomBehaviorTree");
+
+	return true;
 }

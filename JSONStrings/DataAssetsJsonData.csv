@@ -131,8 +131,20 @@
 		"minSurrounders": 2,
 		"CanUseTeleportPhysics": false
 	},
-	"AIC_Boss": null,
-	"AIC_NPC": null,
+	"AIC_Boss":
+	{
+		"BehaviorTreeIndex": 0,
+		"BehaviorTreeIndexLower": 0,
+		"BehaviorTreeIndexUpper": 0,
+		"UseRandomBehaviorTree": false
+	},
+	"AIC_NPC":
+	{
+		"BehaviorTreeIndex": 0,
+		"BehaviorTreeIndexLower": 0,
+		"BehaviorTreeIndexUpper": 0,
+		"UseRandomBehaviorTree": false
+	},
 	"Level2":
 	{
 		"SceneIndex": 0

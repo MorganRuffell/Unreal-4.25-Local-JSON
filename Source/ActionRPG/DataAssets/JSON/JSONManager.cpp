@@ -57,7 +57,7 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 	{
 		bFromJson = false;
 
-		TSharedPtr<FJsonObject> LocalJSONObject = GetJsonFromString(JsonInput);
+		TSharedPtr<FJsonObject> LocalJSONObject = GetJsonFromString(JsonOutput);
 
 		for (TPair<FString, TSharedPtr<FJsonValue>> pair : LocalJSONObject->Values)
 		{
@@ -131,7 +131,6 @@ void AJSONManager::PostEditChangeProperty(FPropertyChangedEvent& PropertyChanged
 			}
 
 			JsonOutput = GetStringFromJson(LocalJSONObject.ToSharedRef());
-			JsonInput = JsonOutput;
 
 			JsonDifficultyOutput = GetStringFromJson(DifficultyJSONObject.ToSharedRef());
 
