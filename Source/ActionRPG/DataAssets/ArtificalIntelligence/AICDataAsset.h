@@ -26,13 +26,16 @@ public:
 	~UAICDataAsset();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Artifical Intelligence")
-	class UBehaviorTree* Behaviour_tree;
+	TSet<UBehaviorTree*> Behaviour_tree;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Artifical Intelligence")
 	class UBlackboardData* BlackboardData;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Artifical Intelligence")
 	class UBlackboardComponent* blackboardComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Artifical Intelligence")
+	int BehaviorTreeIndex = 0;
 
 public:
 
@@ -41,3 +44,4 @@ public:
 	virtual bool FromJson(FJsonObject& jsonObject) override;
 
 };
+ 

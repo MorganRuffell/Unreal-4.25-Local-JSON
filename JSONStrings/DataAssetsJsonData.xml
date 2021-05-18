@@ -36,6 +36,7 @@
 	"GameMode":
 	{
 		"AutoBattleMode": false,
+		"UseJSONDifficultySystemExperimentalMode": false,
 		"EnemySpawnDelay": 3,
 		"WaveSpawnDelay": 4,
 		"GlobalTimeDilation": 0.25,
@@ -343,6 +344,30 @@
 	{
 		"InfluenceRadius": 4500,
 		"Brightness": 1
+	},
+	"AmbientFireData":
+	{
+		"PitchModulationMin": 0,
+		"PitchModulationMax": 0,
+		"VolumeModulationMin": 0,
+		"VolumeModulationMax": 0,
+		"VolumeMultiplier": 0,
+		"Priority": 0,
+		"bIsMusic": 1,
+		"bAlwaysPlay": 1,
+		"bIgnoreForFlushing": 1
+	},
+	"AmbientWindData":
+	{
+		"PitchModulationMin": 0,
+		"PitchModulationMax": 0,
+		"VolumeModulationMin": 0,
+		"VolumeModulationMax": 0,
+		"VolumeMultiplier": 0,
+		"Priority": 0,
+		"bIsMusic": 1,
+		"bAlwaysPlay": 1,
+		"bIgnoreForFlushing": 1
 	},
 	"VeryEasyDifficultyData":
 	{

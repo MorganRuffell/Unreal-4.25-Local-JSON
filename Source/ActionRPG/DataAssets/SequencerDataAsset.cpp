@@ -7,3 +7,15 @@ USequencerDataAsset::USequencerDataAsset()
 {
 
 }
+
+TSharedPtr<FJsonObject> USequencerDataAsset::ToJson()
+{
+    TSharedPtr<FJsonObject> jsonObject = MakeShared<FJsonObject>();
+
+    return jsonObject;
+}
+
+bool USequencerDataAsset::FromJson(FJsonObject& jsonObject)
+{
+    return true;
+}
