@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/SoftObjectPtr.h"
+#include "Math/UnrealMathUtility.h"
 #include "GameFramework/Actor.h"
 #include "Engine/StreamableManager.h"
 #include "DataAssets/SoulDataAsset.h"
@@ -17,8 +18,24 @@ class ACTIONRPG_API AARPGSoul : public AActor
 public:
 	AARPGSoul();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorPosition")
+	FVector InitalActorLocation;
+	
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data Assets")
 	TSoftObjectPtr<USoulDataAsset> SoulSoftDataAsset;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collider")
+	class USphereComponent* SoulCollider;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collider")
+	bool CanSimulatePhysics = false;
+	
+
+	float Min = 0.0f;
+	float Max = 0.0f;
+	float Final = 0.0f;
+
 
 
 protected:
@@ -26,6 +43,13 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+
+	UFUNCTION()
+	void PostDelay();
+
+	void ResolveSoftObject();
+
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

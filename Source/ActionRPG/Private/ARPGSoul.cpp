@@ -11,14 +11,44 @@ AARPGSoul::AARPGSoul()
 
 }
 
-
 // Called when the game starts or when spawned
 void AARPGSoul::BeginPlay()
 {
 	Super::BeginPlay();
 
+	ResolveSoftObject();
 }
 
+void AARPGSoul::ResolveSoftObject()
+{
+	FTimerHandle TimerHandle;
+	FStreamableManager UnloadingManager;
+	FSoftObjectPath SoulDataPath = SoulSoftDataAsset.ToSoftObjectPath();
+
+	TSharedPtr<FStreamableHandle> Handle;
+
+
+	UnloadingManager.RequestAsyncLoad(SoulDataPath, [=]() {
+
+		UObject* ResolvedSoulData = SoulDataPath.ResolveObject();
+		USoulDataAsset* SoulData = Cast<USoulDataAsset>(ResolvedSoulData);
+
+		if (SoulData == nullptr) { return; }
+
+		Min = SoulData->DelayValuesData.DelayCeiling;
+		Max = SoulData->DelayValuesData.DelayFloor;
+	});
+
+	Final = FMath::RandRange(Min, Max);
+
+	GetWorldTimerManager().SetTimer(TimerHandle,this,&AARPGSoul::PostDelay,Final);
+}
+
+void AARPGSoul::PostDelay()
+{
+	SoulCollider->SetSimulatePhysics(CanSimulatePhysics);
+	InitalActorLocation = GetActorLocation();
+}
 
 // Called every frame
 void AARPGSoul::Tick(float DeltaTime)
