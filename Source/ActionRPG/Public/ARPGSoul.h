@@ -4,6 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "UObject/SoftObjectPtr.h"
+#include "Curves/CurveFloat.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "Kismet/GameplayStatics.h"
+#include "Components\TimelineComponent.h"
 #include "Math/UnrealMathUtility.h"
 #include "GameFramework/Actor.h"
 #include "Engine/StreamableManager.h"
@@ -21,12 +25,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorPosition")
 	FVector InitalActorLocation;
 	
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data Assets")
 	TSoftObjectPtr<USoulDataAsset> SoulSoftDataAsset;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collider")
-	class USphereComponent* SoulCollider;
+	USphereComponent* SoulCollider;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collider")
 	bool CanSimulatePhysics = false;
@@ -36,7 +39,31 @@ public:
 	float Max = 0.0f;
 	float Final = 0.0f;
 
+public:
 
+	UPROPERTY()
+	UTimelineComponent* Timeline;
+
+	UPROPERTY()
+	UCurveFloat* SoulCurve;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timeline")
+	float RotateValue;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timeline")
+	float CurveFloatValue;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timeline")
+	float TimelineValue;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timeline")
+	float TimelineDuration = 1.0f
+
+	bool Open;
+	bool CanLoop = false;
+
+	UPROPERTY()
+	TEnumAsByte<ETimelineDirection::Type> TimelineDirection;
 
 protected:
 	// Called when the game starts or when spawned
@@ -47,7 +74,12 @@ public:
 	UFUNCTION()
 	void PostDelay();
 
+	UFUNCTION(BlueprintCallable)
 	void ResolveSoftObject();
+
+	UFUNCTION()
+	void PlayTimeline();
+
 
 
 	// Called every frame
