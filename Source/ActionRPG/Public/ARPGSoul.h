@@ -25,6 +25,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ActorPosition")
 	FVector InitalActorLocation;
 	
+	UPROPERTY()
+	FVector Container;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data Assets")
 	TSoftObjectPtr<USoulDataAsset> SoulSoftDataAsset;
 
@@ -41,11 +44,15 @@ public:
 
 public:
 
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
 	UTimelineComponent* Timeline;
 
-	UPROPERTY()
-	UCurveFloat* SoulCurve;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "")
+	UCurveFloat* fSoulCurve;
+
+	FOnTimelineFloat InterpFunction{};
+	FOnTimelineEvent TimelineFinished{};
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timeline")
 	float RotateValue;
@@ -53,19 +60,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timeline")
 	float CurveFloatValue;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timeline")
-	float TimelineValue;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timeline")
-	float TimelineDuration = 1.0f
-
-	bool Open;
-	bool CanLoop = false;
-
-	UPROPERTY()
-	TEnumAsByte<ETimelineDirection::Type> TimelineDirection;
 
 protected:
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
@@ -77,9 +74,13 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void ResolveSoftObject();
 
-	UFUNCTION()
-	void PlayTimeline();
 
+	UFUNCTION()
+	void TimelineFloatReturn(float value);
+	
+	void OnTimelineFinished();
+
+	void FinishCollectItem();
 
 
 	// Called every frame

@@ -2,16 +2,17 @@
 
 
 #include "ARPGSoul.h"
+#include <Runtime\Core\Private\Math\UnrealMath.cpp>
 
 
 // Sets default values
 AARPGSoul::AARPGSoul()
 {
-	static ConstructorHelpers::FObjectFinder<UCurveFloat> Curve(TEXT("/Game/Curves/C_MyCurve"));
-
 	PrimaryActorTick.bCanEverTick = true;
 
-	SoulCurve = Curve.Object;
+	Timeline = CreateDefaultSubobject<UTimelineComponent>(TEXT("Movement Timeline"));
+	InterpFunction.BindUFunction(this, FName("TimelineFloatReturn"));
+	TimelineFinished.BindUFunction(this, FName("OnTimelineFinished"));
 }
 
 // Called every frame
@@ -32,29 +33,13 @@ void AARPGSoul::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (SoulCurve != nullptr)
+	if (fSoulCurve != nullptr)
 	{
-		FOnTimelineFloat TimelineCallback;
-		FOnTimelineEventStatic TimelineFinishedCallback;
+		Timeline->AddInterpFloat(fSoulCurve, InterpFunction, FName("Alpha"));
+		Timeline->SetTimelineFinishedFunc(TimelineFinished);
 
-
-		Timeline = NewObject<UTimelineComponent>(this, FName("TimelineAnimation"));
-		Timeline->CreationMethod = EComponentCreationMethod::UserConstructionScript;
-		this->BlueprintCreatedComponents.Add(Timeline);
-
-		Timeline->SetPropertySetObject(this);
-		Timeline->SetDirectionPropertyName(FName("TimeLineDirection"));
-		Timeline->SetLooping(CanLoop);
-		Timeline->SetTimelineLength(TimelineDuration);
-		Timeline->SetTimelineLengthMode(ETimelineLengthMode::TL_LastKeyFrame);
-		Timeline->SetPlaybackPosition(0.0f, false, false);
-		Timeline->AddInterpFloat(SoulCurve, TimelineCallback);
-
-
-		TimelineCallback.BindUFunction(this, FName("PlayTimeline"));
-		TimelineFinishedCallback.BindUFunction(this, FName{ TEXT("SetState") });
-
-		Timeline->RegisterComponent();
+		Timeline->SetLooping(false);
+		Timeline->SetIgnoreTimeDilation(false);
 	}
 }
 
@@ -80,14 +65,22 @@ void AARPGSoul::ResolveSoftObject()
 
 	Final = FMath::RandRange(Min, Max);
 	GetWorldTimerManager().SetTimer(TimerHandle, this, &AARPGSoul::PostDelay, Final);
+	Timeline->Play();
 }
 
-void AARPGSoul::PlayTimeline()
+void AARPGSoul::TimelineFloatReturn(float value)
 {
-	if (true)
-	{
+	Container = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation();
+	Container = FMath::Lerp(InitalActorLocation, Container, 0);
+}
 
-	}
+void AARPGSoul::OnTimelineFinished()
+{
+	
+}
+
+void AARPGSoul::FinishCollectItem()
+{
 
 }
 
@@ -95,9 +88,5 @@ void AARPGSoul::PostDelay()
 {
 	SoulCollider->SetSimulatePhysics(CanSimulatePhysics);
 	InitalActorLocation = GetActorLocation();
-
-
-
-
 }
 
