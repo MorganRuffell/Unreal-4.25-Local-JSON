@@ -2,7 +2,7 @@
 
 
 #include "ARPGSoul.h"
-#include <Runtime\Core\Private\Math\UnrealMath.cpp>
+
 
 
 // Sets default values
@@ -88,5 +88,6 @@ void AARPGSoul::PostDelay()
 {
 	SoulCollider->SetSimulatePhysics(CanSimulatePhysics);
 	InitalActorLocation = GetActorLocation();
+	GetWorld()->GetFirstPlayerController()->AddSouls
 }
 

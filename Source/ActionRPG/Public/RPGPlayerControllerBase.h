@@ -66,6 +66,10 @@ public:
 
 public:
 
+	UFUNCTION()
+	void AddSouls(int Amount);
+
+
 	/** Called after the inventory was changed and we notified all delegates */
 	UFUNCTION(BlueprintImplementableEvent, Category = Inventory)
 		void InventoryItemChanged(bool bAdded, const FString& ItemKey, ERPGItemType ItemType);

@@ -11,6 +11,16 @@
 // See: https://docs.microsoft.com/en-us/cpp/preprocessor/optimize?view=msvc-160
 #pragma optimize("", off)
 
+
+void ARPGPlayerControllerBase::AddSouls(int Amount)
+{
+	AddInventoryItem(FString("Token_Souls"),ERPGItemType::Token, Amount, 1, true);
+	UGameplayStatics::GetPlayerCharacter(GetWorld(),0);
+
+	//Refactor the playercontroller paramater value on materials...
+
+}
+
 bool ARPGPlayerControllerBase::AddInventoryItem(FString NewItemKey, ERPGItemType ItemType, int32 ItemCount, int32 ItemLevel, bool bAutoSlot)
 {
 	bool bChanged = false;
