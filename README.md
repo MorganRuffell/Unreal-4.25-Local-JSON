@@ -13,7 +13,7 @@ The project uses the darker nodes and the electronic nodes plugin inside of the 
 ## Tasks Still to be completed
 
 - [X] Refactor material system on the player controller
-[]  Connect to Google Sheets and retrieve and save data from there
+- [o]  Connect to Google Sheets and retrieve and save data from there
 
 ## External Links
 
