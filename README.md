@@ -13,7 +13,7 @@ this project was produced as part of Games System Design as part of my Degree in
 
 The project uses the darker nodes and the electronic nodes plugin inside of the editor. 
 
-## Tasks Still to be completed
+## Tasks
 
 - [X] Refactor material system on the player controller
 - [X] Change the data types to allow export of XML, TXTs and CSV, in their approriate format rather than just JSON Strings
