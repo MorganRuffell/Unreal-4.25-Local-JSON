@@ -1,4 +1,4 @@
-## Unreal Engine JSON Implementation
+# Unreal Engine JSON Implementation
 
 This is a simple programming project built on the back of the Unreal Engine RPG Template that works with the FGameplayAbilitySystem.
 
@@ -18,6 +18,12 @@ The project uses the darker nodes and the electronic nodes plugin inside of the 
 - [X] Refactor material system on the player controller
 - [X] Change the data types to allow export of XML, TXTs and CSV, in their approriate format rather than just JSON Strings
 - []  Connect to Google Sheets and retrieve and save data from there
+
+## Supported Editor & IDE
+
+- Visual Studio 2019
+- Unreal Engine 4.25
+
 
 ## External Links
 
