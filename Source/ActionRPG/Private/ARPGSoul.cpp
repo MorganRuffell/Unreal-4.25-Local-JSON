@@ -10,6 +10,9 @@ AARPGSoul::AARPGSoul()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	SoulShape = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere Collider"));
+	SummonParticleSystem = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("ParticleSystem"));
+
 	Timeline = CreateDefaultSubobject<UTimelineComponent>(TEXT("Movement Timeline"));
 	InterpFunction.BindUFunction(this, FName("TimelineFloatReturn"));
 	TimelineFinished.BindUFunction(this, FName("OnTimelineFinished"));
@@ -61,7 +64,7 @@ void AARPGSoul::ResolveSoftObject()
 
 		Min = SoulData->DelayValuesData.DelayCeiling;
 		Max = SoulData->DelayValuesData.DelayFloor;
-		});
+	});
 
 	Final = FMath::RandRange(Min, Max);
 	GetWorldTimerManager().SetTimer(TimerHandle, this, &AARPGSoul::PostDelay, Final);
@@ -86,8 +89,7 @@ void AARPGSoul::FinishCollectItem()
 
 void AARPGSoul::PostDelay()
 {
-	SoulCollider->SetSimulatePhysics(CanSimulatePhysics);
+	SoulShape->SetSimulatePhysics(CanSimulatePhysics);
 	InitalActorLocation = GetActorLocation();
-	GetWorld()->GetFirstPlayerController()->AddSouls
 }
 

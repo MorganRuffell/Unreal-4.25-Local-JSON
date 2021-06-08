@@ -32,7 +32,11 @@ public:
 	TSoftObjectPtr<USoulDataAsset> SoulSoftDataAsset;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collider")
-	USphereComponent* SoulCollider;
+	USphereComponent* SoulShape;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collider")
+	UParticleSystemComponent* SummonParticleSystem;
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collider")
 	bool CanSimulatePhysics = false;
